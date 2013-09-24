@@ -6,7 +6,7 @@
 		<!-- <pattern>*2.jsp</pattern> -->
 	</excludes>
 
-	<decorator name="default" page="/common/layouts/default.jsp">
+	<decorator name="default" page="/WEB-INF/content/common/layouts/default.jsp">
 		<pattern>/*</pattern>
 	</decorator>
 </decorators>

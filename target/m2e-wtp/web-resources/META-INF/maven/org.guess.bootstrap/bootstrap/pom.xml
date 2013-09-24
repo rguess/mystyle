@@ -12,6 +12,7 @@
 	<properties>
 		<sitemesh.version>2.4.2</sitemesh.version>
 		<junit.version>4.11</junit.version>
+		<spring.version>3.2.4.RELEASE</spring.version>
 	</properties>
 
 	<dependencies>
@@ -49,6 +50,31 @@
 			<scope>runtime</scope>
 		</dependency>
 		
+		<!-- Jackson JSON Mapper -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+		
+		<!-- spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>bootstrap</finalName>
