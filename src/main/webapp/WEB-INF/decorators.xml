@@ -2,7 +2,7 @@
 <decorators defaultdir="/WEB-INF/layouts/">
 	<excludes>
 		<pattern>/asserts/*</pattern>
-		<pattern>/metronic/*</pattern>
+		<pattern>/metronic_v1.1.2/*</pattern>
 		<!-- <pattern>*2.jsp</pattern> -->
 	</excludes>
 
