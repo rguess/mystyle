@@ -110,10 +110,6 @@ var App = function () {
         });
     }
 
-
-
-
-
     var handleMainMenu = function () {
         jQuery('.page-sidebar .has-sub > a').click(function () {
 
