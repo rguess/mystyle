@@ -1,0 +1,16 @@
+package org.guess.security.service.impl;
+
+import org.guess.core.EntityDao;
+import org.guess.core.service.BaseServiceImpl;
+import org.guess.security.dao.UserDao;
+import org.guess.security.model.User;
+import org.guess.security.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl extends BaseServiceImpl<User, Long, EntityDao<User,Long>> implements UserService{
+
+	@Autowired
+	public UserDao userDao;
+}

@@ -13,13 +13,17 @@
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/content/" />
-		<property name="suffix" value=".jsp"/>
+		<property name="suffix" value=".jsp" />
 	</bean>
-	
+
 	<!-- bind your messages.properties -->
 	<bean class="org.springframework.context.support.ResourceBundleMessageSource"
 		id="messageSource">
 		<property name="basename" value="messages" />
 	</bean>
+
+	<mvc:resources mapping="/assets/**" location="/assets/" />
+	<mvc:resources mapping="/metronic_v1.1.2/**" location="/metronic_v1.1.2/" />
+	<mvc:resources mapping="/metronic.bootstrap/**" location="/metronic.bootstrap/" />
 
 </beans>

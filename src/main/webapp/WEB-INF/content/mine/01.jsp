@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <html>
 <head>
@@ -19,7 +20,10 @@
 				<h3 id="myModalLabel">Modal header</h3>
 			</div>
 			<div class="modal-body">
-				<p>One fine body…</p>
+				<p>${user.id }</p>
+				<p>${user.name }</p>
+				<p>${user.password }</p>
+				<p><fmt:formatDate value="${user.createDate }"/></p>
 			</div>
 			<div class="modal-footer">
 				<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
