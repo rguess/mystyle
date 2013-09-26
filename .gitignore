@@ -1,4 +1,4 @@
-# Compiled source #
+﻿# Compiled source #
 ###################
 *.com
 *.class
@@ -42,6 +42,7 @@ Thumbs.db
 /.metadata/
 .classpath
 .project
+*/.externalToolBuilders/
 /.settings/
 */.settings/
 */.classpath
@@ -50,7 +51,6 @@ Thumbs.db
 */*/*/.project
 */*/*/*/.project
 */*/*/*/*/.project
->>>>>>> 5366efd72dd1ceff108c252999a19ed5c6cd4865
 /target/
 */target/
 */*/target/
