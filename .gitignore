@@ -42,8 +42,8 @@ Thumbs.db
 /.metadata/
 .classpath
 .project
-*/.externalToolBuilders/
-/.settings/
+.externalToolBuilders/
+.settings/
 */.settings/
 */.classpath
 */.project
