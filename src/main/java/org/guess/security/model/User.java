@@ -11,9 +11,9 @@ import org.guess.core.IdEntity;
 @Table(name="TestUser")
 public class User extends IdEntity{
 	
-	public String name;
-	public String password;
-	public Date createDate;
+	private String name;
+	private String password;
+	private Date createDate;
 	
 	public String getName() {
 		return name;
@@ -35,13 +35,11 @@ public class User extends IdEntity{
 	}
 	
 	public User(String name, String password, Date createDate) {
-		super();
 		this.name = name;
 		this.password = password;
 		this.createDate = createDate;
 	}
 	public User() {
-		super();
 	}
 	
 	

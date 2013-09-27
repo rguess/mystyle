@@ -10,8 +10,8 @@ import javax.persistence.SequenceGenerator;
 public abstract class IdEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id")
-	@SequenceGenerator(name = "id", sequenceName = "id", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "oracle_id")
+	@SequenceGenerator(name = "oracle_id", sequenceName = "oracle_id", allocationSize = 1)
 	protected Long id;
 
 	public Long getId() {

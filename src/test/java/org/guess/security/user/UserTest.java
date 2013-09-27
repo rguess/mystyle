@@ -2,33 +2,34 @@ package org.guess.security.user;
 
 import java.util.Date;
 
-import org.guess.core.utils.ReflectionUtils;
 import org.guess.security.model.User;
 import org.guess.security.service.UserService;
-import org.guess.security.service.impl.UserServiceImpl;
-import org.junit.Before;
+import org.hibernate.SessionFactory;
 import org.junit.Test;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("/applicationContext.xml")
 public class UserTest {
 
-	private ConfigurableApplicationContext context = null;
-
-	@Before
-	public void init() {
-		context = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
-	}
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	@Autowired
+	private UserService userService;
 	
 	@Test
 	public void add() throws Exception{
-		UserService service = context.getBean(UserService.class);
 		User u = new User("张三", "123456", new Date());
-		service.save(u);
+		userService.save(u);
 	}
 	
 	@Test
-	public void test01(){
-		ReflectionUtils.getSuperClassGenricType(UserServiceImpl.class, 2);
+	public void testSessionFactory(){
+		System.out.println(sessionFactory.getCurrentSession());
 	}
+	
 }

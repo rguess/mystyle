@@ -214,10 +214,10 @@ public abstract class ReflectionUtils {
 			return Object.class;
 		}
 		
-		for (Type type : params) {
-			Class clz = (Class)type;
-			System.out.println(clz.getName());
-		}
+//		for (Type type : params) {
+//			Class clz = (Class)type;
+//			System.out.println(clz.getName());
+//		}
 		return (Class) params[index];
 	}
 
