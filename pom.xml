@@ -254,7 +254,6 @@
 			<scope>runtime</scope>
 		</dependency>
 		<!-- LOGGING end -->
-
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
