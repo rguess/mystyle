@@ -67,7 +67,7 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-
+	
 	<aop:config>
 		<!-- 设置pointCut表示哪些方法要加入事务处理 -->
 		<!-- 以下的事务是声明在DAO中，但是通常都会在Service来处理多个业务对象逻辑的关系，注入删除，更新等，此时如果在执行了一个步骤之后抛出异常 

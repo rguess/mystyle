@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.guess.bootstrap</groupId>
 	<artifactId>bootstrap</artifactId>
-	<packaging>war</packaging>
+	<packaging>pom</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>bootstrap Maven Webapp</name>
 
@@ -263,4 +263,7 @@
 	<build>
 		<finalName>bootstrap</finalName>
 	</build>
+	<modules>
+		<module>buessiness</module>
+	</modules>
 </project>

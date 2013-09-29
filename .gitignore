@@ -40,8 +40,8 @@ Thumbs.db
 
 # project settings
 /.metadata/
-.classpath
-.project
+# .classpath
+# .project
 .externalToolBuilders/
 .settings/
 */.settings/
