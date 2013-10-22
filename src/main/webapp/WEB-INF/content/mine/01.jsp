@@ -31,5 +31,20 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(function(){
+			$.ajax({
+				url : '${ctx}/01/error',
+				type : 'GET',
+				success : function(data) {
+					alert(data);
+				},
+				error : function(error){
+					alert(error.status);
+					alert(error.statusText);
+				}
+			});
+		});
+	</script>
 </body>
 </html>

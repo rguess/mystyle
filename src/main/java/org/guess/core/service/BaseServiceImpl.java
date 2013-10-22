@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.List;
 
-import org.guess.core.EntityDao;
+import org.guess.core.orm.EntityDao;
 import org.guess.core.utils.ReflectionUtils;
 
 @SuppressWarnings("unchecked")

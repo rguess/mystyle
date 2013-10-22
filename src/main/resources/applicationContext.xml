@@ -13,7 +13,9 @@
 
 	<context:annotation-config />
 	<!-- 使用annotation模式 -->
-	<context:component-scan base-package="org.guess" />
+	<context:component-scan base-package="org.guess">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
 
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -52,7 +54,7 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">
-					org.hibernate.dialect.Oracle10gDialect
+					org.hibernate.dialect.MySQLDialect
 				</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>

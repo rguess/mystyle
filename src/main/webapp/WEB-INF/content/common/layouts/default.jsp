@@ -22,18 +22,7 @@
 <link href="${ctx}/assets/css/style_default.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/gritter/css/jquery.gritter.css" type="text/css" rel="stylesheet" />
 <link rel="shortcut icon" href="${ctx}/assets/dview.ico" />
-<sitemesh:head />
-
-</head>
-
-<body class="fixed-top">
-	<%@ include file="/WEB-INF/content/common/layouts/header.jsp"%>
-	<div class="page-container row-fluid">
-		<%@ include file="/WEB-INF/content/common/layouts/left.jsp"%>
-		<sitemesh:body />
-	</div>
-	<%@ include file="/WEB-INF/content/common/layouts/footer.jsp"%>
-	<script src="${ctx}/assets/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script src="${ctx}/assets/js/jquery-1.8.3.min.js" type="text/javascript"></script>
 	<script src="${ctx}/assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<!--[if lt IE 9]>
 	<script src="${ctx}/assets/js/excanvas.js"></script>
@@ -46,6 +35,17 @@
       jQuery(document).ready(function() {       
          App.init();
       });
-   </script>
+</script>
+<sitemesh:head />
+
+</head>
+
+<body class="fixed-top">
+	<%@ include file="/WEB-INF/content/common/layouts/header.jsp"%>
+	<div class="page-container row-fluid">
+		<%@ include file="/WEB-INF/content/common/layouts/left.jsp"%>
+		<sitemesh:body />
+	</div>
+	<%@ include file="/WEB-INF/content/common/layouts/footer.jsp"%>
 </body>
 </html>

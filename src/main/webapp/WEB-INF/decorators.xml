@@ -3,6 +3,7 @@
 	<excludes>
 		<pattern>/asserts/*</pattern>
 		<pattern>/metronic_v1.1.2/*</pattern>
+		<pattern>/errorpage/*</pattern>
 		<!-- <pattern>*2.jsp</pattern> -->
 	</excludes>
 

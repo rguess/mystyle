@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.guess.bootstrap</groupId>
 	<artifactId>bootstrap</artifactId>
-	<packaging>pom</packaging>
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>bootstrap Maven Webapp</name>
 
@@ -91,7 +91,7 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
+
 		<!-- spring test -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -100,7 +100,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- AOP begin-->
+		<!-- AOP begin -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
@@ -255,6 +255,12 @@
 		</dependency>
 		<!-- LOGGING end -->
 		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.21</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
 			<version>11.2.0</version>
@@ -263,7 +269,4 @@
 	<build>
 		<finalName>bootstrap</finalName>
 	</build>
-	<modules>
-		<module>buessiness</module>
-	</modules>
 </project>
