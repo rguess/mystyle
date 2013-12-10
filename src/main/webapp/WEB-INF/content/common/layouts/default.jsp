@@ -19,7 +19,7 @@
 <link href="${ctx}/assets/font-awesome/css/font-awesome.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/style.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/style_responsive.css" type="text/css" rel="stylesheet" />
-<link href="${ctx}/assets/css/style_default.css" type="text/css" rel="stylesheet" />
+<link href="${ctx}/assets/css/style_light.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/gritter/css/jquery.gritter.css" type="text/css" rel="stylesheet" />
 <link rel="shortcut icon" href="${ctx}/assets/dview.ico" />
 <script src="${ctx}/assets/js/jquery-1.8.3.min.js" type="text/javascript"></script>
@@ -31,7 +31,7 @@
 	<script src="${ctx}/assets/js/jquery.cookie.js"></script>
    	<script src="${ctx}/assets/breakpoints/breakpoints.js" type="text/javascript" ></script>
 	<script src="${ctx}/assets/js/app.js"></script>
-	<script>
+<script>
       jQuery(document).ready(function() {       
          App.init();
       });

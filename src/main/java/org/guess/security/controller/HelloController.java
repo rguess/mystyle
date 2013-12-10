@@ -26,8 +26,6 @@ public class HelloController{
 	public ModelAndView printWelcome() throws IOException{
 		
 		ModelAndView mav = new ModelAndView("mine/01");
-		User user = new User();
-		mav.addObject("user",user);
 		return mav;
 	}
 	
