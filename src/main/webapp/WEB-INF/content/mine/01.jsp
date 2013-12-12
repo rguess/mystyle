@@ -32,7 +32,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		$(function(){
+		/* $(function(){
 			$.ajax({
 				url : '${ctx}/01/error',
 				type : 'GET',
@@ -44,7 +44,7 @@
 					alert(error.statusText);
 				}
 			});
-		});
+		}); */
 	</script>
 </body>
 </html>
