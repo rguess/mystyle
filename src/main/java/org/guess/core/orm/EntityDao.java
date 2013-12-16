@@ -15,9 +15,9 @@ public interface EntityDao<T,ID extends Serializable> {
 	void delete(T o);
 
 	void delete(ID id);
-	
+
 	Page<T> findPage(final PageRequest pageRequest, String hql, final Object... values);
-	
+
 	Page<T> findPage(final PageRequest pageRequest, String hql, final Map<String, ?> values);
 	
 }
