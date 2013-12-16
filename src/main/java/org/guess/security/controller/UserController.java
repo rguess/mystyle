@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.guess.core.orm.Page;
 import org.guess.core.orm.PageRequest;
+import org.guess.core.utils.spring.SpringContextUtil;
 import org.guess.core.web.BaseController;
 import org.guess.security.dao.UserDao;
 import org.guess.security.model.User;
@@ -26,6 +27,11 @@ public class UserController extends BaseController<User, UserService>{
 	
 	@Autowired
 	private UserService userService;
+	
+	@Override
+	protected UserService getBaseService() {
+		return SpringContextUtil.getBean(UserService.class);
+	}
 	
 	@Autowired
 	private UserDao userDao;

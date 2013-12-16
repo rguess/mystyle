@@ -22,18 +22,24 @@
 <link href="${ctx}/assets/css/style_light.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/gritter/css/jquery.gritter.css" type="text/css" rel="stylesheet" />
 <link rel="shortcut icon" href="${ctx}/assets/dview.ico" />
+
 <script src="${ctx}/assets/js/jquery-1.8.3.min.js" type="text/javascript"></script>
-	<script src="${ctx}/assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	<!--[if lt IE 9]>
-	<script src="${ctx}/assets/js/excanvas.js"></script>
-	<script src="${ctx}/assets/js/respond.js"></script>	
-	<![endif]-->
-	<script src="${ctx}/assets/js/jquery.cookie.js"></script>
-   	<script src="${ctx}/assets/breakpoints/breakpoints.js" type="text/javascript" ></script>
-	<script src="${ctx}/assets/js/app.js"></script>
+<script src="${ctx}/assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<!--[if lt IE 9]>
+<script src="${ctx}/assets/js/excanvas.js"></script>
+<script src="${ctx}/assets/js/respond.js"></script>	
+<![endif]-->
+<script src="${ctx}/assets/js/jquery.cookie.js"></script>
+<script src="${ctx}/assets/breakpoints/breakpoints.js" type="text/javascript" ></script>
+<script src="${ctx}/assets/js/app.js"></script>
 <script>
-      jQuery(document).ready(function() {       
+      jQuery(document).ready(function() {
+    	 //初始化
          App.init();
+    	 //日历控件初始化
+    	 if($('.date').length != 0){
+    		 $('.date').datepicker();
+    	 }
       });
 </script>
 <sitemesh:head />

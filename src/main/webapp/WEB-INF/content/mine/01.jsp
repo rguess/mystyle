@@ -32,10 +32,14 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		/* $(function(){
+		$(function(){
 			$.ajax({
-				url : '${ctx}/01/error',
-				type : 'GET',
+				url : '${ctx}/01/object',
+				type : 'POST',
+				//dataType:"json",
+				contentType:"application/json;charset=UTF-8",
+				data : JSON.stringify({id:"1",loginId:"admim",name:"张三"}),
+				//data : {id:"1",loginId:"admim",name:"张三"},
 				success : function(data) {
 					alert(data);
 				},
@@ -44,7 +48,7 @@
 					alert(error.statusText);
 				}
 			});
-		}); */
+		});
 	</script>
 </body>
 </html>

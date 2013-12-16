@@ -12,4 +12,12 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserDao> implem
 
 	@Autowired
 	public UserDao userDao;
+
+	@Override
+	protected UserDao getEntityDao() {
+		
+		return null;
+	}
+	
+	
 }

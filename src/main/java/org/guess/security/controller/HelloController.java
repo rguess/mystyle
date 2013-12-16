@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.guess.security.model.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,6 +56,13 @@ public class HelloController{
 		System.out.println(id);
 		ModelAndView mav = new ModelAndView("mine/01");
 		return mav;
+	}
+	
+	@RequestMapping(method=RequestMethod.POST,value="/object")
+	@ResponseBody
+	public String getObject(@RequestBody User user){
+		System.out.println(user.getId());
+		return "hello";
 	}
 	
 }

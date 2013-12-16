@@ -22,6 +22,7 @@
 		<commons-dbcp.version>1.4</commons-dbcp.version>
 		<slf4j.version>1.7.2</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
+		<poi.version>3.8</poi.version>
 	</properties>
 
 	<dependencies>
@@ -254,16 +255,30 @@
 			<scope>runtime</scope>
 		</dependency>
 		<!-- LOGGING end -->
+		<!-- mysql -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.21</version>
 		</dependency>
+		<!-- oracle -->
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
 			<version>11.2.0</version>
 		</dependency>
+		<!-- poi start -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<!-- poi end -->
 	</dependencies>
 	<build>
 		<finalName>bootstrap</finalName>
