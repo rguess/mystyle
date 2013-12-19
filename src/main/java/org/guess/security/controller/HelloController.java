@@ -59,9 +59,8 @@ public class HelloController{
 	}
 	
 	@RequestMapping(method=RequestMethod.POST,value="/object")
-	@ResponseBody
 	public String getObject(@RequestBody User user){
-		System.out.println(user.getId());
+		System.out.println(user);
 		return "hello";
 	}
 	
