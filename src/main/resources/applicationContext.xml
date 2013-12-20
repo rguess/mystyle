@@ -61,6 +61,8 @@
 			</props>
 		</property>
 	</bean>
+	
+	<bean class="org.guess.core.utils.spring.SpringContextUtil"></bean>
 
 	<bean id="txManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">

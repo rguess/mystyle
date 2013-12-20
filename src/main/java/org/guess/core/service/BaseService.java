@@ -2,6 +2,10 @@ package org.guess.core.service;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
+
+import org.guess.core.orm.Page;
+import org.guess.core.orm.PageRequest;
 
 public interface BaseService<T,ID extends Serializable> {
 
@@ -53,5 +57,23 @@ public interface BaseService<T,ID extends Serializable> {
 	 * @throws DataAccessException
 	 */
 	void removeById(ID id) throws Exception;
+	
+	/**
+	 * 分页查询
+	 * @param pageRequest
+	 * @param hql
+	 * @param values
+	 * @return page
+	 */
+	Page<T> findPage(final PageRequest pageRequest, String hql, final Object... values);
+	
+	/**
+	 * 分页查询
+	 * @param pageRequest
+	 * @param hql
+	 * @param values
+	 * @return page
+	 */
+	Page<T> findPage(final PageRequest pageRequest, String hql, final Map<String, ?> values);
 
 }

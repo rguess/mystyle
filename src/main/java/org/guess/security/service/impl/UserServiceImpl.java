@@ -15,8 +15,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserDao> implem
 
 	@Override
 	protected UserDao getEntityDao() {
-		
-		return null;
+		return userDao;
 	}
 	
 	

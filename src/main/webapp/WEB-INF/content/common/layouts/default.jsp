@@ -33,14 +33,16 @@
 <script src="${ctx}/assets/breakpoints/breakpoints.js" type="text/javascript" ></script>
 <script src="${ctx}/assets/js/app.js"></script>
 <script>
-      jQuery(document).ready(function() {
-    	 //初始化
-         App.init();
-    	 //日历控件初始化
-    	 if($('.date').length != 0){
-    		 $('.date').datepicker();
-    	 }
-      });
+	//设置路劲
+	var ctx = "${ctx}";
+	jQuery(document).ready(function() {
+		//初始化
+		App.init();
+		//日历控件初始化
+		if($('.date').length != 0){
+			$('.date').datepicker();
+		}
+	});
 </script>
 <sitemesh:head />
 

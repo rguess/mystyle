@@ -2,8 +2,11 @@ package org.guess.core.service;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import org.guess.core.orm.EntityDao;
+import org.guess.core.orm.Page;
+import org.guess.core.orm.PageRequest;
 
 abstract public class BaseServiceImpl<T, ID extends Serializable, M extends EntityDao<T, ID>>
 		implements BaseService<T, ID> {
@@ -53,6 +56,16 @@ abstract public class BaseServiceImpl<T, ID extends Serializable, M extends Enti
 	public void removeById(ID id) throws Exception {
 		getEntityDao().delete(id);
 		
+	}
+	
+	@Override
+	public Page<T> findPage(PageRequest pageRequest, String hql,Map<String, ?> values) {
+		return getEntityDao().findPage(pageRequest, hql, values);
+	}
+	
+	@Override
+	public Page<T> findPage(PageRequest pageRequest, String hql, Object... values) {
+		return getEntityDao().findPage(pageRequest, hql, values);
 	}
 
 }

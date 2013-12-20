@@ -3,8 +3,11 @@ package org.guess.security.user;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.guess.core.orm.Page;
 import org.guess.core.orm.PageRequest;
-import org.guess.security.dao.UserDao;
+import org.guess.core.utils.mapper.JsonMapper;
+import org.guess.security.model.User;
+import org.guess.security.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +19,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class UserTestDao {
 
 	@Autowired
-	private UserDao userDao;
+	private UserService userService;
 	
 	@Test
 	public void add(){
@@ -26,8 +29,9 @@ public class UserTestDao {
 	@Test
 	public void get(){
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("name", "nihao");
-		userDao.findPage(new PageRequest(), "from User where name = :name", map);
+		map.put("id", Long.valueOf("1"));
+		Page<User> page = userService.findPage(new PageRequest(), "from User where id = :id", map);
+		System.out.println(JsonMapper.nonEmptyMapper().toJson(page.getResult()));
 	}
 	
 }
