@@ -12,7 +12,7 @@
 		</a></li>
 		<li class="has-sub "><a href="javascript:;"> <i
 				class="icon-bookmark-empty"></i> <span class="title">UI
-					Features</span> <span class="arrow "></span>
+					Features</span> <span class="arrow"></span>
 		</a>
 			<ul class="sub">
 				<li><a href="ui_general.html">General</a></li>
@@ -24,9 +24,9 @@
 				<li><a href="ui_tree.html">Tree View</a></li>
 				<li><a href="ui_nestable.html">Nestable List</a></li>
 			</ul></li>
-		<li class="has-sub "><a href="javascript:;"> <i
+		<li class="has-sub"><a href="javascript:;"> <i
 				class="icon-table"></i> <span class="title">Form Stuff</span> <span
-				class="arrow "></span>
+				class="arrow"></span>
 		</a>
 			<ul class="sub">
 				<li><a href="form_layout.html">Form Layouts</a></li>

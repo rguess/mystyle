@@ -21,25 +21,27 @@ import org.springframework.web.servlet.ModelAndView;
 @SuppressWarnings("rawtypes")
 @Controller
 @RequestMapping("/01")
-public class HelloController{
-	
+public class HelloController {
+
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView printWelcome() throws IOException{
-		
+	public ModelAndView printWelcome() throws IOException {
+
 		ModelAndView mav = new ModelAndView("mine/01");
 		return mav;
 	}
-	
-	@RequestMapping(method = RequestMethod.GET,value = "/error")
-	public void printError(HttpServletResponse response,HttpServletRequest request) throws IOException{
-//		System.out.println(request.getHeader("X-Requested-With")+"-----------");
+
+	@RequestMapping(method = RequestMethod.GET, value = "/error")
+	public void printError(HttpServletResponse response,
+			HttpServletRequest request) throws IOException {
+		// System.out.println(request.getHeader("X-Requested-With")+"-----------");
 		response.sendError(403, "noright");
 	}
-	
-	@RequestMapping(method = RequestMethod.GET,value="/json")
-	public @ResponseBody Map printJson(){
+
+	@RequestMapping(method = RequestMethod.GET, value = "/json")
+	public @ResponseBody
+	Map printJson() {
 		User user = new User();
-		Map<String,Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		List<User> users = new ArrayList<User>();
 		users.add(user);
 		users.add(user);
@@ -50,18 +52,19 @@ public class HelloController{
 		map.put("total", 33);
 		return map;
 	}
-	
+
 	@RequestMapping("request")
-	public ModelAndView getRequest(@RequestParam(value="id",defaultValue="22") int id){
+	public ModelAndView getRequest(
+			@RequestParam(value = "id", defaultValue = "22") int id) {
 		System.out.println(id);
 		ModelAndView mav = new ModelAndView("mine/01");
 		return mav;
 	}
-	
-	@RequestMapping(method=RequestMethod.POST,value="/object")
-	public String getObject(@RequestBody User user){
+
+	@RequestMapping(method = RequestMethod.POST, value = "/object")
+	public String getObject(@RequestBody User user) {
 		System.out.println(user);
 		return "hello";
 	}
-	
+
 }
