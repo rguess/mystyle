@@ -8,6 +8,8 @@
 </head>
 <body>
 	<div class="page-content">
+		${facils }
+	
 		<a data-toggle="modal" href="02.jsp" data-target="#myModal">click
 			me</a> <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch
 			demo modal</a>
