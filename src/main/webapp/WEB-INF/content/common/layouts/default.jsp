@@ -14,24 +14,24 @@
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 
-<link href="${ctx}/assets/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-<link href="${ctx}/assets/bootstrap/css/bootstrap-responsive.min.css" type="text/css" rel="stylesheet" />
-<link href="${ctx}/assets/font-awesome/css/font-awesome.css" type="text/css" rel="stylesheet" />
+<link href="${ctx}/assets/comp/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<link href="${ctx}/assets/comp/bootstrap/css/bootstrap-responsive.min.css" type="text/css" rel="stylesheet" />
+<link href="${ctx}/assets/comp/font-awesome/css/font-awesome.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/style.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/style_responsive.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/style_default.css" type="text/css" rel="stylesheet" />
-<link href="${ctx}/assets/gritter/css/jquery.gritter.css" type="text/css" rel="stylesheet" />
+<link href="${ctx}/assets/comp/gritter/css/jquery.gritter.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/metro.css" type="text/css" rel="stylesheet" />
 <link rel="shortcut icon" href="${ctx}/assets/favicon.ico" />
 
 <script src="${ctx}/assets/js/jquery-1.8.3.min.js" type="text/javascript"></script>
-<script src="${ctx}/assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="${ctx}/assets/comp/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <!--[if lt IE 9]>
 <script src="${ctx}/assets/js/excanvas.js"></script>
 <script src="${ctx}/assets/js/respond.js"></script>	
 <![endif]-->
 <script src="${ctx}/assets/js/jquery.cookie.js"></script>
-<script src="${ctx}/assets/breakpoints/breakpoints.js" type="text/javascript" ></script>
+<script src="${ctx}/assets/comp/breakpoints/breakpoints.js" type="text/javascript" ></script>
 <script src="${ctx}/assets/js/app.js"></script>
 <script>
 	//设置路劲

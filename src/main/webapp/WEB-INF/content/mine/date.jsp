@@ -5,8 +5,8 @@
 <html>
 <head>
 <title>日历控件</title>
-<link href="${ctx}/assets/datepicker/datepicker.css" type="text/css" rel="stylesheet" />
-<script src="${ctx}/assets/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<link href="${ctx}/assets/comp/datepicker/datepicker.css" type="text/css" rel="stylesheet" />
+<script src="${ctx}/assets/comp/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
 <script type="text/javascript">
 	
 </script>

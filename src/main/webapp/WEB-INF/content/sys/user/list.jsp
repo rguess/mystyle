@@ -6,16 +6,18 @@
 <html>
 <head>
 <title>用户列表</title>
-<link rel="stylesheet" href="${ctx}/assets/data-tables/DT_bootstrap.css" />
-<script type="text/javascript" src="${ctx}/assets/data-tables/jquery.dataTables.js"></script>
-<script type="text/javascript" src="${ctx}/assets/data-tables/DT_bootstrap.js"></script>
+<link rel="stylesheet" href="${ctx}/assets/comp/data-tables/DT_bootstrap.css" />
+<script type="text/javascript" src="${ctx}/assets/comp/data-tables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="${ctx}/assets/comp/data-tables/DT_bootstrap.js"></script>
+<script type="text/javascript" src="${ctx}/assets/js/page.js"></script>
 <script type="text/javascript">
-/* $(document).ready(function() {
-	$('#sample_1').dataTable({
+$(document).ready(function() {
+	$("#sample_1").page(null);
+	/* $('#sample_1').dataTable({
 		"bServerSide": true,
 		"sAjaxSource": "${ctx}/sys/user/datas"
-	});
-}); */
+	}); */
+});
 </script>
 </head>
 <body>
