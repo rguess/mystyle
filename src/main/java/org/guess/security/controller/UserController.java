@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.guess.core.orm.Page;
 import org.guess.core.web.BaseController;
 import org.guess.security.model.User;
 import org.guess.security.service.UserService;
@@ -32,6 +33,15 @@ public class UserController extends BaseController<User, UserService>{
 	public @ResponseBody boolean isLoginIdAvailable(@RequestParam("loginId") String id){
 		System.out.println(id);
 		return true;
+	}
+	
+	@RequestMapping("page")
+	public String page(Page<User> page){
+		System.out.println(page.getPageNo());
+		System.out.println(page.getPageSize());
+		System.out.println(page.getOrderBy());
+		System.out.println(page.getOrderDir());
+		return null;
 	}
 	
 	@RequestMapping("datas")

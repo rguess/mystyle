@@ -53,7 +53,6 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	
 	@RequestMapping(value="list")
 	public String list(){
-		System.out.println(123);
 		return listView;
 	}
 

@@ -12,12 +12,24 @@
 <script type="text/javascript" src="${ctx}/assets/js/page.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	$("#sample_1").page(null);
+	Page.initData({
+		url:"${ctx}/sys/user/page",
+		pageNo : 123,
+		pageSize : 2222
+	});
+	
+	//$("#sample_1").page(null);
 	/* $('#sample_1').dataTable({
 		"bServerSide": true,
 		"sAjaxSource": "${ctx}/sys/user/datas"
 	}); */
 });
+var i = 0;
+setTimeout('lee()',1000);
+i = 2;
+function lee(){
+	alert(i);
+}
 </script>
 </head>
 <body>
