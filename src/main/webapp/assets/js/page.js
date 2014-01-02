@@ -72,15 +72,13 @@ var Page = {
 			$(obj.tableId).empty().append(thead).append(tBody);
 		};
 		Page.accToSer(callBack);
-		Page.initPagination();
 	},
 	//分页回调函数
 	initPagination : function(){
 		var span = $("<div></div>");
 		var pagnation = $("<div></div>");
-		var pageInfo = $("<div class='pull-left'></div>").html($("<span></span>"));
+		var pageInfo = $("<div class='pull-left'></div>").html($("<span></span>").html('当前第1页，共'+page.totalSize+'条记录'));
 		span.append(pageInfo).append(pagnation);
-		span.append(pagnation);
 		$(this.defaultVal.tableId).after(span);
 		var options = {
 //			size:"large",
@@ -116,6 +114,7 @@ var Page = {
         				tr.append($("<td></td>").html(Page.operBtn(item.id)));
         				tbody.append(tr);
         			});
+            		pageInfo.html($("<span></span>").html('当前第'+page+'页，共'+pageData.totalSize+'条记录'));
             	};
             	Page.accToSer(callBack);
             }
