@@ -7,8 +7,10 @@
  */
 package org.guess.core.orm;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import com.google.common.collect.Lists;
 
@@ -153,5 +155,16 @@ public class Page<T> extends PageRequest implements Iterable<T> {
 			result.add(i);
 		}
 		return result;
+	}
+	
+	/**
+	 * 返回map对象，在ajax访问数据时使用
+	 */
+	public Map<String,Object> returnMap(){
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("totalSize", this.getTotalItems());
+		map.put("totalPages", this.getTotalPages());
+		map.put("data", this.getResult());
+		return map;
 	}
 }

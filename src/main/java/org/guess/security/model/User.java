@@ -112,4 +112,21 @@ public class User extends IdEntity {
 		this.roles = roles;
 	}
 
+	public User(Long id,String loginId, String passwd, String name, String email,
+			String mobilePhone, String address, String status, String remark) {
+		super();
+		this.id = id;
+		this.loginId = loginId;
+		this.passwd = passwd;
+		this.name = name;
+		this.email = email;
+		this.mobilePhone = mobilePhone;
+		this.address = address;
+		this.status = status;
+		this.remark = remark;
+	}
+
+	public User() {
+		super();
+	}
 }

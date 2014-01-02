@@ -36,12 +36,22 @@ public class UserController extends BaseController<User, UserService>{
 	}
 	
 	@RequestMapping("page")
-	public String page(Page<User> page){
-		System.out.println(page.getPageNo());
-		System.out.println(page.getPageSize());
-		System.out.println(page.getOrderBy());
-		System.out.println(page.getOrderDir());
-		return null;
+	public @ResponseBody Map<String,Object> page(Page<User> page){
+		List<User> users = new ArrayList<User>();
+		users.add(new User(Long.valueOf("1"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+1), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
+		users.add(new User(Long.valueOf("2"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+2), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
+		users.add(new User(Long.valueOf("3"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+3), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
+		users.add(new User(Long.valueOf("4"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+4), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
+		users.add(new User(Long.valueOf("5"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+5), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
+		users.add(new User(Long.valueOf("6"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+6), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
+		users.add(new User(Long.valueOf("7"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+7), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
+		users.add(new User(Long.valueOf("8"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+8), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
+		users.add(new User(Long.valueOf("9"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+9), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
+		users.add(new User(Long.valueOf("10"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+10), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
+		Page<User> pageData = new Page<User>();
+		pageData.setResult(users);
+		pageData.setTotalItems(1000);
+		return pageData.returnMap();
 	}
 	
 	@RequestMapping("datas")

@@ -6,17 +6,25 @@
 <html>
 <head>
 <title>用户列表</title>
-<link rel="stylesheet" href="${ctx}/assets/comp/data-tables/DT_bootstrap.css" />
-<script type="text/javascript" src="${ctx}/assets/comp/data-tables/jquery.dataTables.js"></script>
-<script type="text/javascript" src="${ctx}/assets/comp/data-tables/DT_bootstrap.js"></script>
+<script type="text/javascript" src="${ctx}/assets/comp/bootstrap-paginator/bootstrap-paginator.js"></script>
 <script type="text/javascript" src="${ctx}/assets/js/page.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	Page.initData({
-		url:"${ctx}/sys/user/page",
-		pageNo : 123,
-		pageSize : 2222
-	});
+	Page.initData(
+		{
+			url:"${ctx}/sys/user/page",
+			pageNo : 1,
+			pageSize : 10,
+			tableId : "#sample_1"
+		},
+		null,
+		[{cName:"name",cValue:"姓名"},
+		 {cName:"email",cValue:"邮箱"},
+		 {cName:"loginId",cValue:"登录名"},
+		 {cName:"mobilePhone",cValue:"手机"},
+		 {cName:"address",cValue:"地址"}
+		 ]
+	);
 	
 	//$("#sample_1").page(null);
 	/* $('#sample_1').dataTable({
@@ -24,12 +32,6 @@ $(document).ready(function() {
 		"sAjaxSource": "${ctx}/sys/user/datas"
 	}); */
 });
-var i = 0;
-setTimeout('lee()',1000);
-i = 2;
-function lee(){
-	alert(i);
-}
 </script>
 </head>
 <body>
@@ -69,13 +71,12 @@ function lee(){
 								</div> -->
 							</div>
 							<table class="table table-striped table-bordered table-hover" id="sample_1">
-								<thead>
+								<!-- <thead>
 									<tr>
 										<th class="sorting_desc">姓名</th>
 										<th>邮箱</th>
 										<th>性别</th>
-										<th>性别</th>
-										<th>性别</th>
+										<th>地址</th>
 										<th class="span2">操作</th>
 									</tr>
 								</thead>
@@ -96,7 +97,7 @@ function lee(){
 											</div>
 										</td>
 									</tr>
-								</tbody>
+								</tbody> -->
 							</table>
 						</div>
 					</div>

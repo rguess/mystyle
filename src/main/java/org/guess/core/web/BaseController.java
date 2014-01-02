@@ -51,6 +51,14 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 		return REDIRECT+listView;
 	}
 	
+	@RequestMapping(value = "show/{id}")
+	public ModelAndView show(@PathVariable("id") Long id) throws Exception{
+		User u = (User) getBaseService().get(id);
+		ModelAndView mav = new ModelAndView(showView);
+		mav.addObject("obj", u);
+		return mav;
+	}
+	
 	@RequestMapping(value="list")
 	public String list(){
 		return listView;
