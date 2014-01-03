@@ -50,15 +50,15 @@ var Page = {
 		queryData.pageNo = obj.pageNo;
 		queryData.pageSize = obj.pageSize;
 		Page.cqData = queryData;
-		//访问后台获取数据
+		//初始化数据回调
 		var callBack = function(page){
 			Page.defaultVal.totalPages = page.totalPages;
 			thead = $("<thead></thead>");
 			var theadTr = $("<tr></tr>");
 			$.each(cols,function(i,item){
-				theadTr.append($("<th></th>").attr("cName",item.cName).html(item.cValue));
+				theadTr.append($("<th class='sorting' onclick='Page.sorting(this)'></th>").attr("cName",item.cName).html(item.cValue));
 			});
-			theadTr.append($("<th></th>").html("操作"));
+			theadTr.append($("<th class='span2'></th>").html("操作"));
 			thead.append(theadTr);
 			tBody = $("<tbody></tbody>");
 			$.each(page.data,function(i,item){
@@ -70,20 +70,21 @@ var Page = {
 				tBody.append(tr);
 			});
 			$(obj.tableId).empty().append(thead).append(tBody);
+			Page.initPagination(page);
 		};
 		Page.accToSer(callBack);
 	},
-	//分页回调函数
-	initPagination : function(){
+	//执行分页
+	initPagination : function(page){
 		var span = $("<div></div>");
-		var pagnation = $("<div></div>");
-		var pageInfo = $("<div class='pull-left'></div>").html($("<span></span>").html('当前第1页，共'+page.totalSize+'条记录'));
+		var pagnation = $("<div id='Pagination'></div>");
+		var pageInfo = $("<div class='pull-left' id='pageInfo'></div>").html($("<span></span>").html('当前第'+Page.cqData.pageNo+'/'+page.totalPages+'页，共'+page.totalSize+'条记录'));
 		span.append(pageInfo).append(pagnation);
 		$(this.defaultVal.tableId).after(span);
 		var options = {
 //			size:"large",
 			alignment:"right",
-	        currentPage: 1,
+	        currentPage: Page.cqData.pageNo,
 	        totalPages: this.defaultVal.totalPages,
 	        pageUrl: function(type, page, current){
                 return "javascript:void(0)";
@@ -104,22 +105,27 @@ var Page = {
             },
             onPageClicked: function(e,originalEvent,type,page){
             	Page.cqData.pageNo = page;
-            	var callBack = function(pageData){
-            		var tbody = $(Page.defaultVal.tableId+" tbody:first").empty();
-            		$.each(pageData.data,function(i,item){
-        				var tr = $("<tr></tr>");
-        				$.each(Page.defaultCols,function(j,col){
-        					tr.append($("<td></td>").html(item[col.cName]));
-        				});
-        				tr.append($("<td></td>").html(Page.operBtn(item.id)));
-        				tbody.append(tr);
-        			});
-            		pageInfo.html($("<span></span>").html('当前第'+page+'页，共'+pageData.totalSize+'条记录'));
-            	};
-            	Page.accToSer(callBack);
+            	Page.accToSer(Page.pageChangedCallBack);
             }
 		};
 		pagnation.bootstrapPaginator(options);
+	},
+	/**
+	 * 翻页和排序回调函数
+	 * @param id
+	 * @returns
+	 */
+	pageChangedCallBack : function(pageData){
+		var tbody = $(Page.defaultVal.tableId+" tbody:first").empty();
+		$.each(pageData.data,function(i,item){
+			var tr = $("<tr></tr>");
+			$.each(Page.defaultCols,function(j,col){
+				tr.append($("<td></td>").html(item[col.cName]));
+			});
+			tr.append($("<td></td>").html(Page.operBtn(item.id)));
+			tbody.append(tr);
+		});
+		$("#pageInfo").html($("<span></span>").html('当前第'+Page.cqData.pageNo+'/'+pageData.totalPages+'页，共'+pageData.totalSize+'条记录'));
 	},
 	//生成操作按钮
 	operBtn : function(id){
@@ -149,6 +155,35 @@ var Page = {
 	subUrl : function(){
 		var url = Page.defaultVal.url;
 		return url.substring(0,url.lastIndexOf("/"));
+	},
+	/**
+	 * 执行排序函数
+	 */
+	sorting : function(obj){
+		var sort = {};
+		if($(obj).hasClass("sorting")||$(obj).hasClass("sorting_desc")){
+			$(obj).removeClass("sorting").removeClass("sorting_desc").addClass("sorting_asc")
+				.siblings("[class!=span2]").removeClass("sorting_asc").removeClass("sorting_desc").addClass("sorting");
+			sort = {orderBy:$(obj).attr("cName"),orderDir:"asc"};
+		}else if($(obj).hasClass("sorting_asc")){
+			$(obj).removeClass("sorting").removeClass("sorting_asc").addClass("sorting_desc")
+				.siblings("[class!=span2]").removeClass("sorting_asc").removeClass("sorting_desc").addClass("sorting");
+			sort = {orderBy:$(obj).attr("cName"),orderDir:"desc"};
+		}
+		Page.cqData = $.extend(Page.cqData,sort);
+		Page.cqData.pageNo = 1;
+		Page.accToSer(Page.pageChangedCallBack);
+		$('#Pagination').bootstrapPaginator("showFirst");
+	},
+	/**
+	 * 执行查询函数
+	 */
+	doQuery : function(queryObj){
+		Page.cqData = $.extend(Page.cqData,queryObj);
+		Page.cqData.pageNo = 1;
+		console.log(Page.cqData);
+		Page.accToSer(Page.pageChangedCallBack);
+		$('#Pagination').bootstrapPaginator("showFirst");
 	}
 };
 

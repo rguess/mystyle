@@ -6,6 +6,9 @@
 <html>
 <head>
 <title>用户列表</title>
+<link href="${ctx}/assets/comp/datepicker/datepicker.css" type="text/css" rel="stylesheet" />
+<script src="${ctx}/assets/comp/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<link href="${ctx}/assets/comp/bootstrap-paginator/DT_bootstrap.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="${ctx}/assets/comp/bootstrap-paginator/bootstrap-paginator.js"></script>
 <script type="text/javascript" src="${ctx}/assets/js/page.js"></script>
 <script type="text/javascript">
@@ -25,13 +28,25 @@ $(document).ready(function() {
 		 {cName:"address",cValue:"地址"}
 		 ]
 	);
-	
-	//$("#sample_1").page(null);
-	/* $('#sample_1').dataTable({
-		"bServerSide": true,
-		"sAjaxSource": "${ctx}/sys/user/datas"
-	}); */
 });
+
+function doQuery(){
+	var queryObj = {
+			search_LIKES_email : null,
+			search_LIKES_addr : null,
+			search_LIKES_name : null,
+			search_EQD_time : null
+	};
+	var email = $("#email").val();
+	var addr = $("#addr").val();
+	var name = $("#name").val();
+	var time = $("#time").val();
+	App.isNundef(email)?queryObj.search_LIKES_email = email:null;
+	App.isNundef(addr)?queryObj.search_LIKES_addr = addr:null;
+	App.isNundef(name)?queryObj.search_LIKES_name = name:null;
+	App.isNundef(time)?queryObj.search_EQD_time = time:null;
+	Page.doQuery(queryObj);
+}
 </script>
 </head>
 <body>
@@ -70,6 +85,58 @@ $(document).ready(function() {
 									</ul>
 								</div> -->
 							</div>
+							<form>
+								<div class="row-fluid">
+									<div class="span2 ">
+	                                    <div class="control-group">
+	                                       <div class="controls">
+	                                          <input type="text" id="email" class="m-wrap span12" placeholder="邮箱">
+	                                       </div>
+	                                    </div>
+                                 	</div>
+                                 	
+                                 	<div class="span2 ">
+	                                    <div class="control-group">
+	                                       <div class="controls">
+	                                          <input type="text" id="addr" class="m-wrap span12" placeholder="地址">
+	                                       </div>
+	                                    </div>
+                                 	</div>
+                                 	
+                                 	<div class="span2 ">
+	                                    <div class="control-group">
+	                                       <div class="controls">
+	                                          <input type="text" id="name" class="m-wrap span12" placeholder="姓名">
+	                                       </div>
+	                                    </div>
+                                 	</div>
+                                 	
+                                 	<div class="span3 ">
+	                                    <div class="control-group">
+	                                       <div class="controls">
+	                                         <div class="input-append date" data-date="2013-12-01" data-date-format="yyyy-mm-dd">
+												<input class="span6 m-wrap" id="time" type="text"
+													readonly="readonly" placeholder="时间"> <span class="add-on"><i
+													class="icon-th"></i></span>
+											</div>
+	                                       </div>
+	                                    </div>
+                                 	</div>
+                                 	
+                                 	<div class="span3 ">
+	                                    <div class="control-group">
+	                                       <div class="controls">
+	                                         <a class="btn blue" href="javascript:void(0)" onclick="javascript:doQuery();">
+	                                         	<i class="icon-search"></i>
+	                                         	查询</a>
+	                                         <button type="reset" class="btn">
+	                                         	<i class="icon-trash"></i>清空
+	                                         </button>
+	                                       </div>
+	                                    </div>
+                                 	</div>
+								</div>
+							</form>
 							<table class="table table-striped table-bordered table-hover" id="sample_1">
 								<!-- <thead>
 									<tr>

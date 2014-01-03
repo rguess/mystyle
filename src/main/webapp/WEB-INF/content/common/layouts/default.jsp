@@ -15,13 +15,13 @@
 <meta http-equiv="Expires" content="0" />
 
 <link href="${ctx}/assets/comp/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<link href="${ctx}/assets/css/metro.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/comp/bootstrap/css/bootstrap-responsive.min.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/comp/font-awesome/css/font-awesome.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/style.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/style_responsive.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/style_default.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/comp/gritter/css/jquery.gritter.css" type="text/css" rel="stylesheet" />
-<link href="${ctx}/assets/css/metro.css" type="text/css" rel="stylesheet" />
 <link rel="shortcut icon" href="${ctx}/assets/favicon.ico" />
 
 <script src="${ctx}/assets/js/jquery-1.8.3.min.js" type="text/javascript"></script>
@@ -44,9 +44,9 @@
 			$('.date').datepicker();
 		}
 		//加载表单验证
-		if($("form").length !=0){
+		/* if($("form").length !=0){
 			$("form").validate();
-		}
+		} */
 	});
 </script>
 <sitemesh:head />

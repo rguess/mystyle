@@ -1003,6 +1003,11 @@ var App = function () {
             } catch (e) {
                 return false;
             }
+        },
+        
+        //判断值是否为null,"",undefined
+        isNundef : function(value){
+        	return value !== null && value !== "" && typeof(value) != "undefined";
         }
 
     };
