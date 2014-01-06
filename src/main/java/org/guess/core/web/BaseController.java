@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.guess.core.service.BaseService;
 import org.guess.core.utils.ReflectionUtils;
-import org.guess.security.model.User;
+import org.guess.sys.model.User;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,9 +53,9 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	
 	@RequestMapping(value = "show/{id}")
 	public ModelAndView show(@PathVariable("id") Long id) throws Exception{
-		User u = (User) getBaseService().get(id);
+		T object = getBaseService().get(id);
 		ModelAndView mav = new ModelAndView(showView);
-		mav.addObject("obj", u);
+		mav.addObject("obj", object);
 		return mav;
 	}
 	

@@ -1,4 +1,4 @@
-package org.guess.security.controller;
+package org.guess.sys.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,8 +7,8 @@ import java.util.Map;
 
 import org.guess.core.orm.Page;
 import org.guess.core.web.BaseController;
-import org.guess.security.model.User;
-import org.guess.security.service.UserService;
+import org.guess.sys.model.User;
+import org.guess.sys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

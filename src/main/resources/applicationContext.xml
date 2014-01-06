@@ -47,7 +47,7 @@
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="packagesToScan">
 			<list>
-				<value>org.guess.security.model</value>
+				<value>org.guess.sys.model</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

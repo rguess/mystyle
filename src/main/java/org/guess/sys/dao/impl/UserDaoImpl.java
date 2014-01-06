@@ -1,8 +1,8 @@
-package org.guess.security.dao.impl;
+package org.guess.sys.dao.impl;
 
 import org.guess.core.orm.hibernate.HibernateDao;
-import org.guess.security.dao.UserDao;
-import org.guess.security.model.User;
+import org.guess.sys.dao.UserDao;
+import org.guess.sys.model.User;
 import org.springframework.stereotype.Repository;
 
 @Repository

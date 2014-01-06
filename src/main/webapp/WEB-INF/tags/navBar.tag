@@ -17,7 +17,7 @@
 					<c:when test="${status.index == 0 }">
 						<li><i class="${titleIcon }"></i><a href="#">${item }</a> <span class="icon-angle-right"></span></li>
 					</c:when>
-					<c:when test="${status.index - 1 == fn:length(strs) }">
+					<c:when test="${status.index == fn:length(strs) - 1 }">
 						<li><a href="#">${item }</a></li>
 					</c:when>
 					<c:otherwise>

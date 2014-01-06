@@ -35,7 +35,7 @@ var Page = {
 		});
 	},
 	/**
-	 * 主题处理函数
+	 * 主体处理函数
 	 * @param options
 	 * @param queryData
 	 * @param cols

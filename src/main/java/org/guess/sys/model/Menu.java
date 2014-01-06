@@ -1,4 +1,4 @@
-package org.guess.security.model;
+package org.guess.sys.model;
 
 import java.util.HashSet;
 import java.util.Set;
