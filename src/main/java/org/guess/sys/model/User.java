@@ -1,5 +1,6 @@
 package org.guess.sys.model;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,6 +34,17 @@ public class User extends IdEntity {
 	private String status;
 	/** 备注 */
 	private String remark;
+	
+	/** 创建时间 */
+	private Date createDate;
+	
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
 
 	/** 拥有角色 */
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST,
@@ -112,10 +124,9 @@ public class User extends IdEntity {
 		this.roles = roles;
 	}
 
-	public User(Long id,String loginId, String passwd, String name, String email,
-			String mobilePhone, String address, String status, String remark) {
+	public User(String loginId, String passwd, String name, String email,
+			String mobilePhone, String address, String status, String remark,Date date) {
 		super();
-		this.id = id;
 		this.loginId = loginId;
 		this.passwd = passwd;
 		this.name = name;
@@ -124,6 +135,7 @@ public class User extends IdEntity {
 		this.address = address;
 		this.status = status;
 		this.remark = remark;
+		this.createDate = date;
 	}
 
 	public User() {

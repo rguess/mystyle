@@ -20,4 +20,6 @@ public interface EntityDao<T,ID extends Serializable> {
 
 	Page<T> findPage(final PageRequest pageRequest, String hql, final Map<String, ?> values);
 	
+	Page<T> findPage(final PageRequest pageRequest,final List<PropertyFilter> filters);
+	
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.guess.core.orm.Page;
 import org.guess.core.orm.PageRequest;
+import org.guess.core.orm.PropertyFilter;
 
 public interface BaseService<T,ID extends Serializable> {
 
@@ -75,5 +76,13 @@ public interface BaseService<T,ID extends Serializable> {
 	 * @return page
 	 */
 	Page<T> findPage(final PageRequest pageRequest, String hql, final Map<String, ?> values);
+	
+	/**
+	 * 
+	 * @param pageRequest
+	 * @param filters
+	 * @return
+	 */
+	Page<T> findPage(final PageRequest pageRequest,final List<PropertyFilter> filters);
 
 }

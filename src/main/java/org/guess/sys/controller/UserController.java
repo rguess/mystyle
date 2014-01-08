@@ -35,7 +35,7 @@ public class UserController extends BaseController<User, UserService>{
 		return true;
 	}
 	
-	@RequestMapping("page")
+	/*@RequestMapping("page")
 	public @ResponseBody Map<String,Object> page(Page<User> page){
 		List<User> users = new ArrayList<User>();
 		users.add(new User(Long.valueOf("1"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+1), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
@@ -52,7 +52,7 @@ public class UserController extends BaseController<User, UserService>{
 		pageData.setResult(users);
 		pageData.setTotalItems(1000);
 		return pageData.returnMap();
-	}
+	}*/
 	
 	@RequestMapping("datas")
 	public @ResponseBody Map<String,Object> getDatas(){
