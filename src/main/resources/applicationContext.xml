@@ -88,6 +88,7 @@
 			<!-- 以下方法都是可能设计修改的方法，就无法设置为只读 -->
 			<tx:method name="add*" propagation="REQUIRED" />
 			<tx:method name="del*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
 			<tx:method name="update*" propagation="REQUIRED" />
 			<tx:method name="save*" propagation="REQUIRED" />
 			<tx:method name="clear*" propagation="REQUIRED" />

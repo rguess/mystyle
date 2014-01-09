@@ -43,7 +43,18 @@ public class UserTestDao {
 	public void getByProperty(){
 		List<PropertyFilter> list = new ArrayList<PropertyFilter>();
 		list.add(new PropertyFilter("EQD_createDate", "2014-01-08 17:23:52"));
+//		list.add(new PropertyFilter("EQL_id", "1"));
 		System.out.println(JsonMapper.nonDefaultMapper().toJson(userService.findPage(new PageRequest(), list).getResult()));
+	}
+	
+	@Test
+	public void delete() throws Exception{
+		userService.removeById(Long.valueOf("1"));
+	}
+	
+	@Test
+	public void getById() throws Exception{
+		System.out.println(userService.get(Long.valueOf("19")).getId());
 	}
 	
 }

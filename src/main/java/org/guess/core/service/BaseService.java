@@ -78,7 +78,7 @@ public interface BaseService<T,ID extends Serializable> {
 	Page<T> findPage(final PageRequest pageRequest, String hql, final Map<String, ?> values);
 	
 	/**
-	 * 
+	 * 按照属性条件封装类查询
 	 * @param pageRequest
 	 * @param filters
 	 * @return

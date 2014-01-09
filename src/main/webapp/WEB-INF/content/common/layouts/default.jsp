@@ -33,6 +33,7 @@
 <script src="${ctx}/assets/js/jquery.cookie.js"></script>
 <script src="${ctx}/assets/comp/breakpoints/breakpoints.js" type="text/javascript" ></script>
 <script src="${ctx}/assets/js/app.js"></script>
+<script src="${ctx}/assets/js/util.js"></script>
 <script>
 	//设置路劲
 	var ctx = "${ctx}";
@@ -43,10 +44,6 @@
 		if($('.date').length != 0){
 			$('.date').datepicker();
 		}
-		//加载表单验证
-		/* if($("form").length !=0){
-			$("form").validate();
-		} */
 	});
 </script>
 <sitemesh:head />

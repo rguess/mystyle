@@ -116,7 +116,7 @@ public class SimpleHibernateDao<T, ID extends Serializable> {
 	 */
 	public T get(final ID id) {
 		AssertUtils.notNull(id, "id不能为空");
-		return (T) getSession().load(entityClass, id);
+		return (T) getSession().get(entityClass, id);
 	}
 
 	/**

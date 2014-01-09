@@ -39,9 +39,9 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 
 	@RequestMapping(method = RequestMethod.GET, value = "update/{id}")
 	public ModelAndView update(@PathVariable("id") Long id) throws Exception {
-		User u = (User) getBaseService().get(Long.valueOf("1"));
+		T obj = getBaseService().get(id);
 		ModelAndView mav = new ModelAndView(editView);
-		mav.addObject("obj", u);
+		mav.addObject("obj", obj);
 		return mav;
 	}
 

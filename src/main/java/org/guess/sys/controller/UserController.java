@@ -5,7 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.guess.core.orm.Page;
+import org.guess.core.orm.PropertyFilter;
 import org.guess.core.web.BaseController;
 import org.guess.sys.model.User;
 import org.guess.sys.service.UserService;
@@ -35,24 +38,11 @@ public class UserController extends BaseController<User, UserService>{
 		return true;
 	}
 	
-	/*@RequestMapping("page")
-	public @ResponseBody Map<String,Object> page(Page<User> page){
-		List<User> users = new ArrayList<User>();
-		users.add(new User(Long.valueOf("1"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+1), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
-		users.add(new User(Long.valueOf("2"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+2), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
-		users.add(new User(Long.valueOf("3"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+3), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
-		users.add(new User(Long.valueOf("4"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+4), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
-		users.add(new User(Long.valueOf("5"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+5), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
-		users.add(new User(Long.valueOf("6"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+6), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
-		users.add(new User(Long.valueOf("7"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+7), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
-		users.add(new User(Long.valueOf("8"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+8), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
-		users.add(new User(Long.valueOf("9"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+9), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
-		users.add(new User(Long.valueOf("10"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+10), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
-		Page<User> pageData = new Page<User>();
-		pageData.setResult(users);
-		pageData.setTotalItems(1000);
+	@RequestMapping("page")
+	public @ResponseBody Map<String,Object> page(Page<User> page,HttpServletRequest request){
+		Page<User> pageData = userService.findPage(page, PropertyFilter.buildFromHttpRequest(request, "search"));
 		return pageData.returnMap();
-	}*/
+	}
 	
 	@RequestMapping("datas")
 	public @ResponseBody Map<String,Object> getDatas(){

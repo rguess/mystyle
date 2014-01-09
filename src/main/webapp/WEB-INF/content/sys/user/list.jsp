@@ -17,7 +17,7 @@ $(document).ready(function() {
 		{
 			url:"${ctx}/sys/user/page",
 			pageNo : 1,
-			pageSize : 10,
+			pageSize : 2,
 			tableId : "#sample_1"
 		},
 		null,
@@ -25,7 +25,8 @@ $(document).ready(function() {
 		 {cName:"email",cValue:"邮箱"},
 		 {cName:"loginId",cValue:"登录名"},
 		 {cName:"mobilePhone",cValue:"手机"},
-		 {cName:"address",cValue:"地址"}
+		 {cName:"address",cValue:"地址"},
+		 {cName:"createDate",cValue:"时间",date:true}
 		 ]
 	);
 });
@@ -35,7 +36,7 @@ function doQuery(){
 			search_LIKES_email : null,
 			search_LIKES_addr : null,
 			search_LIKES_name : null,
-			search_EQD_time : null
+			search_EQD_createDate : null
 	};
 	var email = $("#email").val();
 	var addr = $("#addr").val();
@@ -44,7 +45,7 @@ function doQuery(){
 	App.isNundef(email)?queryObj.search_LIKES_email = email:null;
 	App.isNundef(addr)?queryObj.search_LIKES_addr = addr:null;
 	App.isNundef(name)?queryObj.search_LIKES_name = name:null;
-	App.isNundef(time)?queryObj.search_EQD_time = time:null;
+	App.isNundef(time)?queryObj.search_EQD_createDate = time:null;
 	Page.doQuery(queryObj);
 }
 </script>
