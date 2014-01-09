@@ -73,5 +73,10 @@ abstract public class BaseServiceImpl<T, ID extends Serializable, M extends Enti
 	public Page<T> findPage(PageRequest pageRequest, List<PropertyFilter> filters) {
 		return getEntityDao().findPage(pageRequest, filters);
 	}
+	
+	@Override
+	public T findUniqueBy(String propertyName, Object value) {
+		return getEntityDao().findUniqueBy(propertyName, value);
+	}
 
 }

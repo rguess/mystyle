@@ -1,8 +1,5 @@
 package org.guess.sys.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,8 +31,8 @@ public class UserController extends BaseController<User, UserService>{
 	
 	@RequestMapping("isAvailable")
 	public @ResponseBody boolean isLoginIdAvailable(@RequestParam("loginId") String id){
-		System.out.println(id);
-		return true;
+		User u = userService.findUniqueBy("loginId", id);
+		return u == null;
 	}
 	
 	@RequestMapping("page")
@@ -43,25 +40,4 @@ public class UserController extends BaseController<User, UserService>{
 		Page<User> pageData = userService.findPage(page, PropertyFilter.buildFromHttpRequest(request, "search"));
 		return pageData.returnMap();
 	}
-	
-	@RequestMapping("datas")
-	public @ResponseBody Map<String,Object> getDatas(){
-		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("iTotalRecords", 1000);
-		map.put("iTotalDisplayRecords", 1000);
-		List<String[]> list = new ArrayList<String[]>();
-		list.add(new String[]{"Gecko1","Mozilla 1.1","Win 95+ / OSX.1+","1.1","A"});
-		list.add(new String[]{"Gecko2","Mozilla 1.1","Win 95+ / OSX.1+","1.1","A"});
-		list.add(new String[]{"Gecko3","Mozilla 1.1","Win 95+ / OSX.1+","1.1","A"});
-		list.add(new String[]{"Gecko4","Mozilla 1.1","Win 95+ / OSX.1+","1.1","A"});
-		list.add(new String[]{"Gecko5","Mozilla 1.1","Win 95+ / OSX.1+","1.1","A"});
-		list.add(new String[]{"Gecko6","Mozilla 1.1","Win 95+ / OSX.1+","1.1","A"});
-		list.add(new String[]{"Gecko7","Mozilla 1.1","Win 95+ / OSX.1+","1.1","A"});
-		list.add(new String[]{"Gecko8","Mozilla 1.1","Win 95+ / OSX.1+","1.1","A"});
-		list.add(new String[]{"Gecko9","Mozilla 1.1","Win 95+ / OSX.1+","1.1","A"});
-		list.add(new String[]{"Gecko10","Mozilla 1.1","Win 95+ / OSX.1+","1.1","A"});
-		map.put("aaData", list);
-		return map;
-	}
-	
 }

@@ -84,5 +84,13 @@ public interface BaseService<T,ID extends Serializable> {
 	 * @return
 	 */
 	Page<T> findPage(final PageRequest pageRequest,final List<PropertyFilter> filters);
+	
+	/**
+	 * 根据属性值查找唯一对象
+	 * @param propertyName
+	 * @param value
+	 * @return
+	 */
+	T findUniqueBy(final String propertyName, final Object value);
 
 }

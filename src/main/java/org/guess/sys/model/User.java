@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -19,6 +20,7 @@ import org.guess.core.IdEntity;
 public class User extends IdEntity {
 
 	/** 登录ID */
+	@Column(unique=true)
 	private String loginId;
 	/** 密码 */
 	private String passwd;

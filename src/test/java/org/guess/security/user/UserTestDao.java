@@ -57,4 +57,9 @@ public class UserTestDao {
 		System.out.println(userService.get(Long.valueOf("19")).getId());
 	}
 	
+	@Test
+	public void findUniqueBy(){
+		System.out.println(JsonMapper.nonDefaultMapper().toJson(userService.findUniqueBy("loginId", "rddguess")));
+	}
+	
 }
