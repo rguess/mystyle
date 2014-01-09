@@ -53,7 +53,12 @@
 									<div class="controls">
 										<input type="text" 
 											class="span6 m-wrap"
-											validate="{required:true,isLoginName:true,remote:'${ctx }/sys/user/isAvailable',messages:{remote:'该登录名已存在'}}" 
+											validate="{required:true,
+													   isLoginName:true,
+													   remote:{type:'POST',
+													   		   url:'${ctx }/sys/user/isAvailable',
+													   		   data:{oldValue:'${obj.loginId }'}},
+													   messages:{remote:'该登录名已存在'}}" 
 											name="loginId" 
 											value="${obj.loginId }"/>
 									</div>
