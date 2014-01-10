@@ -17,7 +17,7 @@ $(document).ready(function() {
 		{
 			url:"${ctx}/sys/user/page",
 			pageNo : 1,
-			pageSize : 2,
+			pageSize : 10,
 			tableId : "#sample_1"
 		},
 		null,
