@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.guess.core.IdEntity;
+import org.guess.core.utils.DateUtil;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -40,7 +41,7 @@ public class User extends IdEntity {
 	
 	/** 创建时间 */
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date createDate;
+	private Date createDate = DateUtil.parseFormat("yyyy-MM-dd");
 	
 	public Date getCreateDate() {
 		return createDate;
@@ -129,7 +130,7 @@ public class User extends IdEntity {
 	}
 
 	public User(String loginId, String passwd, String name, String email,
-			String mobilePhone, String address, String status, String remark,Date date) {
+			String mobilePhone, String address, String status, String remark) {
 		super();
 		this.loginId = loginId;
 		this.passwd = passwd;
@@ -139,7 +140,6 @@ public class User extends IdEntity {
 		this.address = address;
 		this.status = status;
 		this.remark = remark;
-		this.createDate = date;
 	}
 
 	public User() {

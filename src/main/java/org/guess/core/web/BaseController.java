@@ -10,7 +10,6 @@ import org.guess.core.orm.Page;
 import org.guess.core.orm.PropertyFilter;
 import org.guess.core.service.BaseService;
 import org.guess.core.utils.ReflectionUtils;
-import org.guess.sys.model.User;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -84,7 +83,7 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	}
 	
 	@RequestMapping("page")
-	public @ResponseBody Map<String,Object> page(Page<User> page,HttpServletRequest request){
+	public @ResponseBody Map<String,Object> page(Page<T> page,HttpServletRequest request){
 		Page<T> pageData = getBaseService().findPage(page, PropertyFilter.buildFromHttpRequest(request, "search"));
 		return pageData.returnMap();
 	}

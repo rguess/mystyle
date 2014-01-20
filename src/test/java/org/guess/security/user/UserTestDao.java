@@ -1,7 +1,6 @@
 package org.guess.security.user;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +26,7 @@ public class UserTestDao {
 	
 	@Test
 	public void add() throws Exception{
-		User user = new User("guess", "123456", "张三", "502876941@qq.com", "15108276486", "成都", "1", "12222", new Date());
+		User user = new User("guess", "123456", "张三", "502876941@qq.com", "15108276486", "成都", "1", "12222");
 		userService.save(user);
 	}
 	

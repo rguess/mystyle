@@ -32,17 +32,12 @@
 						<div class="portlet-body form">
 							<form action="${ctx }/sys/user/edit" class="form-horizontal"
 								method="post" id="form1">
+								<!-- 用户ID -->
 								<input type="hidden" value="${obj.id }" name="id">
-								<%-- <input type="hidden" id="time"
-											value="<c:choose>
-														<c:when test="${not empty obj }">
-															<fmt:formatDate value='${obj.createDate }'/>
-														</c:when>
-														<c:otherwise>
-															<tool:currentDate />
-														</c:otherwise>
-													</c:choose>"
-											name="createDate"> --%>
+								<!-- 用户创建日期 -->
+								<c:if test="${not empty obj }">
+									<input type="hidden" id="time" value="<fmt:formatDate value='${obj.createDate }'/>" name="createDate">
+								</c:if>
 								<div class="control-group">
 									<label class="control-label">姓名:</label>
 									<div class="controls">
