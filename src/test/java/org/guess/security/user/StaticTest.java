@@ -3,7 +3,9 @@ package org.guess.security.user;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.guess.core.utils.DateUtil;
@@ -55,10 +57,15 @@ public class StaticTest {
 	public static void main(String[] args) throws Exception {
 //		System.out.println(new Date().before(DateUtil.parse("2014-01-14")));
 //		System.out.println(DateUtil.parseFormat("yyyy-MM-dd"));
-		List<String> strs = calToTimes("2014-01-01","2014-12-31");
-		for (String str : strs) {
-			System.out.println(str);
-		}
-		System.out.println(dateBetween(DateUtil.parse("2014-01-01"), "20140101-20140202"));
+//		List<String> strs = calToTimes("2014-01-01","2014-12-31");
+//		for (String str : strs) {
+//			System.out.println(str);
+//		}
+//		System.out.println(dateBetween(DateUtil.parse("2014-01-01"), "20140101-20140202"));
+		
+		Calendar calendar = new GregorianCalendar();
+		calendar.setTime(DateUtil.parse("2013-05-30"));
+		calendar.get(Calendar.MONTH);
+		System.out.println(calendar.get(Calendar.MONTH)); 
 	}
 }

@@ -48,9 +48,9 @@
 			<!-- BEGIN TOP NAVIGATION MENU -->
 			<ul class="nav pull-right">
 				<!-- BEGIN NOTIFICATION DROPDOWN -->
-				<li class="dropdown" id="header_notification_bar"><a href="#"
-					class="dropdown-toggle" data-toggle="dropdown"> <i
-						class="icon-warning-sign"></i> <span class="badge">6</span>
+				<li class="dropdown" id="header_notification_bar">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+					<i class="icon-warning-sign"></i> <span class="badge">6</span>
 				</a>
 					<ul class="dropdown-menu extended notification">
 						<li>

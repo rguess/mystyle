@@ -10,7 +10,7 @@
 
 <div class="row-fluid">
 	<div class="span12">
-		<h3 class="page-title">${pageTitle}</h3>
+		<h4 class="page-title">${pageTitle}</h4>
 		<ul class="breadcrumb">
 			<c:forEach varStatus="status" items="${strs }" var="item">
 				<c:choose>
