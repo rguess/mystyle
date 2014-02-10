@@ -31,8 +31,6 @@ public class UserController extends BaseController<User, UserService>{
 	
 	@RequestMapping("isAvailable")
 	public @ResponseBody boolean isLoginIdAvailable(@RequestParam("loginId") String id,@RequestParam("oldValue") String old){
-		System.out.println(id);
-		System.out.println(old);
 		if(id.equals(old)) return true;
 		User u = userService.findUniqueBy("loginId", id);
 		return u == null;
