@@ -25,7 +25,7 @@
 	</bean>
 	
 	<!-- <mvc:interceptors>  
-      <bean class="org.guess.security.HandlerInterceptor1" />  
+      <bean class="org.guess.security.HandlerInterceptor1" />
     </mvc:interceptors> -->
 
 	<mvc:resources mapping="/assets/**" location="/assets/" />

@@ -16,8 +16,6 @@ $(document).ready(function() {
 	Page.initData(
 		{
 			url:"${ctx}/sys/user/page",
-			pageNo : 1,
-			pageSize : 2,
 			tableId : "#sample_1"
 		},
 		null,

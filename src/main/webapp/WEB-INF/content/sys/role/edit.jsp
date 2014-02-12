@@ -42,9 +42,16 @@
 													   isLoginName:true,
 													   remote:{type:'POST',
 													   		   url:'${ctx }/sys/role/isAvailable',
-													   		   data:{oldValue:'${obj.loginId }'}},
+													   		   data:{oldValue:'${obj.name }'}},
 													   messages:{remote:'该角色名称已存在'}}"
 											name="name" value="${obj.name }" />
+									</div>
+								</div>
+								<!-- 备注 -->
+								<div class="control-group">
+									<label class="control-label">备注:</label>
+									<div class="controls">
+										<textarea rows="3" cols="6" class="span6 m-wrap" name="remark">${obj.remark }</textarea>
 									</div>
 								</div>
 								<div class="form-actions">

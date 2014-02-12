@@ -20,7 +20,7 @@
 <link href="${ctx}/assets/comp/font-awesome/css/font-awesome.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/style.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/style_responsive.css" type="text/css" rel="stylesheet" />
-<link href="${ctx}/assets/css/style_default.css" type="text/css" rel="stylesheet" />
+<link href="${ctx}/assets/css/style_light.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/comp/gritter/css/jquery.gritter.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/favicon.ico" rel="shortcut icon"/>
 
