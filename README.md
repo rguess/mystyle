@@ -20,7 +20,7 @@ mystyle
 	* Http与Servlet工具类
 	* 常用日期处理工具类
 * 整理了丰富多样的js、jquery插件
-	* jquery validation
+	* jquery validation、修改验证后显示以适应bootstrap，显得更加美观、添加常用验证
 	* bootstrap
 	* bootstrap-paginator
 	* breakpoints
