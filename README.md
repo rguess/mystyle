@@ -1,6 +1,9 @@
 mystyle
 =======
 
+##介绍
+* 工作中的积累，搭建的j2ee应用快速开发手架
+
 ##功能要点简介
 
 * 以springmvc、sprng、hibernate为基础框架搭建java web快速开发手架.ps:(参考springside)
