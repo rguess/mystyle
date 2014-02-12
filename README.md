@@ -20,3 +20,16 @@ mystyle
 	* 常用日期处理工具类
 	* Http与Servlet工具类
 	* Http与Servlet工具类
+*整理了丰富多样的js、jquery插件
+	* jquery validation
+	* bootstrap
+	* bootstrap-paginator
+	* breakpoints
+	* chosen-bootstrap
+	* datepicker
+	* font-awesome(字体)
+	* ueditor(富文本编辑器)(未完成)
+	* jquery blockUI(未完成)
+	* bootstrap-fileupload(未完成)
+	* jquery-file-upload(未完成)
+	* 
