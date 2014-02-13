@@ -94,4 +94,6 @@
 			<tx:method name="clear*" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>
+	
+	<import resource="spring-config-shiro.xml"/>
 </beans>

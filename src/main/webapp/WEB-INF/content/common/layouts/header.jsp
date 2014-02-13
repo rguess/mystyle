@@ -182,7 +182,7 @@
 								My Calendar</a></li>
 						<li><a href="#"><i class="icon-tasks"></i> My Tasks</a></li>
 						<li class="divider"></li>
-						<li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
+						<li><a href="${ctx }/logout"><i class="icon-key"></i> Log Out</a></li>
 					</ul></li>
 				<!-- END USER LOGIN DROPDOWN -->
 			</ul>

@@ -63,9 +63,12 @@ public class StaticTest {
 //		}
 //		System.out.println(dateBetween(DateUtil.parse("2014-01-01"), "20140101-20140202"));
 		
-		Calendar calendar = new GregorianCalendar();
+		/*Calendar calendar = new GregorianCalendar();
 		calendar.setTime(DateUtil.parse("2013-05-30"));
 		calendar.get(Calendar.MONTH);
-		System.out.println(calendar.get(Calendar.MONTH)); 
+		System.out.println(calendar.get(Calendar.MONTH)); */
+		BooleanEnum a = BooleanEnum.valueOf("TRUE");
+		System.out.println(a.getInfo());
+		System.out.println(BooleanEnum.values());
 	}
 }
