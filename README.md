@@ -13,23 +13,21 @@ mystyle
 * 系统管理——包含用户、角色、权限、资源、菜单管理(未完成)
 * 权限管理——使用框架apache shiro进行系统认证、授权操作(未完成)
 * 集成activiti工作流引擎并完成工作流通用基类、常用工具类(未完成)
+* 集成jsper report动态报表工具(未完成)
 * 开发中常用工具类整理
 	* 基于apache poi的通用导出excel工具类
 	* 各种类型相互转化工具类
 	* Http与Servlet工具类
 	* 常用日期处理工具类
-	* Http与Servlet工具类
-	* Http与Servlet工具类
 * 整理了丰富多样的js、jquery插件
-	* jquery validation
+	* jquery validation、修改验证后显示以适应bootstrap，显得更加美观、添加常用验证
 	* bootstrap
-	* bootstrap-paginator
+	* bootstrap-paginator、配合该插件写了一个通用分页插件
 	* breakpoints
 	* chosen-bootstrap
-	* datepicker
+	* datepicker(中文日历)
 	* font-awesome(字体)
 	* ueditor(富文本编辑器)(未完成)
 	* jquery blockUI(未完成)
 	* bootstrap-fileupload(未完成)
 	* jquery-file-upload(未完成)
-	* 
