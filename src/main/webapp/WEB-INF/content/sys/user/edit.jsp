@@ -9,6 +9,11 @@
 <head>
 <title>${pageTitle }</title>
 <%@ include file="/WEB-INF/content/common/jquery-validation.jsp"%>
+<script type="text/javascript">
+	$(function(){
+		App.activeMenu("sys/user/list");
+	});
+</script>
 </head>
 <body>
 	<div class="page-content">

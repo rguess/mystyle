@@ -13,6 +13,9 @@
 <script type="text/javascript" src="${ctx}/assets/js/page.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+	
+	App.activeMenu("sys/user/list");
+	
 	Page.initData(
 		{
 			url:"${ctx}/sys/user/page",

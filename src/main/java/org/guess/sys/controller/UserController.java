@@ -1,11 +1,6 @@
 package org.guess.sys.controller;
 
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.guess.core.orm.Page;
-import org.guess.core.orm.PropertyFilter;
+import org.guess.core.utils.security.Coder;
 import org.guess.core.web.BaseController;
 import org.guess.sys.model.User;
 import org.guess.sys.service.UserService;
@@ -36,9 +31,17 @@ public class UserController extends BaseController<User, UserService>{
 		return u == null;
 	}
 	
-	@RequestMapping("page")
-	public @ResponseBody Map<String,Object> page(Page<User> page,HttpServletRequest request){
-		Page<User> pageData = userService.findPage(page, PropertyFilter.buildFromHttpRequest(request, "search"));
-		return pageData.returnMap();
+	@Override
+	public String create(User user) throws Exception {
+		if(user.getId() != null){
+			User oldUser = userService.get(user.getId());
+			if(!oldUser.getPasswd().equals(user.getPasswd())){
+				user.setPasswd(Coder.encryptMD5(user.getLoginId()+user.getPasswd()));
+			}
+		}else{
+			user.setPasswd(Coder.encryptMD5(user.getLoginId()+user.getPasswd()));
+		}
+		userService.save(user);
+		return "redirect:"+listView;
 	}
 }

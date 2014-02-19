@@ -901,12 +901,9 @@ var App = function () {
         $('#form_wizard_1 .button-submit').click(function () {
             alert('Finished! Hope you like it :)');
         }).hide();
-    }
-
-
-
+    };
+    
     return {
-
         //main function to initiate template pages
         init: function () {
             handleResponsive(); // set and handle responsive
@@ -915,7 +912,7 @@ var App = function () {
             // global handlers
             handleChoosenSelect(); // handles bootstrap chosen dropdowns
             handleScrollers(); // handles slim scrolling contents            
-            handleTagsInput() // handles tag input elements
+            handleTagsInput(); // handles tag input elements
             handleDateTimePickers(); //handles form timepickers
             handleClockfaceTimePickers(); //handles form clockface timepickers
             handleColorPicker(); // handles form color pickers            
@@ -1008,7 +1005,17 @@ var App = function () {
         //判断值是否为null,"",undefined
         isNundef : function(value){
         	return value !== null && value !== "" && typeof(value) != "undefined";
+        },
+        
+        //高亮菜单
+        activeMenu : function(href){
+        	var a = $("a[href*='"+href+"']");
+        	var li = a.parent();
+        	li.addClass("active");
+        	var parent = li.parent().parent();
+        	parent.addClass("active");
         }
+        
 
     };
 

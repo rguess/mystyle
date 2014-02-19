@@ -13,40 +13,26 @@
 <script type="text/javascript" src="${ctx}/assets/js/page.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+	
+	App.activeMenu("sys/role/list");
+	
 	Page.initData(
 		{
-			url:"${ctx}/sys/user/page",
+			url:"${ctx}/sys/role/page",
 			pageNo : 1,
-			pageSize : 2,
+			pageSize : 10,
 			tableId : "#sample_1"
 		},
 		null,
-		[{cName:"name",cValue:"姓名"},
-		 {cName:"email",cValue:"邮箱"},
-		 {cName:"loginId",cValue:"登录名"},
-		 {cName:"mobilePhone",cValue:"手机"},
-		 {cName:"address",cValue:"地址"},
-		 {cName:"createDate",cValue:"创建时间",date:true}
+		[{cName:"name",cValue:"名称"},
+		 {cName:"realName",cValue:"中文名"},
+		 {cName:"remark",cValue:"备注"}
 		 ]
 	);
 });
 
 function doQuery(){
-	var queryObj = {
-		search_LIKES_email : null,
-		search_LIKES_addr : null,
-		search_LIKES_name : null,
-		search_EQD_createDate : null
-	};
-	var email = $("#email").val();
-	var addr = $("#addr").val();
-	var name = $("#name").val();
-	var time = $("#time").val();
-	App.isNundef(email)?queryObj.search_LIKES_email = email:null;
-	App.isNundef(addr)?queryObj.search_LIKES_address = addr:null;
-	App.isNundef(name)?queryObj.search_LIKES_name = name:null;
-	App.isNundef(time)?queryObj.search_EQD_createDate = time:null;
-	Page.doQuery(queryObj);
+	
 }
 </script>
 </head>
@@ -54,7 +40,7 @@ function doQuery(){
 	<div class="page-content">
 		<div class="container-fluid">
 			<!-- 页面导航 -->
-			<tool:navBar pageTitle="用户列表" pageTitleContent="系统管理-用户管理-用户列表" titleIcon="icon-home"/>
+			<tool:navBar pageTitle="角色列表" pageTitleContent="系统管理-角色管理-角色列表" titleIcon="icon-home"/>
 			<!-- 主体内容 -->
 			<div class="row-fluid">
 				<div class="span12">
@@ -71,7 +57,7 @@ function doQuery(){
 						<div class="portlet-body">
 							<div class="clearfix">
 								<div class="btn-group">
-									<a class="btn green" href="${ctx}/sys/user/create">
+									<a class="btn green" href="${ctx}/sys/role/create">
 										添加 <i class="icon-plus"></i>
 									</a>
 								</div>
@@ -88,38 +74,11 @@ function doQuery(){
 							</div>
 							<form>
 								<div class="row-fluid">
-									<div class="span2 ">
-	                                    <div class="control-group">
-	                                       <div class="controls">
-	                                          <input type="text" id="email" class="m-wrap span12" placeholder="邮箱">
-	                                       </div>
-	                                    </div>
-                                 	</div>
                                  	
                                  	<div class="span2 ">
 	                                    <div class="control-group">
 	                                       <div class="controls">
-	                                          <input type="text" id="addr" class="m-wrap span12" placeholder="地址">
-	                                       </div>
-	                                    </div>
-                                 	</div>
-                                 	
-                                 	<div class="span2 ">
-	                                    <div class="control-group">
-	                                       <div class="controls">
-	                                          <input type="text" id="name" class="m-wrap span12" placeholder="姓名">
-	                                       </div>
-	                                    </div>
-                                 	</div>
-                                 	
-                                 	<div class="span3 ">
-	                                    <div class="control-group">
-	                                       <div class="controls">
-	                                         <div class="input-append date" data-date-format="yyyy-mm-dd">
-												<input class="span6 m-wrap" id="time" type="text"
-													readonly="readonly" placeholder="时间"> <span class="add-on"><i
-													class="icon-th"></i></span>
-											</div>
+	                                          <input type="text" id="name" class="m-wrap span12" placeholder="角色名">
 	                                       </div>
 	                                    </div>
                                  	</div>

@@ -23,11 +23,11 @@ public class RoleController extends BaseController<Role, RoleService> {
 	private RoleService roleService;
 
 	@RequestMapping("isAvailable")
-	public @ResponseBody boolean isLoginIdAvailable(@RequestParam("name") String id,
+	public @ResponseBody boolean isRoleNameAvailable(@RequestParam("name") String id,
 			@RequestParam("oldValue") String old) {
 		if (id.equals(old))
 			return true;
-		Role r = roleService.findUniqueBy("loginId", id);
+		Role r = roleService.findUniqueBy("name", id);
 		return r == null;
 	}
 

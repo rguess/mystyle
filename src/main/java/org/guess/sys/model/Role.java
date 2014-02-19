@@ -19,6 +19,10 @@ public class Role extends IdEntity {
 
 	/** 名称 */
 	private String name;
+	
+	/** 中文名称 */
+	private String realName;
+	
 	/** 备注 */
 	private String remark;
 
@@ -33,6 +37,14 @@ public class Role extends IdEntity {
 	private Set<Permission> permissions = new HashSet<Permission>();
 	/** 是否被授权权限 */
 	private String authorize;
+	
+	public String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
 
 	public String getName() {
 		return name;

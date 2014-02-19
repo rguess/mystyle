@@ -43,7 +43,7 @@
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<label class="checkbox"><input type="checkbox" name="rememberMe"/>Remember me </label>
+							<label class="checkbox"><input type="checkbox" name="rememberMe" value="true" checked="checked"/>Remember me </label>
 						</div>
 					</div>
 					<div class="control-group">

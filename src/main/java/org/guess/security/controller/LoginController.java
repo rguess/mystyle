@@ -10,6 +10,7 @@ import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.guess.core.utils.security.Coder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,12 +28,11 @@ public class LoginController {
 
 	@RequestMapping(method = RequestMethod.POST,value="login")
 	public String login(@RequestParam("userName") String userName, @RequestParam("password") String password,
-			@RequestParam("rememberMe") boolean remember,HttpServletRequest request) {
+			@RequestParam(value="rememberMe",required=false,defaultValue="false") boolean remember,HttpServletRequest request) {
 
-		UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
+		UsernamePasswordToken token = new UsernamePasswordToken(userName, Coder.encryptMD5(userName+password));
 		token.setRememberMe(true);
 		Subject currentUser = SecurityUtils.getSubject();
-		
 		try {
 			System.out.println("对用户[" + userName + "]进行登录验证..验证开始");
 			currentUser.login(token);

@@ -9,6 +9,11 @@
 <head>
 <title>${pageTitle }</title>
 <%@ include file="/WEB-INF/content/common/jquery-validation.jsp"%>
+<script type="text/javascript">
+	$(function(){
+		App.activeMenu("sys/role/list");
+	});
+</script>
 </head>
 <body>
 	<div class="page-content">
@@ -39,12 +44,20 @@
 									<div class="controls">
 										<input type="text" class="span6 m-wrap"
 											validate="{required:true,
-													   isLoginName:true,
 													   remote:{type:'POST',
 													   		   url:'${ctx }/sys/role/isAvailable',
 													   		   data:{oldValue:'${obj.name }'}},
 													   messages:{remote:'该角色名称已存在'}}"
 											name="name" value="${obj.name }" />
+									</div>
+								</div>
+								<!-- 名称 -->
+								<div class="control-group">
+									<label class="control-label">名称:</label>
+									<div class="controls">
+										<input type="text" class="span6 m-wrap"
+											validate="{required:true}"
+											name="realName" value="${obj.realName }" />
 									</div>
 								</div>
 								<!-- 备注 -->
