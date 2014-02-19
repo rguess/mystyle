@@ -14,7 +14,6 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
-import org.guess.core.utils.security.Coder;
 import org.guess.sys.model.User;
 import org.guess.sys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

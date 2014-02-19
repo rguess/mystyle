@@ -1013,7 +1013,8 @@ var App = function () {
         	var li = a.parent();
         	li.addClass("active");
         	var parent = li.parent().parent();
-        	parent.addClass("active");
+        	parent.addClass("active").addClass("open");
+        	parent.find("a .arrow").addClass("open");
         }
         
 
