@@ -11,6 +11,10 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	App.activeMenu("sys/resource/list");
+	initTree();
+});
+
+function initTree(){
 	var setting = {
 		data :{
 			key:{
@@ -33,7 +37,7 @@ $(document).ready(function() {
 			$.fn.zTree.init($("#ztree"), setting, data);
 		}
 	});
-});
+}
 </script>
 </head>
 <body>
@@ -47,7 +51,7 @@ $(document).ready(function() {
 					<div class="portlet box green">
 						<div class="portlet-title">
 							<h4>
-								<i class="icon-globe"></i>列表
+								<i class="icon-globe"></i>资源树
 							</h4>
 							<div class="tools">
 								<a href="javascript:;" class="collapse"></a><a
@@ -62,19 +66,30 @@ $(document).ready(function() {
 					</div>
 				</div>
 				<div class="span8">
-					<div class="portlet box blue">
+					<div class="portlet box blue tabbable">
 						<div class="portlet-title">
 							<h4>
-								<i class="icon-globe"></i>操作
+								<i class="icon-reorder"></i>操作
 							</h4>
-							<div class="tools">
-								<a href="javascript:;" class="collapse"></a><a
-									href="javascript:;" class="remove"></a>
-							</div>
 						</div>
 						<div class="portlet-body">
-							<div id="ztree" class="ztree">
-								
+							<div class="tabbable portlet-tabs">
+								<ul class="nav nav-tabs">
+									<li><a href="#portlet_tab3" data-toggle="tab">Tab 3</a></li>
+									<li><a href="#portlet_tab2" data-toggle="tab">Tab 2</a></li>
+									<li class="active"><a href="#portlet_tab1" data-toggle="tab">Tab 1</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="portlet_tab1">
+										1
+									</div>
+									<div class="tab-pane" id="portlet_tab2">
+										2
+									</div>
+									<div class="tab-pane" id="portlet_tab3">
+										3
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
