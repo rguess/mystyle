@@ -5,7 +5,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}" scope="page" />
 <html>
 <head>
-<title>用户列表</title>
+<title>角色列表</title>
 <link href="${ctx}/assets/comp/datepicker/datepicker.css" type="text/css" rel="stylesheet" />
 <script src="${ctx}/assets/comp/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
 <link href="${ctx}/assets/comp/bootstrap-paginator/DT_bootstrap.css" type="text/css" rel="stylesheet" />

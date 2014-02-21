@@ -78,5 +78,15 @@ abstract public class BaseServiceImpl<T, ID extends Serializable, M extends Enti
 	public T findUniqueBy(String propertyName, Object value) {
 		return getEntityDao().findUniqueBy(propertyName, value);
 	}
+	
+	@Override
+	public List<T> find(List<PropertyFilter> filters) {
+		return getEntityDao().find(filters);
+	}
+	
+	@Override
+	public List<T> findBy(String propertyName, Object value) {
+		return getEntityDao().findBy(propertyName, value);
+	}
 
 }

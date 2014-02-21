@@ -92,5 +92,20 @@ public interface BaseService<T,ID extends Serializable> {
 	 * @return
 	 */
 	T findUniqueBy(final String propertyName, final Object value);
+	
+	/**
+	 * 按照属性条件封装类查询 不分页
+	 * @param filters
+	 * @return
+	 */
+	List<T> find(List<PropertyFilter> filters);
+	
+	/**
+	 * 按一个属性查询
+	 * @param propertyName
+	 * @param value
+	 * @return
+	 */
+	List<T> findBy(final String propertyName, final Object value);
 
 }

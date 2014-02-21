@@ -23,4 +23,8 @@ public interface EntityDao<T,ID extends Serializable> {
 	Page<T> findPage(final PageRequest pageRequest,final List<PropertyFilter> filters);
 	
 	T findUniqueBy(final String propertyName, final Object value);
+	
+	List<T> find(List<PropertyFilter> filters);
+	
+	List<T> findBy(final String propertyName, final Object value);
 }

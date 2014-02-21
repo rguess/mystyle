@@ -24,7 +24,7 @@
 		<property name="basename" value="messages" />
 	</bean>
 	
-	<!-- <mvc:interceptors>  
+	<!-- <mvc:interceptors>
       <bean class="org.guess.security.HandlerInterceptor1" />
     </mvc:interceptors> -->
 

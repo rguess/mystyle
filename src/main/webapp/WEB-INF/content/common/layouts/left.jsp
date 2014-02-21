@@ -21,9 +21,7 @@
 			<ul class="sub">
 				<li><a href="${ctx }/sys/user/list">用户管理</a></li>
 				<li><a href="${ctx }/sys/role/list">角色管理</a></li>
-				<li><a href="${ctx }/ui_tabs_accordions.html">权限管理</a></li>
-				<li><a href="${ctx }/ui_sliders.html">资源管理</a></li>
-				<li><a href="${ctx }/ui_tiles.html">菜单管理</a></li>
+				<li><a href="${ctx }/sys/resource/list">资源管理</a></li>
 			</ul>
 		</li>
 		

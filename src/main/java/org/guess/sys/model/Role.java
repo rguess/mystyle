@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import org.guess.core.IdEntity;
 
 @Entity
-@Table(name = "TestRole")
+@Table(name = "SYS_ROLE")
 public class Role extends IdEntity {
 
 	/** 名称 */
@@ -27,14 +27,14 @@ public class Role extends IdEntity {
 	private String remark;
 
 	/** 所属用户 */
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, targetEntity = User.class)
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, targetEntity = User.class,mappedBy="roles")
 	private Set<User> users = new HashSet<User>(0);
 	
 	/** 拥有权限 */
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST,
 			CascadeType.MERGE })
-	@JoinTable(name = "SYS_ROLE_PERM", joinColumns = { @JoinColumn(name = "ROLE_ID") }, inverseJoinColumns = { @JoinColumn(name = "PERM_ID") })
-	private Set<Permission> permissions = new HashSet<Permission>();
+	@JoinTable(name = "SYS_ROLE_RES", joinColumns = { @JoinColumn(name = "ROLE_ID") }, inverseJoinColumns = { @JoinColumn(name = "RES_ID") })
+	private Set<Resource> resources = new HashSet<Resource>();
 	/** 是否被授权权限 */
 	private String authorize;
 	
@@ -70,12 +70,12 @@ public class Role extends IdEntity {
 		this.users = users;
 	}
 
-	public Set<Permission> getPermissions() {
-		return permissions;
+	public Set<Resource> getResources() {
+		return resources;
 	}
 
-	public void setPermissions(Set<Permission> permissions) {
-		this.permissions = permissions;
+	public void setResources(Set<Resource> resources) {
+		this.resources = resources;
 	}
 
 	public String getAuthorize() {

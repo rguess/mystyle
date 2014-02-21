@@ -7,7 +7,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -17,8 +16,10 @@ import org.guess.core.IdEntity;
 import org.guess.core.utils.DateUtil;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name = "TestUser")
+@Table(name = "SYS_USER")
 public class User extends IdEntity {
 
 	/** 登录ID */
@@ -52,9 +53,9 @@ public class User extends IdEntity {
 	}
 
 	/** 拥有角色 */
-	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST,
-			CascadeType.MERGE })
+	@ManyToMany( cascade = { CascadeType.PERSIST,CascadeType.MERGE })
 	@JoinTable(name = "SYS_USER_ROLE", joinColumns = { @JoinColumn(name = "USER_ID") }, inverseJoinColumns = { @JoinColumn(name = "ROLE_ID") })
+	@JsonIgnore
 	private Set<Role> roles = new HashSet<Role>();
 
 	public String getLoginId() {
