@@ -2,15 +2,34 @@ package org.guess.core.web;
 
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.guess.core.orm.Page;
+import org.guess.core.orm.PropertyFilter;
 import org.guess.core.service.BaseService;
 import org.guess.core.utils.ReflectionUtils;
-import org.guess.security.model.User;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * springmvc Controller基类,通过泛型实现基本的增删查改、ajax返回列表数据以及简单的属性查询
+ * 
+ * 例：
+ * List page     : GET /user/
+ * Create page   : GET /user/create
+ * Create action : POST /user/edit
+ * Update page   : GET /user/update/{id}
+ * Update action : POST /user/edit
+ * Delete action : GET /user/delete/{id}
+ * show page     : GET /user/show/{id}
+ * 
+ * @author guess
+ */
 @SuppressWarnings("unchecked")
 public abstract class BaseController<T, M extends BaseService<T, Long>> {
 
@@ -20,6 +39,10 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	protected String editView = null;
 	protected String showView = null;
 
+	/**
+	 * 反射获取子类中service
+	 * @return
+	 */
 	private M getBaseService() {
 		List<Field> fields = ReflectionUtils.getFieldsByType(this,
 				ReflectionUtils.getSuperClassGenricType(getClass(), 1));
@@ -39,9 +62,9 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 
 	@RequestMapping(method = RequestMethod.GET, value = "update/{id}")
 	public ModelAndView update(@PathVariable("id") Long id) throws Exception {
-		User u = (User) getBaseService().get(Long.valueOf("1"));
+		T obj = getBaseService().get(id);
 		ModelAndView mav = new ModelAndView(editView);
-		mav.addObject("obj", u);
+		mav.addObject("obj", obj);
 		return mav;
 	}
 
@@ -53,13 +76,19 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	
 	@RequestMapping(value = "show/{id}")
 	public ModelAndView show(@PathVariable("id") Long id) throws Exception{
-		User u = (User) getBaseService().get(id);
+		T object = getBaseService().get(id);
 		ModelAndView mav = new ModelAndView(showView);
-		mav.addObject("obj", u);
+		mav.addObject("obj", object);
 		return mav;
 	}
 	
-	@RequestMapping(value="list")
+	@RequestMapping("page")
+	public @ResponseBody Map<String,Object> page(Page<T> page,HttpServletRequest request){
+		Page<T> pageData = getBaseService().findPage(page, PropertyFilter.buildFromHttpRequest(request, "search"));
+		return pageData.returnMap();
+	}
+	
+	@RequestMapping(value = "/*")
 	public String list(){
 		return listView;
 	}

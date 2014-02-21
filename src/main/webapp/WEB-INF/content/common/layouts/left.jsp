@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
 <!-- BEGIN SIDEBAR -->
 <div class="page-sidebar nav-collapse collapse">
 	<!-- BEGIN SIDEBAR MENU -->
@@ -6,24 +7,24 @@
 			<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 			<div class="sidebar-toggler hidden-phone"></div> <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 		</li>
-		<li class="start active "><a href="index.html"> <i
+		<li class="start"><a href="index.html"> <i
 				class="icon-home"></i> <span class="title">Dashboard</span> <span
 				class="selected"></span>
 		</a></li>
-		<li class="has-sub "><a href="javascript:;"> <i
-				class="icon-bookmark-empty"></i> <span class="title">UI
-					Features</span> <span class="arrow"></span>
-		</a>
+		
+		<li class="has-sub">
+			<a href="javascript:;">
+				<i class="icon-bookmark-empty"></i>
+				<span class="title">系统管理</span>
+				<span class="arrow"></span>
+			</a>
 			<ul class="sub">
-				<li><a href="ui_general.html">General</a></li>
-				<li><a href="ui_buttons.html">Buttons</a></li>
-				<li><a href="ui_tabs_accordions.html">Tabs & Accordions</a></li>
-				<li><a href="ui_sliders.html">Sliders</a></li>
-				<li><a href="ui_tiles.html">Tiles</a></li>
-				<li><a href="ui_typography.html">Typography</a></li>
-				<li><a href="ui_tree.html">Tree View</a></li>
-				<li><a href="ui_nestable.html">Nestable List</a></li>
-			</ul></li>
+				<li><a href="${ctx }/sys/user/list">用户管理</a></li>
+				<li><a href="${ctx }/sys/role/list">角色管理</a></li>
+				<li><a href="${ctx }/sys/resource/list">资源管理</a></li>
+			</ul>
+		</li>
+		
 		<li class="has-sub"><a href="javascript:;"> <i
 				class="icon-table"></i> <span class="title">Form Stuff</span> <span
 				class="arrow"></span>

@@ -13,11 +13,12 @@
 <script type="text/javascript" src="${ctx}/assets/js/page.js"></script>
 <script type="text/javascript">  
 $(document).ready(function() {
+	
+	App.activeMenu("sys/user/list");
+	
 	Page.initData(
 		{
 			url:"${ctx}/sys/user/page",
-			pageNo : 1,
-			pageSize : 10,
 			tableId : "#sample_1"
 		},
 		null,
@@ -25,17 +26,18 @@ $(document).ready(function() {
 		 {cName:"email",cValue:"邮箱"},
 		 {cName:"loginId",cValue:"登录名"},
 		 {cName:"mobilePhone",cValue:"手机"},
-		 {cName:"address",cValue:"地址"}
+		 {cName:"address",cValue:"地址"},
+		 {cName:"createDate",cValue:"创建时间",date:true}
 		 ]
 	);
 });
 
 function doQuery(){
 	var queryObj = {
-			search_LIKES_email : null,
-			search_LIKES_addr : null,
-			search_LIKES_name : null,
-			search_EQD_time : null
+		search_LIKES_email : null,
+		search_LIKES_addr : null,
+		search_LIKES_name : null,
+		search_EQD_createDate : null
 	};
 	var email = $("#email").val();
 	var addr = $("#addr").val();
@@ -44,9 +46,9 @@ function doQuery(){
 	alert($("#email").attr("placeholder"));
 	alert(email);
 	App.isNundef(email)?queryObj.search_LIKES_email = email:null;
-	App.isNundef(addr)?queryObj.search_LIKES_addr = addr:null;
+	App.isNundef(addr)?queryObj.search_LIKES_address = addr:null;
 	App.isNundef(name)?queryObj.search_LIKES_name = name:null;
-	App.isNundef(time)?queryObj.search_EQD_time = time:null;
+	App.isNundef(time)?queryObj.search_EQD_createDate = time:null;
 	Page.doQuery(queryObj);
 }
 </script>
@@ -116,7 +118,7 @@ function doQuery(){
                                  	<div class="span3 ">
 	                                    <div class="control-group">
 	                                       <div class="controls">
-	                                         <div class="input-append date" data-date="2013-12-01" data-date-format="yyyy-mm-dd">
+	                                         <div class="input-append date" data-date-format="yyyy-mm-dd">
 												<input class="span6 m-wrap" id="time" type="text"
 													readonly="readonly" placeholder="时间"> <span class="add-on"><i
 													class="icon-th"></i></span>
@@ -140,33 +142,7 @@ function doQuery(){
 								</div>
 							</form>
 							<table class="table table-striped table-bordered table-hover" id="sample_1">
-								<!-- <thead>
-									<tr>
-										<th class="sorting_desc">姓名</th>
-										<th>邮箱</th>
-										<th>性别</th>
-										<th>地址</th>
-										<th class="span2">操作</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr><td>1</td><td>2</td><td>2</td><td>2</td><td>3</td>
-										<td>
-											<div class="btn-group mini">
-												<a class="btn green mini" href="#" data-toggle="dropdown">
-													<i class="icon-user"></i> 
-													操作
-													<i class="icon-angle-down"></i>
-												</a>
-												<ul class="dropdown-menu">
-													<li><a href="#"><i class="icon-pencil"></i>修改</a></li>
-													<li><a href="#"><i class="icon-trash"></i>删除</a></li>
-													<li><a href="#"><i class="icon-search"></i>查看</a></li>
-												</ul>
-											</div>
-										</td>
-									</tr>
-								</tbody> -->
+								
 							</table>
 						</div>
 					</div>

@@ -1,15 +1,14 @@
 package org.guess.security.user;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.guess.core.utils.mapper.JsonMapper;
-import org.guess.security.model.User;
-import org.guess.security.service.UserService;
+import org.guess.sys.model.User;
+import org.guess.sys.service.UserService;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +19,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class UserTest {
-
 	@Autowired
 	private SessionFactory sessionFactory;
 

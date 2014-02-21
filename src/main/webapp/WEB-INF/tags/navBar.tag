@@ -10,14 +10,14 @@
 
 <div class="row-fluid">
 	<div class="span12">
-		<h3 class="page-title">${pageTitle}</h3>
+		<h4 class="page-title">${pageTitle}</h4>
 		<ul class="breadcrumb">
 			<c:forEach varStatus="status" items="${strs }" var="item">
 				<c:choose>
 					<c:when test="${status.index == 0 }">
 						<li><i class="${titleIcon }"></i><a href="#">${item }</a> <span class="icon-angle-right"></span></li>
 					</c:when>
-					<c:when test="${status.index == fn:length(strs) -1 }">
+					<c:when test="${status.index == fn:length(strs) - 1 }">
 						<li><a href="#">${item }</a></li>
 					</c:when>
 					<c:otherwise>

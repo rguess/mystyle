@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.guess.core.orm.Page;
 import org.guess.core.orm.PageRequest;
+import org.guess.core.orm.PropertyFilter;
 
 public interface BaseService<T,ID extends Serializable> {
 
@@ -75,5 +76,36 @@ public interface BaseService<T,ID extends Serializable> {
 	 * @return page
 	 */
 	Page<T> findPage(final PageRequest pageRequest, String hql, final Map<String, ?> values);
+	
+	/**
+	 * 按照属性条件封装类查询
+	 * @param pageRequest
+	 * @param filters
+	 * @return
+	 */
+	Page<T> findPage(final PageRequest pageRequest,final List<PropertyFilter> filters);
+	
+	/**
+	 * 根据属性值查找唯一对象
+	 * @param propertyName
+	 * @param value
+	 * @return
+	 */
+	T findUniqueBy(final String propertyName, final Object value);
+	
+	/**
+	 * 按照属性条件封装类查询 不分页
+	 * @param filters
+	 * @return
+	 */
+	List<T> find(List<PropertyFilter> filters);
+	
+	/**
+	 * 按一个属性查询
+	 * @param propertyName
+	 * @param value
+	 * @return
+	 */
+	List<T> findBy(final String propertyName, final Object value);
 
 }

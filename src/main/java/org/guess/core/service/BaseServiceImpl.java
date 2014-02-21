@@ -7,6 +7,7 @@ import java.util.Map;
 import org.guess.core.orm.EntityDao;
 import org.guess.core.orm.Page;
 import org.guess.core.orm.PageRequest;
+import org.guess.core.orm.PropertyFilter;
 
 abstract public class BaseServiceImpl<T, ID extends Serializable, M extends EntityDao<T, ID>>
 		implements BaseService<T, ID> {
@@ -66,6 +67,26 @@ abstract public class BaseServiceImpl<T, ID extends Serializable, M extends Enti
 	@Override
 	public Page<T> findPage(PageRequest pageRequest, String hql, Object... values) {
 		return getEntityDao().findPage(pageRequest, hql, values);
+	}
+	
+	@Override
+	public Page<T> findPage(PageRequest pageRequest, List<PropertyFilter> filters) {
+		return getEntityDao().findPage(pageRequest, filters);
+	}
+	
+	@Override
+	public T findUniqueBy(String propertyName, Object value) {
+		return getEntityDao().findUniqueBy(propertyName, value);
+	}
+	
+	@Override
+	public List<T> find(List<PropertyFilter> filters) {
+		return getEntityDao().find(filters);
+	}
+	
+	@Override
+	public List<T> findBy(String propertyName, Object value) {
+		return getEntityDao().findBy(propertyName, value);
 	}
 
 }

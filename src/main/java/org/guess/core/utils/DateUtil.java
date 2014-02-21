@@ -421,4 +421,87 @@ public class DateUtil {
 	public static String getNowStr() {
 		return dateTimeFormatter2.format(new Date());
 	}
+	
+	/**
+	 * 计算星期几
+	 * @return
+	 */
+	public static int getWeek(Date date){
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		int day = c.get(Calendar.DAY_OF_WEEK);
+		if(day == 1){
+			return 7;
+		}else{
+			return day-1;
+		}
+	}
+	
+	/**
+	 * 根据日期算出这一周的日期
+	 */
+	public static List<Date> dateToWeek(Date date){
+		 int b=DateUtil.getWeek(date);
+		  Date fdate ;
+		  List<Date> list = new ArrayList<Date>();
+		  Long fTime=date.getTime()-b*24*3600000;
+		  for(int a=0;a<8;a++){
+			  fdate= new Date();
+			  fdate.setTime(fTime+(a*24*3600000));
+			  list.add(a, fdate);
+		  }
+		  return list;
+	}
+	
+	/**
+	 * 根据日期计算出星期一的日期
+	 * @throws ParseException 
+	 */
+	public static String getMonday(String date){
+		try {
+			return DateUtil.format(DateUtil.dateToWeek(DateUtil.parse(date)).get(1));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
+	/**
+	 * 根据日期计算出星期天的日期
+	 * @throws ParseException 
+	 */
+	public static String getSunDay(String date){
+		List<Date> dates;
+		try {
+			dates = DateUtil.dateToWeek(DateUtil.parse(date));
+			return DateUtil.format(dates.get(dates.size()-1));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
+	/**
+	 * 根据日期得出第二天日期
+	 */
+	@SuppressWarnings("static-access")
+	public static String getTomrrow(Date date){
+		Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+        calendar.add(calendar.DATE,1);//把日期往后增加一天.整数往后推,负数往前移动
+        return DateUtil.format(calendar.getTime()); //这个时间就是日期往后推一天的结果
+	}
+	
+	/**
+	 * 根据日期得出前一天日期
+	 * @param args
+	 * @throws ParseException
+	 */
+	@SuppressWarnings("static-access")
+	public static String getYesterday(Date date){
+		Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+        calendar.add(calendar.DATE,-1);//把日期往后增加一天.整数往后推,负数往前移动
+        return DateUtil.format(calendar.getTime()); //这个时间就是日期往后推一天的结果
+	}
 }

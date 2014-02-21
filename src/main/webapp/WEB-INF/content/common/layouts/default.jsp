@@ -22,7 +22,7 @@
 <link href="${ctx}/assets/css/style_responsive.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/style_default.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/comp/gritter/css/jquery.gritter.css" type="text/css" rel="stylesheet" />
-<link rel="shortcut icon" href="${ctx}/assets/favicon.ico" />
+<link href="${ctx}/assets/favicon.ico" rel="shortcut icon"/>
 
 <script src="${ctx}/assets/js/jquery-1.8.3.min.js" type="text/javascript"></script>
 <script src="${ctx}/assets/comp/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -33,6 +33,7 @@
 <script src="${ctx}/assets/js/jquery.cookie.js"></script>
 <script src="${ctx}/assets/comp/breakpoints/breakpoints.js" type="text/javascript" ></script>
 <script src="${ctx}/assets/js/app.js"></script>
+<script src="${ctx}/assets/js/util.js"></script>
 <script>
 	//设置路劲
 	var ctx = "${ctx}";
@@ -43,10 +44,6 @@
 		if($('.date').length != 0){
 			$('.date').datepicker();
 		}
-		//加载表单验证
-		/* if($("form").length !=0){
-			$("form").validate();
-		} */
 	});
 </script>
 <sitemesh:head />
