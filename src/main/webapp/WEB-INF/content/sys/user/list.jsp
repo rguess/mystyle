@@ -11,7 +11,7 @@
 <link href="${ctx}/assets/comp/bootstrap-paginator/DT_bootstrap.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="${ctx}/assets/comp/bootstrap-paginator/bootstrap-paginator.js"></script>
 <script type="text/javascript" src="${ctx}/assets/js/page.js"></script>
-<script type="text/javascript">
+<script type="text/javascript">  
 $(document).ready(function() {
 	Page.initData(
 		{
@@ -41,6 +41,8 @@ function doQuery(){
 	var addr = $("#addr").val();
 	var name = $("#name").val();
 	var time = $("#time").val();
+	alert($("#email").attr("placeholder"));
+	alert(email);
 	App.isNundef(email)?queryObj.search_LIKES_email = email:null;
 	App.isNundef(addr)?queryObj.search_LIKES_addr = addr:null;
 	App.isNundef(name)?queryObj.search_LIKES_name = name:null;

@@ -181,7 +181,6 @@ var Page = {
 	doQuery : function(queryObj){
 		Page.cqData = $.extend(Page.cqData,queryObj);
 		Page.cqData.pageNo = 1;
-		console.log(Page.cqData);
 		Page.accToSer(Page.pageChangedCallBack);
 		$('#Pagination').bootstrapPaginator("showFirst");
 	}

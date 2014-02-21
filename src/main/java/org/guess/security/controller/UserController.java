@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.guess.core.orm.Page;
 import org.guess.core.web.BaseController;
 import org.guess.security.model.User;
@@ -36,7 +38,8 @@ public class UserController extends BaseController<User, UserService>{
 	}
 	
 	@RequestMapping("page")
-	public @ResponseBody Map<String,Object> page(Page<User> page){
+	public @ResponseBody Map<String,Object> page(Page<User> page,HttpServletRequest request){
+		System.out.println(request.getParameter("search_LIKES_email"));
 		List<User> users = new ArrayList<User>();
 		users.add(new User(Long.valueOf("1"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+1), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
 		users.add(new User(Long.valueOf("2"),"rguess"+((page.getPageNo()-1)*page.getPageSize()+2), "123456", "guess", "502876941@qq.com", "15108276486", "成都", "0", "管理员"));
