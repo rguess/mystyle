@@ -8,12 +8,14 @@
 <title>资源列表</title>
 <link href="${ctx}/assets/comp/jquery-ztree/zTreeStyle.css" type="text/css" rel="stylesheet" />
 <script src="${ctx}/assets/comp/jquery-ztree/jquery.ztree.core-3.5.min.js" type="text/javascript"></script>
+<%@ include file="/WEB-INF/content/common/jquery-validation.jsp"%>
 <script type="text/javascript">
 $(document).ready(function() {
 	App.activeMenu("sys/resource/list");
 	initTree();
 });
 
+/* 初始化树 */
 function initTree(){
 	var setting = {
 		data :{
@@ -23,10 +25,7 @@ function initTree(){
 			},
 		},
 		callback:{
-			onClick :function(event, treeId, treeNode){
-				console.log(treeNode);
-				alert(treeNode.tId + ", " + treeNode.name);
-			}
+			onClick :nodeClickCallBack
 		}
 	};
 	$.ajax({
@@ -38,6 +37,33 @@ function initTree(){
 		}
 	});
 }
+
+/* 保存当前操作节点 */
+var currentNode;
+
+/* 节点点击事件 */
+function nodeClickCallBack (event, treeId, treeNode){
+	console.log(treeNode);
+	currentNode = treeNode;
+	$("#detail_name").text(treeNode.name);
+	$("#detail_parentName").text(treeNode.getParentNode().name);
+	$("#detail_url").text(treeNode.resString);
+	$("#detail_icon").text(treeNode.icon);
+	$("#detail_remark").text(treeNode.remark);
+	$("#detail_orderNo").text(treeNode.orderNo);
+}
+
+/* 修改按钮点击 */
+function editClick(){
+	$("#edit_id").val(currentNode.id);
+	$("#edit_name").val(currentNode.name);
+	$("#edit_parentName").val(currentNode.getParentNode().name);
+	$("#edit_url").val(currentNode.resString);
+	$("#edit_icon").val(currentNode.icon);
+	$("#edit_orderNo").val(currentNode.orderNo);
+	$("#edit_remark").val(currentNode.remark);
+}
+
 </script>
 </head>
 <body>
@@ -66,30 +92,121 @@ function initTree(){
 					</div>
 				</div>
 				<div class="span8">
-					<div class="portlet box blue tabbable">
-						<div class="portlet-title">
-							<h4>
-								<i class="icon-reorder"></i>操作
-							</h4>
-						</div>
-						<div class="portlet-body">
-							<div class="tabbable portlet-tabs">
-								<ul class="nav nav-tabs">
-									<li><a href="#portlet_tab3" data-toggle="tab">Tab 3</a></li>
-									<li><a href="#portlet_tab2" data-toggle="tab">Tab 2</a></li>
-									<li class="active"><a href="#portlet_tab1" data-toggle="tab">Tab 1</a></li>
-								</ul>
-								<div class="tab-content">
-									<div class="tab-pane active" id="portlet_tab1">
-										1
+					<div class="tabbable tabbable-custom">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#tab_1_detail" data-toggle="tab">详细</a></li>
+							<li><a href="#tab_1_modify" onclick="javascript:editClick();" data-toggle="tab">修改</a></li>
+							<li><a href="#tab_1_add" data-toggle="tab">添加</a></li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="tab_1_detail">
+								<div class="form-horizontal form-view">
+									<div class="control-group">
+										<label class="control-label">菜单名称：</label>
+										<div class="controls">
+											<span class="text" id="detail_name"></span>
+										</div>
 									</div>
-									<div class="tab-pane" id="portlet_tab2">
-										2
+									
+									<div class="control-group">
+										<label class="control-label">父菜单名称：</label>
+										<div class="controls">
+											<span class="text" id="detail_parentName"></span>
+										</div>
 									</div>
-									<div class="tab-pane" id="portlet_tab3">
-										3
+									
+									<div class="control-group">
+										<label class="control-label">url：</label>
+										<div class="controls">
+											<span class="text" id="detail_url"></span>
+										</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label">图标：</label>
+										<div class="controls">
+											<span class="text" id="detail_icon"></span>
+										</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label">序号：</label>
+										<div class="controls">
+											<span class="text" id="detail_orderNo"></span>
+										</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label">备注：</label>
+										<div class="controls">
+											<span class="text" id="detail_remark"></span>
+										</div>
 									</div>
 								</div>
+							</div>
+							<div class="tab-pane" id="tab_1_modify">
+								<form action="${ctx }/sys/resource/edit" class="form-horizontal"
+									method="post" id="form1">
+									<!-- 资源 -->
+									<input type="hidden" value="" name="id" id="edit_id">
+									<!-- 资源名称 -->
+									<div class="control-group">
+										<label class="control-label">名称：</label>
+										<div class="controls">
+											<input type="text" class="span6 m-wrap"
+												validate="{required:true}"
+												name="name" value="" id="edit_name"/>
+										</div>
+									</div>
+									<!-- 父菜单 -->
+									<div class="control-group">
+										<label class="control-label">父菜单：</label>
+										<div class="controls">
+											<input type="text" class="span6 m-wrap"
+												validate="{required:true}"
+												name="name" value="" id="edit_parentName"/>
+										</div>
+									</div>
+									<!-- 资源url -->
+									<div class="control-group">
+										<label class="control-label">资源url：</label>
+										<div class="controls">
+											<input type="text" class="span6 m-wrap"
+												validate="{required:true}"
+												name="resString" value="" id="edit_url"/>
+										</div>
+									</div>
+									<!-- 资源图标 -->
+									<div class="control-group">
+										<label class="control-label">图标：</label>
+										<div class="controls">
+											<input type="text" class="span6 m-wrap"
+												name="icon" value="" id="edit_icon"/>
+										</div>
+									</div>
+									<!-- 序号 -->
+									<div class="control-group">
+										<label class="control-label">序号：</label>
+										<div class="controls">
+											<input type="text" class="span6 m-wrap"
+												validate="{required:true}"
+												name="orderNo" value="" id="edit_orderNo"/>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">备注:</label>
+										<div class="controls">
+											<textarea rows="3" cols="6" class="span6 m-wrap" name="remark" id="edit_remark"></textarea>
+										</div>
+									</div>
+									<div class="form-actions">
+										<button type="submit" class="btn blue">提交</button>
+										<button type="reset" class="btn">重置</button>
+									</div>
+								</form>
+							</div>
+							<div class="tab-pane" id="tab_1_add">
+								
 							</div>
 						</div>
 					</div>

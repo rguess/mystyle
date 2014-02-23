@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.guess.core.IdEntity;
@@ -45,6 +46,7 @@ public class Resource extends IdEntity {
 	/** 子资源 */
 	@OneToMany(targetEntity=Resource.class,cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="PARENT_ID",updatable=false)
+	@OrderBy("orderNo ASC")
 	private Set<Resource> childRes;
 	/** 角色 */
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, targetEntity = Role.class,mappedBy="resources")

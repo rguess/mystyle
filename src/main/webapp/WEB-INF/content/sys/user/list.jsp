@@ -43,8 +43,6 @@ function doQuery(){
 	var addr = $("#addr").val();
 	var name = $("#name").val();
 	var time = $("#time").val();
-	alert($("#email").attr("placeholder"));
-	alert(email);
 	App.isNundef(email)?queryObj.search_LIKES_email = email:null;
 	App.isNundef(addr)?queryObj.search_LIKES_address = addr:null;
 	App.isNundef(name)?queryObj.search_LIKES_name = name:null;
