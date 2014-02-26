@@ -18,7 +18,7 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<!-- bind your messages.properties -->
+	<!-- 多视图配置 -->
 	<bean class="org.springframework.context.support.ResourceBundleMessageSource"
 		id="messageSource">
 		<property name="basename" value="messages" />

@@ -20,6 +20,12 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Controller
 @RequestMapping("/")
 public class LoginController {
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public String index() {
+		System.out.println("index");
+		return "login";
+	}
 
 	@RequestMapping(method = RequestMethod.GET,value="/login")
 	public String login() {

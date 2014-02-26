@@ -83,6 +83,11 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
+	<!-- welcome -->
+	<welcome-file-list>
+		<welcome-file>/login</welcome-file>
+	</welcome-file-list>
+	
 	<error-page>
 		<error-code>404</error-code>
 		<location>/errorpage/404.jsp</location>
