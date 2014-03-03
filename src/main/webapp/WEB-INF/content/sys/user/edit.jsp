@@ -106,6 +106,16 @@
 									</div>
 								</div>
 								<div class="control-group">
+									<label class="control-label">分配角色:</label>
+									<div class="controls">
+										<select data-placeholder=" " class="span6 chosen" multiple="multiple" tabindex="6" name="roleIds">
+											<c:forEach items="${roles }" var="role">
+												<option value="${role.id }">${role.name }(${role.realName })</option>
+											</c:forEach>
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
 									<label class="control-label">备注:</label>
 									<div class="controls">
 										<textarea rows="3" cols="6" class="span6 m-wrap" name="remark">${obj.remark }</textarea>

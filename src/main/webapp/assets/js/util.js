@@ -22,3 +22,14 @@ Date.prototype.format = function(format) {
 	}
 	return format;
 };
+
+function blockUI(){
+	$.blockUI({ 
+        message: '<img src="">', 
+        css: { 
+            top:  ($(window).height() - 400) /2 + 'px', 
+            left: ($(window).width() - 400) /2 + 'px', 
+            width: '400px' 
+        } 
+    });
+}

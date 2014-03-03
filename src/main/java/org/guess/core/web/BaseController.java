@@ -50,8 +50,8 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "create")
-	public String create() {
-		return editView;
+	public ModelAndView create() throws Exception{
+		return new ModelAndView(editView);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "edit")

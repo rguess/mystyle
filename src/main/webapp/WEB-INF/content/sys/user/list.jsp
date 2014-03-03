@@ -35,7 +35,7 @@ $(document).ready(function() {
 function doQuery(){
 	var queryObj = {
 		search_LIKES_email : null,
-		search_LIKES_addr : null,
+		search_LIKES_address : null,
 		search_LIKES_name : null,
 		search_EQD_createDate : null
 	};

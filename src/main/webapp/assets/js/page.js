@@ -25,13 +25,17 @@ var Page = {
 	 * ajax访问数据服务器获得数据
 	 */
 	accToSer : function(callBack){
+		$.blockUI();
 		$.ajax({
 			type : "POST",
 			dataType : "json",
 			url : Page.defaultVal.url,
 			async : false,
 			data : Page.cqData,
-			success : callBack
+			success : callBack,
+			error : function(error){
+				
+			}
 		});
 	},
 	/**

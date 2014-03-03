@@ -3,9 +3,7 @@ package org.guess.security.user;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.guess.core.utils.DateUtil;
@@ -70,5 +68,10 @@ public class StaticTest {
 		BooleanEnum a = BooleanEnum.valueOf("TRUE");
 		System.out.println(a.getInfo());
 		System.out.println(BooleanEnum.values());
+		
+		String a1 = "1";
+		String a2 = "2";
+		System.out.println(a1=a1+=a2);
+	
 	}
 }
