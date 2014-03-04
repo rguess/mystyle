@@ -8,15 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ResourceServiceImpl extends BaseServiceImpl<Resource, Long, ResourceDao>
-		implements ResourceService {
+public class ResourceServiceImpl extends BaseServiceImpl<Resource, Long, ResourceDao> implements ResourceService {
 
 	@Autowired
 	public ResourceDao resDao;
-
-	@Override
-	protected ResourceDao getEntityDao() {
-		return resDao;
-	}
 
 }

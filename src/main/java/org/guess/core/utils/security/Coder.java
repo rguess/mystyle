@@ -1,5 +1,8 @@
 package org.guess.core.utils.security;
 
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
+
 import java.security.MessageDigest;
 
 /**
@@ -8,6 +11,7 @@ import java.security.MessageDigest;
  * @version 1.0
  * @since 1.0
  */
+@SuppressWarnings("restriction")
 public abstract class Coder {
     public static final String KEY_SHA = "SHA";
 
@@ -19,13 +23,13 @@ public abstract class Coder {
      * @return
      * @throws Exception
      */
-   /* public static String decryptBASE64ToStr(String key) throws Exception {
+   public static String decryptBASE64ToStr(String key) throws Exception {
         return new String((new BASE64Decoder()).decodeBuffer(key), "UTF-8");
     }
 
     public static byte[] decryptBASE64(String key) throws Exception {
         return (new BASE64Decoder()).decodeBuffer(key);
-    }*/
+    }
 
     /**
      * BASE64加密
@@ -34,13 +38,13 @@ public abstract class Coder {
      * @return
      * @throws Exception
      */
-    /*public static String encryptBASE64(byte[] bytes) throws Exception {
+    public static String encryptBASE64(byte[] bytes) throws Exception {
         return (new BASE64Encoder()).encode(bytes);
     }
 
     public static String encryptStrToBASE64(String str) throws Exception {
         return (new BASE64Encoder()).encode(str.getBytes("UTF-8"));
-    }*/
+    }
 
     public static String encryptMD5(String str) {
         return Md5Utils.hash(str);

@@ -8,15 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RoleServiceImpl extends BaseServiceImpl<Role, Long, RoleDao>
-		implements RoleService {
+public class RoleServiceImpl extends BaseServiceImpl<Role, Long, RoleDao> implements RoleService {
 
 	@Autowired
 	public RoleDao roleDao;
-	
-	@Override
-	protected RoleDao getEntityDao() {
-		return roleDao;
-	}
 
 }

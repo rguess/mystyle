@@ -1,6 +1,7 @@
 package org.guess.core.orm;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,8 @@ public interface EntityDao<T,ID extends Serializable> {
 	T get(ID id);
 
 	List<T> getAll();
+	
+	List<T> get(final Collection<ID> ids);
 
 	void save(T o);
 

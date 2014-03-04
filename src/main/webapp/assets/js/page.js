@@ -25,7 +25,7 @@ var Page = {
 	 * ajax访问数据服务器获得数据
 	 */
 	accToSer : function(callBack){
-		$.blockUI();
+//		$.blockUI();
 		$.ajax({
 			type : "POST",
 			dataType : "json",

@@ -1,6 +1,7 @@
 package org.guess.core.service;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +27,14 @@ public interface BaseService<T,ID extends Serializable> {
 	 * @throws DataAccessException
 	 */
 	List<T> getAll() throws Exception;
+	
+	/**
+	 * 根据ID集合查询
+	 * 
+	 * @param ids
+	 * @return
+	 */
+	List<T> get(final Collection<ID> ids);
 
 	/**
 	 * 保存对象

@@ -11,6 +11,7 @@ import org.guess.sys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -48,8 +49,8 @@ public class UserController extends BaseController<User, UserService> {
 		return mav;
 	}
 
-	@Override
-	public String create(User user) throws Exception {
+	@RequestMapping(value = "edit",method = RequestMethod.POST)
+	public String createUser(User user,@RequestParam(value = "roleIds", required = false) Long[] roleIds) throws Exception {
 		if (user.getId() != null) {
 			User oldUser = userService.get(user.getId());
 			if (!oldUser.getPasswd().equals(user.getPasswd())) {
@@ -59,6 +60,6 @@ public class UserController extends BaseController<User, UserService> {
 			user.setPasswd(Coder.encryptMD5(user.getLoginId() + user.getPasswd()));
 		}
 		userService.save(user);
-		return "redirect:" + listView;
+		return REDIRECT + listView;
 	}
 }
