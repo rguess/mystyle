@@ -10,6 +10,7 @@ import org.guess.core.orm.Page;
 import org.guess.core.orm.PropertyFilter;
 import org.guess.core.service.BaseService;
 import org.guess.core.utils.ReflectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,6 +39,9 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	protected String listView = null;
 	protected String editView = null;
 	protected String showView = null;
+	
+	@Autowired
+	protected HttpServletRequest request;
 
 	/**
 	 * 反射获取子类中service
