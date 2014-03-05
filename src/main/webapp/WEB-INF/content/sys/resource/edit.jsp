@@ -39,15 +39,24 @@
 								method="post" id="form1">
 								<!-- 资源 -->
 								<input type="hidden" value="${obj.id }" name="id">
+								<input type="hidden" value="${obj.parent.id }" name="parent.id">
 								<!-- 资源名称 -->
 								<div class="control-group">
 									<label class="control-label">名称：</label>
 									<div class="controls">
 										<input type="text" class="span6 m-wrap"
-											validate="{required:true}"
+											validate="{required:true,byteRangeLength:[4,20]}"
 											name="name" value="${obj.name }" />
 									</div>
 								</div>
+								<c:if test="${not empty obj.parent }">
+									<div class="control-group">
+										<label class="control-label">父节点：</label>
+										<div class="controls">
+											<input type="text" class="span6 m-wrap" value="${obj.parent.name }" />
+										</div>
+									</div>
+								</c:if>
 								<!-- 资源图标 -->
 								<div class="control-group">
 									<label class="control-label">图标：</label>
@@ -61,8 +70,17 @@
 									<label class="control-label">资源url：</label>
 									<div class="controls">
 										<input type="text" class="span6 m-wrap"
-											validate="{required:true}"
+											validate="{required:true,isChinese:true}"
 											name="resString" value="${obj.resString }" />
+									</div>
+								</div>
+								<!-- 权限标识 -->
+								<div class="control-group">
+									<label class="control-label">权限标识：</label>
+									<div class="controls">
+										<input type="text" class="span6 m-wrap"
+											validate="{required:true,isChinese:true}"
+											name="permsString" value="${obj.permsString }" />
 									</div>
 								</div>
 								<!-- 序号 -->
@@ -70,7 +88,7 @@
 									<label class="control-label">序号：</label>
 									<div class="controls">
 										<input type="text" class="span6 m-wrap"
-											validate="{required:true}"
+											validate="{required:true,digits:true}"
 											name="orderNo" value="${obj.orderNo }" />
 									</div>
 								</div>

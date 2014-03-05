@@ -44,7 +44,7 @@ public class Resource extends IdEntity {
 	@JsonIgnore
 	private Resource parent;
 	/** 子资源 */
-	@OneToMany(targetEntity=Resource.class,cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	@OneToMany(targetEntity=Resource.class,fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="PARENT_ID",updatable=false)
 	@OrderBy("orderNo ASC")
 	private Set<Resource> childRes;

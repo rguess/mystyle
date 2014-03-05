@@ -21,6 +21,7 @@
 
 	/* 初始化树 */
 	function initTree() {
+		blockUI();
 		$.ajax({
 			type : "GET",
 			dataType : "json",
@@ -36,6 +37,7 @@
 					});
 				});
 				$('#treeTable').treegrid();
+				unBlockUI();
 			}
 		});
 	}
@@ -52,13 +54,33 @@
 		tr.append($("<td></td>").html(item.permsString));
 		tr.append($("<td></td>").html(item.orderNo));
 		tr.append($("<td></td>").html(item.remark));
-		tr.append($("<td></td>").html($("<a href='javascript:void(0)' onclick='javascript:edit("+item.id+")'>修改</a>")));
+		tr.append($("<td></td>").html(operBtn(item.id)));
 		return tr;
+	}
+	
+	//生产下拉操作按钮
+	function operBtn(id){
+		var div = $('<div class="btn-group mini"></div>');
+		var a = $('<a class="btn green mini" href="#" data-toggle="dropdown"></a>')
+		.append('<i class="icon-user"></i> ')
+		.append('操作')
+		.append('<i class="icon-angle-down"></i>');
+		var ul = $('<ul class="dropdown-menu"></ul>');
+		ul.append('<li><a href="javascript:void(0)" onclick="javascript:edit('+id+');"><i class="icon-pencil"></i>修改</a></li>');
+		ul.append('<li><a href="javascript:void(0)" onclick="javascript:del('+id+');"><i class="icon-trash"></i>删除</a></li>');
+		ul.append('<li><a href="javascript:void(0)" onclick="javascript:show('+id+');"><i class="icon-search"></i>查看</a></li>');
+		ul.append('<li><a href="javascript:void(0)" onclick="javascript:addChild('+id+');"><i class="icon-plus"></i>新增下级</a></li>');
+		return div.append(a).append(ul);
 	}
 	
 	//编辑
 	function edit(id){
-		$('#dialog_simple').dialog('open');
+		window.location.href = ctx+"/sys/resource/update/"+id;
+	}
+	
+	//删除
+	function del(id){
+		window.location.href = ctx+"/sys/resource/delete/"+id;
 	}
 </script>
 </head>
@@ -82,6 +104,13 @@
 							</div>
 						</div>
 						<div class="portlet-body">
+							<div class="clearfix">
+								<div class="btn-group">
+									<a class="btn green" href="${ctx}/sys/resource/create">
+										添加 <i class="icon-plus"></i>
+									</a>
+								</div>
+							</div>
 							<table id="treeTable" class="table table-striped table-bordered table-hover tree">
 								<thead>
 									<tr>
@@ -103,37 +132,6 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable" tabindex="-1" role="dialog" aria-describedby="dialog_simple" aria-labelledby="ui-id-5" style="display: none; position: absolute;">
-			<div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
-				<span id="ui-id-5" class="ui-dialog-title">Dialog Simple Title</span>
-				<button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" aria-disabled="false" title="close">
-				<span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span>
-				<span class="ui-button-text">close</span>
-				</button>
-			</div>
-			<div id="dialog_simple" class="ui-dialog-content ui-widget-content">
-	        	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-	    	</div>
-	    	<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
-		    	<div class="ui-dialog-buttonset">
-			    	<button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false">
-			    		<span class="ui-button-text">Ok</span>
-			    	</button>
-			    	<button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false">
-			    		<span class="ui-button-text">Cancel</span>
-			    	</button>
-		    	</div>
-	    	</div>
-	    	<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;">
-	    	</div>
-	    	<div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;">
-	    	</div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;">
-	    	</div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;">
-	    	</div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;">
-	    	</div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div>
-	    	<div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div>
-	    	<div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div>
 	</div>
 </body>
 </html>
