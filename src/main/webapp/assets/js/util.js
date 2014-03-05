@@ -23,13 +23,13 @@ Date.prototype.format = function(format) {
 	return format;
 };
 
+//遮罩层函数
 function blockUI(){
-	$.blockUI({ 
-        message: '<img src="">', 
-        css: { 
-            top:  ($(window).height() - 400) /2 + 'px', 
-            left: ($(window).width() - 400) /2 + 'px', 
-            width: '400px' 
-        } 
+	$.blockUI({
+        message: '<img src="'+ctx+'/assets/img/loading.gif">',
+        css:{border:'0 solid #aaa',width:'30%'},
+        overlayCSS:{opacity:0}
     });
 }
+
+//取消遮罩层

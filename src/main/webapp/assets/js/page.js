@@ -25,7 +25,7 @@ var Page = {
 	 * ajax访问数据服务器获得数据
 	 */
 	accToSer : function(callBack){
-//		$.blockUI();
+		blockUI();
 		$.ajax({
 			type : "POST",
 			dataType : "json",
@@ -34,7 +34,7 @@ var Page = {
 			data : Page.cqData,
 			success : callBack,
 			error : function(error){
-				
+//				$.unblockUI();
 			}
 		});
 	},
@@ -81,6 +81,8 @@ var Page = {
 			});
 			$(obj.tableId).empty().append(thead).append(tBody);
 			Page.initPagination(page);
+			//取消遮罩层
+			$.unblockUI();
 		};
 		Page.accToSer(callBack);
 	},
@@ -145,6 +147,8 @@ var Page = {
         };
 		$('#Pagination').bootstrapPaginator(options);
 		$("#pageInfo").html($("<span></span>").html('当前第'+Page.cqData.pageNo+'/'+pageData.totalPages+'页，共'+pageData.totalSize+'条记录'));
+		//取消遮罩层
+		$.unblockUI();
 	},
 	//生成操作按钮
 	operBtn : function(id){
