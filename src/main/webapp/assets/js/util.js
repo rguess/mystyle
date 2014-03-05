@@ -6,7 +6,8 @@ Date.prototype.format = function(format) {
 		"m+" : this.getMinutes(), // minute
 		"s+" : this.getSeconds(), // second
 		"q+" : Math.floor((this.getMonth() + 3) / 3), // quarter
-		"S" : this.getMilliseconds() // millisecond
+		"S" : this.getMilliseconds()
+	// millisecond
 	};
 
 	if (/(y+)/.test(format)) {
@@ -23,13 +24,21 @@ Date.prototype.format = function(format) {
 	return format;
 };
 
-//遮罩层函数
-function blockUI(){
-	$.blockUI({
-        message: '<img src="'+ctx+'/assets/img/loading.gif">',
-        css:{border:'0 solid #aaa',width:'30%'},
-        overlayCSS:{opacity:0}
-    });
+// 遮罩层函数
+function blockUI() {
+	$(".page-content").block({
+		message : '<img src="' + ctx + '/assets/img/loading.gif">',
+		css : {
+			border : '0 solid #aaa',
+			width : '30%'
+		},
+		overlayCSS : {
+			opacity : 0
+		}
+	});
 }
 
-//取消遮罩层
+// 取消遮罩层
+function unBlockUI(){
+	$(".page-content").unblock();
+}

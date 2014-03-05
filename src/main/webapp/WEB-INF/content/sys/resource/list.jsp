@@ -6,11 +6,11 @@
 <html>
 <head>
 <title>资源列表</title>
-<link href="${ctx}/assets/comp/jquery-ztree/zTreeStyle.css" type="text/css" rel="stylesheet" />
-<script src="${ctx}/assets/comp/jquery-ztree/jquery.ztree.core-3.5.min.js" type="text/javascript"></script>
-
+<link href="${ctx}/assets/comp/jquery-ui/jquery-ui-1.10.1.custom.min.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/comp/jquery-treegrid/jquery.treegrid.css" type="text/css" rel="stylesheet" />
 <script src="${ctx}/assets/comp/jquery-treegrid/jquery.treegrid.js" type="text/javascript"></script>
+<script src="${ctx}/assets/comp/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+
 <%@ include file="/WEB-INF/content/common/jquery-validation.jsp"%>
 
 <script type="text/javascript">
@@ -26,7 +26,6 @@
 			dataType : "json",
 			url : "${ctx}/sys/resource/tree",
 			success : function(data) {
-				console.log(data);
 				$.each(data,function(i,item){
 					$("#treeBody").append(fillData(item,null));
 					$.each(item.childRes,function(j,cd){
@@ -52,7 +51,14 @@
 		tr.append($("<td></td>").html(item.icon));
 		tr.append($("<td></td>").html(item.permsString));
 		tr.append($("<td></td>").html(item.orderNo));
+		tr.append($("<td></td>").html(item.remark));
+		tr.append($("<td></td>").html($("<a href='javascript:void(0)' onclick='javascript:edit("+item.id+")'>修改</a>")));
 		return tr;
+	}
+	
+	//编辑
+	function edit(id){
+		$('#dialog_simple').dialog('open');
 	}
 </script>
 </head>
@@ -84,6 +90,8 @@
 										<th>图标</th>
 										<th>权限标识</th>
 										<th>排序编号</th>
+										<th>备注</th>
+										<th>操作</th>
 									</tr>
 								</thead>
 								<tbody id="treeBody">
@@ -95,6 +103,37 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable" tabindex="-1" role="dialog" aria-describedby="dialog_simple" aria-labelledby="ui-id-5" style="display: none; position: absolute;">
+			<div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+				<span id="ui-id-5" class="ui-dialog-title">Dialog Simple Title</span>
+				<button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" aria-disabled="false" title="close">
+				<span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span>
+				<span class="ui-button-text">close</span>
+				</button>
+			</div>
+			<div id="dialog_simple" class="ui-dialog-content ui-widget-content">
+	        	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	    	</div>
+	    	<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+		    	<div class="ui-dialog-buttonset">
+			    	<button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false">
+			    		<span class="ui-button-text">Ok</span>
+			    	</button>
+			    	<button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false">
+			    		<span class="ui-button-text">Cancel</span>
+			    	</button>
+		    	</div>
+	    	</div>
+	    	<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;">
+	    	</div>
+	    	<div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;">
+	    	</div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;">
+	    	</div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;">
+	    	</div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;">
+	    	</div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div>
+	    	<div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div>
+	    	<div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div>
 	</div>
 </body>
 </html>

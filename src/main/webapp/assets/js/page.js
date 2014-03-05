@@ -82,7 +82,7 @@ var Page = {
 			$(obj.tableId).empty().append(thead).append(tBody);
 			Page.initPagination(page);
 			//取消遮罩层
-			$.unblockUI();
+			unBlockUI();
 		};
 		Page.accToSer(callBack);
 	},
@@ -148,7 +148,7 @@ var Page = {
 		$('#Pagination').bootstrapPaginator(options);
 		$("#pageInfo").html($("<span></span>").html('当前第'+Page.cqData.pageNo+'/'+pageData.totalPages+'页，共'+pageData.totalSize+'条记录'));
 		//取消遮罩层
-		$.unblockUI();
+		unBlockUI()
 	},
 	//生成操作按钮
 	operBtn : function(id){
