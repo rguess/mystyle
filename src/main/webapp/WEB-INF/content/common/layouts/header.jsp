@@ -11,9 +11,9 @@
 			<a class="brand" href="index.html"><img src="${ctx}/assets/img/logo.png" alt="logo" /></a>
 			<!-- END LOGO -->
 			<!-- BEGIN RESPONSIVE MENU TOGGLER -->
-			<a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse"> 
+			<%-- <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse"> 
 				<img src="${ctx}/assets/img/menu-toggler.png" alt="" />
-			</a>
+			</a> --%>
 			<!-- END RESPONSIVE MENU TOGGLER -->
 			<div class="nav-collapse collapse">
             <ul class="nav">
