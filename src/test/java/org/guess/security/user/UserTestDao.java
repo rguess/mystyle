@@ -18,7 +18,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/applicationContext.xml")
+@ContextConfiguration("/spring-config.xml")
 public class UserTestDao {
 
 	@Autowired
@@ -58,7 +58,7 @@ public class UserTestDao {
 	
 	@Test
 	public void findUniqueBy(){
-		System.out.println(JsonMapper.nonDefaultMapper().toJson(userService.findUniqueBy("loginId", "rddguess")));
+		System.out.println(JsonMapper.nonEmptyMapper().toJson(userService.findUniqueBy("loginId", "admin")));
 	}
 	
 }
