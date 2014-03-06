@@ -1015,9 +1015,21 @@ var App = function () {
         	var parent = li.parent().parent();
         	parent.addClass("active").addClass("open");
         	parent.find("a .arrow").addClass("open");
-        }
+        },
         
-
+        //生成操作按钮{icon:"iconUser",name:"操作",group:[{clickFn:"edit(2)",icon:"icon-pencil",name:"修改"}]}
+        initDropDownBtn : function(obj){
+        	var div = $('<div class="btn-group mini"></div>');
+    		var a = $('<a class="btn green mini" href="#" data-toggle="dropdown"></a>')
+    		.append('<i class="'+obj.icon+'"></i> ')
+    		.append(obj.name)
+    		.append('<i class="icon-angle-down"></i>');
+    		var ul = $('<ul class="dropdown-menu"></ul>');
+    		$.each(obj.group,function(i,item){
+    			ul.append('<li><a href="javascript:void(0)" onclick="javascript:'+item.clickFn+';"><i class="'+item.icon+'"></i>'+item.name+'</a></li>');
+    		});
+    		return div.append(a).append(ul);
+        }
     };
 
 }();

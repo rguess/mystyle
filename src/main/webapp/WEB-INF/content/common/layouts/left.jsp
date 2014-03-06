@@ -22,6 +22,7 @@
 				<li><a href="${ctx }/sys/user/list">用户管理</a></li>
 				<li><a href="${ctx }/sys/role/list">角色管理</a></li>
 				<li><a href="${ctx }/sys/resource/list">资源管理</a></li>
+				<li><a href="${ctx }/sys/icon/list">图标管理</a></li>
 			</ul>
 		</li>
 		

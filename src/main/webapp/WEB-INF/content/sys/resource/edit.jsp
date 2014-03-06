@@ -49,14 +49,12 @@
 											name="name" value="${obj.name }" />
 									</div>
 								</div>
-								<c:if test="${not empty obj.parent }">
-									<div class="control-group">
-										<label class="control-label">父节点：</label>
-										<div class="controls">
-											<input type="text" class="span6 m-wrap" value="${obj.parent.name }" />
-										</div>
+								<div class="control-group">
+									<label class="control-label">父节点：</label>
+									<div class="controls">
+										<input type="text" class="span6 m-wrap" value="${obj.parent.name }" />
 									</div>
-								</c:if>
+								</div>
 								<!-- 资源图标 -->
 								<div class="control-group">
 									<label class="control-label">图标：</label>
@@ -70,7 +68,7 @@
 									<label class="control-label">资源url：</label>
 									<div class="controls">
 										<input type="text" class="span6 m-wrap"
-											validate="{required:true,isChinese:true}"
+											validate="{required:true,isNotChinese:true}"
 											name="resString" value="${obj.resString }" />
 									</div>
 								</div>
@@ -79,7 +77,7 @@
 									<label class="control-label">权限标识：</label>
 									<div class="controls">
 										<input type="text" class="span6 m-wrap"
-											validate="{required:true,isChinese:true}"
+											validate="{required:true,isNotChinese:true}"
 											name="permsString" value="${obj.permsString }" />
 									</div>
 								</div>

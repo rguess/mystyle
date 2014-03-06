@@ -60,17 +60,15 @@
 	
 	//生产下拉操作按钮
 	function operBtn(id){
-		var div = $('<div class="btn-group mini"></div>');
-		var a = $('<a class="btn green mini" href="#" data-toggle="dropdown"></a>')
-		.append('<i class="icon-user"></i> ')
-		.append('操作')
-		.append('<i class="icon-angle-down"></i>');
-		var ul = $('<ul class="dropdown-menu"></ul>');
-		ul.append('<li><a href="javascript:void(0)" onclick="javascript:edit('+id+');"><i class="icon-pencil"></i>修改</a></li>');
-		ul.append('<li><a href="javascript:void(0)" onclick="javascript:del('+id+');"><i class="icon-trash"></i>删除</a></li>');
-		ul.append('<li><a href="javascript:void(0)" onclick="javascript:show('+id+');"><i class="icon-search"></i>查看</a></li>');
-		ul.append('<li><a href="javascript:void(0)" onclick="javascript:addChild('+id+');"><i class="icon-plus"></i>新增下级</a></li>');
-		return div.append(a).append(ul);
+		return App.initDropDownBtn({
+			icon : "icon-user",
+			name : "操作",
+			group : [{clickFn : "edit("+id+")",name : "修改",icon : "icon-pencil"},
+					 {clickFn : "del("+id+")",name : "删除",icon : "icon-trash"},
+				 	 {clickFn : "show("+id+")",name : "查看",icon : "icon-search"},
+					 {clickFn : "addChlid("+id+")",name : "新增下级",icon : "icon-plus"}
+			         ]
+		});
 	}
 	
 	//编辑
