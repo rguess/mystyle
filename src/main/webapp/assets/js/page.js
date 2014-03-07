@@ -54,39 +54,52 @@ var Page = {
 		queryData.pageNo = obj.pageNo;
 		queryData.pageSize = obj.pageSize;
 		Page.cqData = queryData;
+		
+		//初始化表头
+		var thead = $("<thead></thead>");
+		var theadTr = $("<tr></tr>");
+		$.each(cols,function(i,item){
+			var sortStr = item.noSort?"":"class='sorting' onclick='Page.sorting(this)'";
+			theadTr.append($("<th "+sortStr+"></th>").attr("cName",item.cName).html(item.cValue));
+		});
+		theadTr.append($("<th class='span2'></th>").html("操作"));
+		thead.append(theadTr);
+		tBody = $("<tbody></tbody>");
+		$(obj.tableId).empty().append(thead).append(tBody);
 		//初始化数据回调
 		var callBack = function(page){
 			Page.defaultVal.totalPages = page.totalPages;
-			thead = $("<thead></thead>");
-			var theadTr = $("<tr></tr>");
-			$.each(cols,function(i,item){
-				theadTr.append($("<th class='sorting' onclick='Page.sorting(this)'></th>").attr("cName",item.cName).html(item.cValue));
-			});
-			theadTr.append($("<th class='span2'></th>").html("操作"));
-			thead.append(theadTr);
-			tBody = $("<tbody></tbody>");
-			$.each(page.data,function(i,item){
-				var tr = $("<tr></tr>");
-				$.each(cols,function(j,col){
-					//判断是否是时间类型,如为时间类型，需转型
-					if(col.date && App.isNundef(item[col.cName])){
-						tr.append($("<td></td>").html(new Date(item[col.cName]).format("yyyy-MM-dd")));
-					}else{
-						tr.append($("<td></td>").html(item[col.cName]));
-					}
-					
-				});
-				tr.append($("<td></td>").html(Page.operBtn(item.id)));
-				tBody.append(tr);
-			});
-			$(obj.tableId).empty().append(thead).append(tBody);
+			Page.insertData(page);
 			Page.initPagination(page);
 			//取消遮罩层
 			unBlockUI();
 		};
 		Page.accToSer(callBack);
 	},
-	//执行分页
+	
+	/**
+	 * 插入主要数据
+	 */
+	insertData : function(pageData){
+		var tbody = $(Page.defaultVal.tableId+" tbody:first").empty();
+		$.each(pageData.data,function(i,item){
+			var tr = $("<tr></tr>");
+			$.each(Page.defaultCols,function(j,col){
+				if(col.format){
+					tr.append($("<td></td>").html(col.format(j,item[col.cName],item)));
+				}else{
+					tr.append($("<td></td>").html(item[col.cName]));
+				}
+			});
+			tr.append($("<td></td>").html(Page.operBtn(item.id)));
+			tbody.append(tr);
+		});
+	},
+	
+	/**
+	 * 执行分页
+	 * 
+	 */
 	initPagination : function(page){
 		var span = $("<div></div>");
 		var pagnation = $("<div id='Pagination'></div>");
@@ -128,27 +141,14 @@ var Page = {
 	 * @returns
 	 */
 	pageChangedCallBack : function(pageData){
-		var tbody = $(Page.defaultVal.tableId+" tbody:first").empty();
-		$.each(pageData.data,function(i,item){
-			var tr = $("<tr></tr>");
-			$.each(Page.defaultCols,function(j,col){
-				//判断是否是时间类型,如为时间类型，需转型
-				if(col.date && App.isNundef(item[col.cName])){
-					tr.append($("<td></td>").html(new Date(item[col.cName]).format("yyyy-MM-dd")));
-				}else{
-					tr.append($("<td></td>").html(item[col.cName]));
-				}
-			});
-			tr.append($("<td></td>").html(Page.operBtn(item.id)));
-			tbody.append(tr);
-		});
+		Page.insertData(pageData);
 		options = {
             totalPages: pageData.totalPages
         };
 		$('#Pagination').bootstrapPaginator(options);
 		$("#pageInfo").html($("<span></span>").html('当前第'+Page.cqData.pageNo+'/'+pageData.totalPages+'页，共'+pageData.totalSize+'条记录'));
 		//取消遮罩层
-		unBlockUI()
+		unBlockUI();
 	},
 	//生成操作按钮
 	operBtn : function(id){

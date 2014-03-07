@@ -16,15 +16,21 @@ $(document).ready(function() {
 	Page.initData(
 		{
 			url:"${ctx}/sys/user/page",
-			tableId : "#sample_1"
+			tableId : "#sample_1",
+			pageSize : 2
 		},
 		null,
 		[{cName:"name",cValue:"姓名"},
 		 {cName:"email",cValue:"邮箱"},
 		 {cName:"loginId",cValue:"登录名"},
-		 {cName:"mobilePhone",cValue:"手机"},
+		 {cName:"mobilePhone",cValue:"手机",noSort:true},
 		 {cName:"address",cValue:"地址"},
-		 {cName:"createDate",cValue:"创建时间",date:true}
+		 {cName:"createDate",cValue:"创建时间",format:function(i,value,item){
+			 if(App.isNundef(value)){
+				 return new Date(value).format("yyyy-MM-dd");
+			 }
+			 return value;
+		 }}
 		 ]
 	);
 });
