@@ -43,7 +43,7 @@
 									<label class="control-label">标识符 :</label>
 									<div class="controls">
 										<input type="text" class="span6 m-wrap"
-											validate="{required:true,isNotSpace:true}"
+											validate="{required:true}"
 											name="mark" value="${obj.mark }" />
 									</div>
 								</div>
@@ -65,7 +65,7 @@
 								</div>
 								<div class="form-actions">
 									<button type="submit" class="btn blue">提交</button>
-									<button type="reset" class="btn">重置</button>
+									<a class='btn' href="${header.Referer }">返回</a>
 								</div>
 							</form>
 						</div>

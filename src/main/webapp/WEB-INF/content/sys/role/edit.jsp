@@ -13,6 +13,11 @@
 	$(function(){
 		App.activeMenu("sys/role/list");
 	});
+	
+	function showRcs(){
+		$("#rcs").show();
+		$("#rcs").center({relative:false});
+	}
 </script>
 </head>
 <body>
@@ -69,12 +74,14 @@
 								</div>
 								<div class="form-actions">
 									<button type="submit" class="btn blue">提交</button>
-									<button type="reset" class="btn">重置</button>
+									<a class='btn' href="${header.Referer }">返回</a>
+									<a class='btn yellow' href="javascript:void(0);" onclick="javascript:showRcs();">test</a>
 								</div>
 							</form>
 						</div>
 					</div>
 				</div>
+				<%@ include file="/WEB-INF/content/sys/role/allotRc.jsp"%>
 			</div>
 		</div>
 	</div>

@@ -6,6 +6,7 @@ import org.guess.sys.service.IconService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
@@ -19,6 +20,12 @@ public class IconController extends BaseController<Icon, IconService>{
 	}
 	
 	@Autowired
-	private IconService rService;
+	private IconService iService;
+	
+	@RequestMapping("iconSelect")
+	public ModelAndView selects(ModelAndView mav) throws Exception{
+		mav.setViewName("/sys/icon/iconSelect");
+		return mav.addObject("icons", iService.getAll());
+	}
 	
 }

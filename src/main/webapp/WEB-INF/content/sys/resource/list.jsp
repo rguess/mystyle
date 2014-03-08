@@ -50,7 +50,7 @@
 		}
 		tr.append($("<td></td>").html(item.name));
 		tr.append($("<td></td>").html(item.resString));
-		tr.append($("<td></td>").html(item.icon));
+		tr.append($("<td></td>").html($("<i class="+item.icon+"></i>")));
 		tr.append($("<td></td>").html(item.permsString));
 		tr.append($("<td></td>").html(item.orderNo));
 		tr.append($("<td></td>").html(item.remark));
@@ -109,22 +109,24 @@
 									</a>
 								</div>
 							</div>
-							<table id="treeTable" class="table table-striped table-bordered table-hover tree">
-								<thead>
-									<tr>
-										<th>名称</th>
-										<th>资源串</th>
-										<th>图标</th>
-										<th>权限标识</th>
-										<th>排序编号</th>
-										<th>备注</th>
-										<th>操作</th>
-									</tr>
-								</thead>
-								<tbody id="treeBody">
-									
-								</tbody>
-							</table>
+							<div>
+								<table id="treeTable" class="table table-striped table-bordered table-hover tree">
+									<thead>
+										<tr>
+											<th>名称</th>
+											<th>资源串</th>
+											<th>图标</th>
+											<th>权限标识</th>
+											<th>排序编号</th>
+											<th>备注</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody id="treeBody">
+										
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>

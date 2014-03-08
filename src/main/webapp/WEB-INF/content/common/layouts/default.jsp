@@ -35,6 +35,7 @@
 <script src="${ctx}/assets/js/jquery.cookie.js"></script>
 <script src="${ctx}/assets/js/jquery.blockui.js"></script>
 <script src="${ctx}/assets/comp/breakpoints/breakpoints.js" type="text/javascript" ></script>
+<script src="${ctx}/assets/comp/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript" ></script>
 <script src="${ctx}/assets/comp/chosen-bootstrap/chosen/chosen.jquery.min.js" type="text/javascript" ></script>
 <script src="${ctx}/assets/js/app.js"></script>
 <script src="${ctx}/assets/js/util.js"></script>

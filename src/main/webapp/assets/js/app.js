@@ -903,12 +903,18 @@ var App = function () {
         }).hide();
     };
     
+    //关闭自定义弹出层
+    var colseDIYWin = function(){
+    	$(".remove1").click(function(){
+    		$(this).closest(".diywindow").hide();
+    	})
+    }
+    
     return {
         //main function to initiate template pages
         init: function () {
             handleResponsive(); // set and handle responsive
             handleUniform(); // handles uniform elements
-
             // global handlers
             handleChoosenSelect(); // handles bootstrap chosen dropdowns
             handleScrollers(); // handles slim scrolling contents            
@@ -931,6 +937,8 @@ var App = function () {
             handleGoTop(); //handles scroll to top functionality in the footer
             handleAccordions(); //handles accordions
             handleFormWizards(); // handles form wizards
+            
+            colseDIYWin();
         },
 
         // wrapper function to scroll to an element

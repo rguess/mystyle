@@ -1,21 +1,47 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="tool" tagdir="/WEB-INF/tags"%>
-<%@ include file="/WEB-INF/content/common/characterEncoding.jsp"%>
-<c:set var="ctx" value="${pageContext.request.contextPath}" scope="page" />
+<%@ include file="/WEB-INF/content/common/common.jsp"%>
 <c:set var="pageTitle" value="${empty obj ? '添加资源':'修改资源' }" scope="page" />
 <html>
 <head>
 <title>${pageTitle }</title>
 <%@ include file="/WEB-INF/content/common/jquery-validation.jsp"%>
+<script src="${ctx}/assets/comp/bootstrap-tree/js/bootstrap-tree.js" type="text/javascript"></script>
+<link href="${ctx}/assets/comp/bootstrap-tree/css/bootstrap-tree.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript">
 	$(function(){
 		App.activeMenu("sys/resource/list");
 	});
+	
+	function showIcons(){
+		$('#icons').modal();
+	}
+	
+	function selIcon(mark){
+		$('#icons').modal('hide');
+		
+		var oldVal = $("#iconVal").val();
+		$("#btnIconI").removeClass(oldVal).addClass(mark);
+		$("#iconVal").val(mark);
+	}
+	
+	function showTree(){
+		$("#rcTree").modal();
+	}
+	
+	function selRec(obj){
+		$('#rcTree').modal('hide');
+		
+		$('#parentName').val($(obj).text());
+		$('#parentId').val($(obj).attr("data-id"));
+	}
 </script>
 </head>
 <body>
+	
+	<!-- 图标选择弹出框 -->
+	<%@ include file="/WEB-INF/content/sys/icon/iconSelect.jsp" %>
+	<%@ include file="/WEB-INF/content/sys/resource/tree.jsp" %>
+	
 	<div class="page-content">
 		<div class="container-fluid">
 			<!-- 页面导航 -->
@@ -39,7 +65,7 @@
 								method="post" id="form1">
 								<!-- 资源 -->
 								<input type="hidden" value="${obj.id }" name="id">
-								<input type="hidden" value="${obj.parent.id }" name="parent.id">
+								<input type="hidden" value="${obj.parent.id }" name="parent.id" id="parentId">
 								<!-- 资源名称 -->
 								<div class="control-group">
 									<label class="control-label">名称：</label>
@@ -52,15 +78,26 @@
 								<div class="control-group">
 									<label class="control-label">父节点：</label>
 									<div class="controls">
-										<input type="text" class="span6 m-wrap" value="${obj.parent.name }" />
+										<input id="parentName" type="text" class="span6 m-wrap" value="${obj.parent.name }" onfocus="javascript:showTree();"/>
 									</div>
 								</div>
 								<!-- 资源图标 -->
+								<c:choose>
+									<c:when test="${empty obj.icon }">
+										<c:set var="iconMark" value="icon-cog" scope="page"></c:set>
+									</c:when>
+									<c:otherwise>
+										<c:set var="iconMark" value="${obj.icon }" scope="page"></c:set>
+									</c:otherwise>
+								</c:choose>
+								
 								<div class="control-group">
 									<label class="control-label">图标：</label>
 									<div class="controls">
-										<input type="text" class="span6 m-wrap"
-											name="icon" value="${obj.icon }" />
+										<a href="#" class="btn blue" onclick="javascript:showIcons();">
+											&nbsp<i id="btnIconI" class="${iconMark } icon-white"></i>&nbsp
+										</a>
+										<input type="hidden" id="iconVal" value="${iconMark }" name="icon">
 									</div>
 								</div>
 								<!-- 资源url -->
@@ -98,7 +135,7 @@
 								</div>
 								<div class="form-actions">
 									<button type="submit" class="btn blue">提交</button>
-									<button type="reset" class="btn">重置</button>
+									<a class='btn' href="${header.Referer }">返回</a>
 								</div>
 							</form>
 						</div>

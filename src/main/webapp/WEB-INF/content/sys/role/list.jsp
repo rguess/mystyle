@@ -1,8 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="tool" tagdir="/WEB-INF/tags" %>
-<%@ include file="/WEB-INF/content/common/characterEncoding.jsp"%>
-<c:set var="ctx" value="${pageContext.request.contextPath}" scope="page" />
+<%@ include file="/WEB-INF/content/common/common.jsp"%>
 <html>
 <head>
 <title>角色列表</title>
@@ -26,7 +23,7 @@ $(document).ready(function() {
 		null,
 		[{cName:"name",cValue:"名称"},
 		 {cName:"realName",cValue:"中文名"},
-		 {cName:"remark",cValue:"备注"}
+		 {cName:"remark",cValue:"备注",noSort:true}
 		 ]
 	);
 });
@@ -61,16 +58,6 @@ function doQuery(){
 										添加 <i class="icon-plus"></i>
 									</a>
 								</div>
-								<!-- <div class="btn-group pull-right">
-									<button class="btn dropdown-toggle" data-toggle="dropdown">
-										Tools <i class="icon-angle-down"></i>
-									</button>
-									<ul class="dropdown-menu">
-										<li><a href="#">Print</a></li>
-										<li><a href="#">Save as PDF</a></li>
-										<li><a href="#">Export to Excel</a></li>
-									</ul>
-								</div> -->
 							</div>
 							<form>
 								<div class="row-fluid">

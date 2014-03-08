@@ -1,9 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="tool" tagdir="/WEB-INF/tags"%>
-<%@ include file="/WEB-INF/content/common/characterEncoding.jsp"%>
-<c:set var="ctx" value="${pageContext.request.contextPath}" scope="page" />
+<%@ include file="/WEB-INF/content/common/common.jsp"%>
 <c:set var="pageTitle" value="${empty obj ? '添加用户':'修改用户' }" scope="page" />
 <html>
 <head>
@@ -110,7 +106,13 @@
 									<div class="controls">
 										<select data-placeholder=" " class="span6 chosen" multiple="multiple" tabindex="6" name="roleIds">
 											<c:forEach items="${roles }" var="role">
-												<option value="${role.id }">${role.name }(${role.realName })</option>
+												<option value="${role.id }"
+													<c:forEach items="${obj.roles }" var="userRole">
+														<c:if test="${role.id eq userRole.id }">
+															selected="selected"
+														</c:if>
+													</c:forEach>
+												>${role.name }(${role.realName })</option>
 											</c:forEach>
 										</select>
 									</div>
@@ -123,7 +125,7 @@
 								</div>
 								<div class="form-actions">
 									<button type="submit" class="btn blue">提交</button>
-									<button type="reset" class="btn">重置</button>
+									<a class='btn' href="${header.Referer }">返回</a>
 								</div>
 							</form>
 						</div>

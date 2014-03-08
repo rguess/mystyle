@@ -17,7 +17,7 @@ $(document).ready(function() {
 		{
 			url:"${ctx}/sys/user/page",
 			tableId : "#sample_1",
-			pageSize : 2
+			pageSize : 10
 		},
 		null,
 		[{cName:"name",cValue:"姓名"},

@@ -25,6 +25,9 @@ $(document).ready(function() {
 		},
 		null,
 		[{cName:"mark",cValue:"标识符 "},
+		 {cName:"mark",cValue:"生成的图标",noSort:true,format:function(i,value,item){
+			 return "<i class='"+value+"'></i>";
+		 }},
 		 {cName:"type",cValue:"类型"},
 		 {cName:"description",cValue:"描述"}
 		 ]
@@ -32,7 +35,12 @@ $(document).ready(function() {
 });
 
 function doQuery(){
-	
+	var queryObj = {
+			search_LIKES_mark : null
+		};
+	var mark = $("#mark").val();
+	App.isNundef(mark)?queryObj.search_LIKES_mark = mark:null;
+	Page.doQuery(queryObj);
 }
 </script>
 </head>
@@ -67,7 +75,7 @@ function doQuery(){
                                  	<div class="span2 ">
 	                                    <div class="control-group">
 	                                       <div class="controls">
-	                                          <input type="text" id="name" class="m-wrap span12" placeholder="角色名">
+	                                          <input type="text" id="mark" class="m-wrap span12" placeholder="标识">
 	                                       </div>
 	                                    </div>
                                  	</div>

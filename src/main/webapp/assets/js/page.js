@@ -184,11 +184,11 @@ var Page = {
 		var sort = {};
 		if($(obj).hasClass("sorting")||$(obj).hasClass("sorting_desc")){
 			$(obj).removeClass("sorting").removeClass("sorting_desc").addClass("sorting_asc")
-				.siblings("[class!=span2]").removeClass("sorting_asc").removeClass("sorting_desc").addClass("sorting");
+				.siblings("[class^=sorting_]").removeClass("sorting_asc").removeClass("sorting_desc").addClass("sorting");
 			sort = {orderBy:$(obj).attr("cName"),orderDir:"asc"};
 		}else if($(obj).hasClass("sorting_asc")){
 			$(obj).removeClass("sorting").removeClass("sorting_asc").addClass("sorting_desc")
-				.siblings("[class!=span2]").removeClass("sorting_asc").removeClass("sorting_desc").addClass("sorting");
+				.siblings("[class^=sorting_]").removeClass("sorting_asc").removeClass("sorting_desc").addClass("sorting");
 			sort = {orderBy:$(obj).attr("cName"),orderDir:"desc"};
 		}
 		Page.cqData = $.extend(Page.cqData,sort);
