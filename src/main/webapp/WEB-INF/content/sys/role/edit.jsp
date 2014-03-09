@@ -15,8 +15,7 @@
 	});
 	
 	function showRcs(){
-		$("#rcs").show();
-		$("#rcs").center({relative:false});
+		$("#rcs").show().center({position: 'fixed'}).move();
 	}
 </script>
 </head>
