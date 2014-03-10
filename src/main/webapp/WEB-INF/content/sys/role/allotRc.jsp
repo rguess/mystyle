@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/content/common/common.jsp"%>
-<div class="span6 diywindow" style="display: none;position:absolute;" id="rcs">
+<div class="span6 diywindow" style="display: none;" id="rcs">
 	<!-- BEGIN TAB PORTLET-->
 	<div class="portlet box green tabbable">
 		<div class="portlet-title" style="cursor: move;">

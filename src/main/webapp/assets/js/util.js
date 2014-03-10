@@ -1,3 +1,8 @@
+/**
+ * 格式化日期
+ * @param format
+ * @returns
+ */
 Date.prototype.format = function(format) {
 	var o = {
 		"M+" : this.getMonth() + 1, // month
@@ -24,8 +29,43 @@ Date.prototype.format = function(format) {
 	return format;
 };
 
-//居中
+/**
+ * js原型链实现replaceAll
+ */
+String.prototype.replaceAll  = function(s1,s2){
+    return this.replace(new RegExp(s1,"gm"),s2);
+};
+
+/**
+ * 遮罩层函数
+ */
+function blockUI() {
+	$(".page-content").block({
+		message : '<img src="' + ctx + '/assets/img/loading.gif">',
+		css : {
+			border: 'none',
+            padding: '2px',
+            backgroundColor: 'none'
+		},
+		overlayCSS : {
+			backgroundColor: '#000',
+            opacity: 0.05,
+            cursor: 'wait'
+		}
+	});
+}
+
+/**
+ * 取消遮罩层
+ */
+function unBlockUI(){
+	$(".page-content").unblock();
+}
+
 (function ($) {
+  /**
+   * 居中
+   */
   $.fn.center = function (settings) {
     var style = $.extend({
       position: 'absolute', //absolute or fixed
@@ -55,56 +95,50 @@ Date.prototype.format = function(format) {
       $this.css(style);
     });
   };
+  
+  /**
+   * 可移动
+   */
+  $.fn.move = function () {
+	  
+	  var $win = $(this);
+	  var $title = $win.find(".portlet-title");
+	  
+      var b = false;
+      var x;
+      var y;
+      $title.css("cursor", "move");
+      $title.mousedown(
+        function (e) {
+            //x,y坐标是点击事件点和外该组件的距离差
+            b = true;
+            x = e.pageX - parseInt($win.position().left);
+            y = e.pageY - parseInt($win.position().top);
+        });
+      $(document).mousemove(
+          function (e) {
+              //只要不释放鼠标就可以拖动div
+              if (b) {
+                  var divleft = e.pageX - x;
+                  var divtop = e.pageY - y;
+                  //设置拖动左，上位置
+                  $win.css({ "left": divleft, "top": divtop });
+              }
+          }
+        ).mouseup(function () {
+            b = false;
+        });
+  };
+  
+  /**
+   * 指定div在指定位置弹出
+   */
+  $.fn.CurrentPosition = function (offsetX, offsetY, obj) {
+      var X = $(this).offset().top;
+      var Y = $(this).offset().left;
+      $(obj).css("left", X + offsetX + "px");
+      $(obj).css("top", Y + offsetY + "px");
+      $(obj).show();
+  };
+  
 })(jQuery);
-
-//移动
-(function ($) {
-	$.fn.move = function (){
-		
-		var $win = $(this);
-		var $title = $win.find(".portlet-title");
-		//e鼠标事件 
-		$title.mousedown(function(e){
-			var $this = $(this);
-	        var offset = $win.offset();//DIV在页面的位置  
-	        var x = e.pageX - offset.left;//获得鼠标指针离DIV元素左边界的距离  
-	        var y = e.pageY - offset.top;//获得鼠标指针离DIV元素上边界的距离 
-//	        alert(e.pageX + "-------"+e.pageY);
-	        $(document).bind("mousemove",function(ev)//绑定鼠标的移动事件，因为光标在DIV元素外面也要有效果，所以要用doucment的事件，而不用DIV元素的事件  
-	        {  
-	        	$win.stop();//加上这个之后
-	            var _x = ev.pageX - x;//获得X轴方向移动的值  
-	            var _y = ev.pageY - y;//获得Y轴方向移动的值  
-//	            alert(ev.pageX + "-------"+ev.pageY);
-	            $win.animate({left:_x+"px",top:_y+"px"},10);  
-	        });
-	        
-	        $(document).mouseup(function()  
-            {  
-	        	$(this).unbind("mousemove");
-            }) 
-	    });
-	}
-})(jQuery);
-
-// 遮罩层函数
-function blockUI() {
-	$(".page-content").block({
-		message : '<img src="' + ctx + '/assets/img/loading.gif">',
-		css : {
-			border: 'none',
-            padding: '2px',
-            backgroundColor: 'none'
-		},
-		overlayCSS : {
-			backgroundColor: '#000',
-            opacity: 0.05,
-            cursor: 'wait'
-		}
-	});
-}
-
-// 取消遮罩层
-function unBlockUI(){
-	$(".page-content").unblock();
-}

@@ -17,7 +17,7 @@
 	</div>
 
 	<div class="modal-footer">
-		<button type="button red" class="btn" data-dismiss="modal"
+		<button type="button" class="btn red" data-dismiss="modal"
 			aria-hidden="true">关闭</button>
 	</div>
 </div>

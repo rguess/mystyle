@@ -21,7 +21,7 @@
 <link href="${ctx}/assets/comp/font-awesome/css/font-awesome.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/style.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/style_responsive.css" type="text/css" rel="stylesheet" />
-<link href="${ctx}/assets/css/style_light.css" type="text/css" rel="stylesheet" />
+<link href="${ctx}/assets/css/theme/style_light.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/comp/gritter/css/jquery.gritter.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/comp/chosen-bootstrap/chosen/chosen.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/favicon.ico" rel="shortcut icon"/>
@@ -35,7 +35,6 @@
 <script src="${ctx}/assets/js/jquery.cookie.js"></script>
 <script src="${ctx}/assets/js/jquery.blockui.js"></script>
 <script src="${ctx}/assets/comp/breakpoints/breakpoints.js" type="text/javascript" ></script>
-<script src="${ctx}/assets/comp/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript" ></script>
 <script src="${ctx}/assets/comp/chosen-bootstrap/chosen/chosen.jquery.min.js" type="text/javascript" ></script>
 <script src="${ctx}/assets/js/app.js"></script>
 <script src="${ctx}/assets/js/util.js"></script>
