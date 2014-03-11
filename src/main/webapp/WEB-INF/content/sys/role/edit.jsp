@@ -6,13 +6,46 @@
 <head>
 <title>${pageTitle }</title>
 <%@ include file="/WEB-INF/content/common/jquery-validation.jsp"%>
+<link href="${ctx}/assets/comp/jquery-ztree/zTreeStyle.css" type="text/css" rel="stylesheet" />
+<script src="${ctx}/assets/comp/jquery-ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(function(){
 		App.activeMenu("sys/role/list");
+		initTree();
 	});
 	
 	function showRcs(){
 		$("#rcs").show().center({position: 'fixed'}).move();
+	}
+	
+	/* 初始化树 */
+	function initTree(){
+		var setting = {
+			data :{
+				key:{
+					children:"childRes",
+					name:"name"
+				},
+			}
+		};
+		$.ajax({
+			type : "GET",
+			dataType : "json",
+			url : "${ctx}/sys/resource/showTree",
+			success : function(data){
+				$.fn.zTree.init($("#role_rec"), setting, operData(data));
+			}
+		});
+	}
+	
+	function operData(data){
+		$.each(data,function(i,item){
+			alert(item.id);
+			delete item.icon;
+			if(item.childRes){
+				operData(item);
+			}
+		})
 	}
 </script>
 </head>
@@ -61,6 +94,13 @@
 											name="realName" value="${obj.realName }" />
 									</div>
 								</div>
+								<!-- 名称 -->
+								<div class="control-group">
+									<label class="control-label">名称:</label>
+									<div class="controls ztree" id="role_rec">
+									
+									</div>
+								</div>
 								<!-- 备注 -->
 								<div class="control-group">
 									<label class="control-label">备注:</label>
@@ -74,6 +114,9 @@
 									<a class='btn yellow' href="javascript:void(0);" onclick="javascript:showRcs();">test</a>
 								</div>
 							</form>
+							<div >
+							
+							</div>
 						</div>
 					</div>
 				</div>
