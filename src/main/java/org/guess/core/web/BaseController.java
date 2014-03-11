@@ -53,17 +53,35 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 		return (M) ReflectionUtils.getFieldValue(this, fields.get(0).getName());
 	}
 
+	/**
+	 * 跳转到添加页面
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(method = RequestMethod.GET, value = "create")
 	public ModelAndView create() throws Exception{
-		return new ModelAndView(editView);
+		ModelAndView mav = new ModelAndView(editView);
+		return mav;
 	}
 	
+	/**
+	 * 添加
+	 * @param object
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(method = RequestMethod.POST, value = "edit")
 	public String create(T object) throws Exception {
 		getBaseService().save(object);
 		return REDIRECT + listView;
 	}
 
+	/**
+	 * 跳转到更新页面
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(method = RequestMethod.GET, value = "update/{id}")
 	public ModelAndView update(@PathVariable("id") Long id) throws Exception {
 		T obj = getBaseService().get(id);
@@ -72,12 +90,24 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 		return mav;
 	}
 
+	/**
+	 * 删除
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "delete/{id}")
 	public String delete(@PathVariable("id") Long id) throws Exception {
 		getBaseService().removeById(id);
 		return REDIRECT+listView;
 	}
 	
+	/**
+	 * 展示
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "show/{id}")
 	public ModelAndView show(@PathVariable("id") Long id) throws Exception{
 		T object = getBaseService().get(id);
@@ -86,6 +116,12 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 		return mav;
 	}
 	
+	/**
+	 * 返回分页json数据
+	 * @param page
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("page")
 	public @ResponseBody Map<String,Object> page(Page<T> page,HttpServletRequest request){
 		Page<T> pageData = getBaseService().findPage(page, PropertyFilter.buildFromHttpRequest(request, "search"));
@@ -96,5 +132,5 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	public String list(){
 		return listView;
 	}
-
+	
 }

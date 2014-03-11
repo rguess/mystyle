@@ -52,6 +52,10 @@ public class StaticTest {
 		return false;
 	}
 	
+	public static void set(int i){
+		i = 8;
+	}
+	
 	public static void main(String[] args) throws Exception {
 //		System.out.println(new Date().before(DateUtil.parse("2014-01-14")));
 //		System.out.println(DateUtil.parseFormat("yyyy-MM-dd"));
@@ -65,13 +69,18 @@ public class StaticTest {
 		calendar.setTime(DateUtil.parse("2013-05-30"));
 		calendar.get(Calendar.MONTH);
 		System.out.println(calendar.get(Calendar.MONTH)); */
-		BooleanEnum a = BooleanEnum.valueOf("TRUE");
+		/*BooleanEnum a = BooleanEnum.valueOf("TRUE");
 		System.out.println(a.getInfo());
 		System.out.println(BooleanEnum.values());
 		
 		String a1 = "1";
 		String a2 = "2";
-		System.out.println(a1=a1+=a2);
+		System.out.println(a1=a1+=a2);*/
+		
+		int i = 0;
+		i = 7;
+		set(i);
+		System.out.println(i);
 	
 	}
 }
