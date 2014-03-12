@@ -9,9 +9,20 @@
 <link href="${ctx}/assets/comp/jquery-ztree/zTreeStyle.css" type="text/css" rel="stylesheet" />
 <script src="${ctx}/assets/comp/jquery-ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
 <script type="text/javascript">
+
+	var recIds = new Array();
+	<c:if test="${not empty obj }">
+		<c:forEach var="rec" items="${obj.resources }">
+			recIds.push(${rec.id });
+		</c:forEach>
+	</c:if>
+	
 	$(function(){
 		App.activeMenu("sys/role/list");
+		//初始化资源树
 		initTree();
+		//初始化隐藏域中recids
+		$("#recids").val(recIds);
 	});
 	
 	function showRcs(){
@@ -25,7 +36,15 @@
 				key:{
 					children:"childRes",
 					name:"name"
-				},
+				}
+			},
+			check: {
+				enable: true,
+				chkStyle: "checkbox",
+				chkboxType: { "Y": "ps", "N": "ps"}
+			},
+			callback: {
+				onCheck: zTreeOnCheck
 			}
 		};
 		$.ajax({
@@ -38,14 +57,33 @@
 		});
 	}
 	
+	/* 资源选中或取消选中更新资源ids */
+	function zTreeOnCheck(event, treeId, treeNode){
+		var treeObj = $.fn.zTree.getZTreeObj(treeId);
+		var nodes = treeObj.getCheckedNodes(true);
+		recIds = [];
+		$.each(nodes,function(i,item){
+			recIds.push(item.id);
+		});
+		$("#recids").val(recIds);
+	}
+	
+	//数据加工
 	function operData(data){
 		$.each(data,function(i,item){
-			alert(item.id);
+			//删除icon属性,避免与ztree的icon属性冲突
 			delete item.icon;
-			if(item.childRes){
-				operData(item);
+			//添加属性
+			item.open = true;
+			//添加checked属性
+			if(App.in_array(item.id,recIds)){
+				item.checked=true;
 			}
-		})
+			if(item.childRes.length > 0){
+				operData(item.childRes);
+			}
+		});
+		return data;
 	}
 </script>
 </head>
@@ -73,6 +111,7 @@
 								method="post" id="form1">
 								<!-- 角色ID -->
 								<input type="hidden" value="${obj.id }" name="id">
+								<input id="recids" type="hidden" value="${obj.id }" name="recids">
 								<div class="control-group">
 									<label class="control-label">角色名:</label>
 									<div class="controls">
@@ -96,7 +135,7 @@
 								</div>
 								<!-- 名称 -->
 								<div class="control-group">
-									<label class="control-label">名称:</label>
+									<label class="control-label">勾选权限:</label>
 									<div class="controls ztree" id="role_rec">
 									
 									</div>
@@ -111,16 +150,11 @@
 								<div class="form-actions">
 									<button type="submit" class="btn blue">提交</button>
 									<a class='btn' href="${header.Referer }">返回</a>
-									<a class='btn yellow' href="javascript:void(0);" onclick="javascript:showRcs();">test</a>
 								</div>
 							</form>
-							<div >
-							
-							</div>
 						</div>
 					</div>
 				</div>
-				<%@ include file="/WEB-INF/content/sys/role/allotRc.jsp"%>
 			</div>
 		</div>
 	</div>

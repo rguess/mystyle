@@ -37,6 +37,27 @@ String.prototype.replaceAll  = function(s1,s2){
 };
 
 /**
+ * 数组扩展---根据下标删除某元素
+ */
+Array.prototype.del=function(n) {
+	if(n<0) return this;
+	else
+		return this.slice(0,n).concat(this.slice(n+1,this.length));
+};
+
+/**
+ * 数组扩展---根据一个值删除某元素
+ */
+Array.prototype.byValue=function(value) {
+	for(var i = 0;i<this.length;i++){
+		if(this[i] == value){
+			this.del(i);
+		}
+	}
+};
+
+
+/**
  * 遮罩层函数
  */
 function blockUI() {

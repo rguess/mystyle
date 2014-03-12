@@ -50,6 +50,7 @@ public class Resource extends IdEntity {
 	private Set<Resource> childRes;
 	/** 角色 */
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, targetEntity = Role.class,mappedBy="resources")
+	@JsonIgnore
 	private Set<Role> roles = new HashSet<Role>(0);
 	/** 是否被授权权限 */
 	private String authorize;

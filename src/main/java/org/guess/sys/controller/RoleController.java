@@ -1,6 +1,11 @@
 package org.guess.sys.controller;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import org.apache.commons.lang.StringUtils;
 import org.guess.core.web.BaseController;
+import org.guess.sys.model.Resource;
 import org.guess.sys.model.Role;
 import org.guess.sys.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +34,20 @@ public class RoleController extends BaseController<Role, RoleService> {
 			return true;
 		Role r = roleService.findUniqueBy("name", id);
 		return r == null;
+	}
+	
+	@Override
+	public String create(Role role) throws Exception {
+		String recIds = request.getParameter("recids");
+		String[] ids = StringUtils.split(recIds,",");
+		Set<Resource> rcs = new HashSet<Resource>();
+		for (String rid : ids) {
+			Resource resource = new Resource();
+			resource.setId(Long.valueOf(rid));
+			rcs.add(resource);
+		}
+		role.setResources(rcs);
+		return super.create(role);
 	}
 
 }

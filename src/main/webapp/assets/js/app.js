@@ -1037,6 +1037,16 @@ var App = function () {
     			ul.append('<li><a href="javascript:void(0)" onclick="javascript:'+item.clickFn+';"><i class="'+item.icon+'"></i>'+item.name+'</a></li>');
     		});
     		return div.append(a).append(ul);
+        },
+        
+        //判断一个值是否在数组中
+        in_array : function(value,array){
+        	for(var i in array){
+                if(array[i]==value){
+                    return true;
+                }
+            }
+            return false;
         }
     };
 

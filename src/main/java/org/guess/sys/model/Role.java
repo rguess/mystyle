@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -31,8 +30,7 @@ public class Role extends IdEntity {
 	private Set<User> users = new HashSet<User>(0);
 	
 	/** 拥有权限 */
-	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST,
-			CascadeType.MERGE })
+	@ManyToMany( cascade = { CascadeType.PERSIST,CascadeType.MERGE })
 	@JoinTable(name = "SYS_ROLE_RES", joinColumns = { @JoinColumn(name = "ROLE_ID") }, inverseJoinColumns = { @JoinColumn(name = "RES_ID") })
 	private Set<Resource> resources = new HashSet<Resource>();
 	/** 是否被授权权限 */
