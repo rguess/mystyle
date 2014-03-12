@@ -13,4 +13,9 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserDao> implem
 	@Autowired
 	public UserDao userDao;
 
+	@Override
+	public User findByLoginId(String loginId) {
+		return userDao.findUniqueBy("loginId", loginId);
+	}
+
 }

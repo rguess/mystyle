@@ -1,7 +1,9 @@
 package org.guess.sys.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -145,5 +147,25 @@ public class User extends IdEntity {
 
 	public User() {
 		super();
+	}
+	
+	@JsonIgnore
+	public List<String> getStringRoles(){
+		List<String> roles = new ArrayList<String>();
+ 		for (Role role : this.getRoles()) {
+			roles.add(role.getName());
+		}
+ 		return roles;
+	}
+	
+	@JsonIgnore
+	public List<String> getStringPerms(){
+		List<String> perms = new ArrayList<String>();
+		for (Role role : this.getRoles()) {
+			for (Resource rec : role.getResources()) {
+				perms.add(rec.getPermsString());
+			}
+		}
+		return perms;
 	}
 }

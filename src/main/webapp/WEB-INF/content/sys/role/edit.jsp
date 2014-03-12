@@ -25,10 +25,6 @@
 		$("#recids").val(recIds);
 	});
 	
-	function showRcs(){
-		$("#rcs").show().center({position: 'fixed'}).move();
-	}
-	
 	/* 初始化树 */
 	function initTree(){
 		var setting = {
