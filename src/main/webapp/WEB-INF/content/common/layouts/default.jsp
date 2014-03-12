@@ -24,6 +24,7 @@
 <link href="${ctx}/assets/css/style_light.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/comp/gritter/css/jquery.gritter.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/comp/chosen-bootstrap/chosen/chosen.css" type="text/css" rel="stylesheet" />
+<link href="${ctx}/assets/css/icon.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/favicon.ico" rel="shortcut icon"/>
 
 <script src="${ctx}/assets/js/jquery-1.8.3.min.js" type="text/javascript"></script>

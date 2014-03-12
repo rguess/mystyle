@@ -95,7 +95,7 @@
 									<label class="control-label">图标：</label>
 									<div class="controls">
 										<a href="#" class="btn blue" onclick="javascript:showIcons();">
-											&nbsp<i id="btnIconI" class="${iconMark } icon-white"></i>&nbsp
+											&nbsp<i id="btnIconI" class="${iconMark }"></i>&nbsp
 										</a>
 										<input type="hidden" id="iconVal" value="${iconMark }" name="icon">
 									</div>

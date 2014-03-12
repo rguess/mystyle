@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.guess.core.orm.Page;
 import org.guess.core.orm.PropertyFilter;
@@ -42,6 +43,9 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	
 	@Autowired
 	protected HttpServletRequest request;
+	
+	@Autowired
+	protected HttpSession session;
 
 	/**
 	 * 反射获取子类中service

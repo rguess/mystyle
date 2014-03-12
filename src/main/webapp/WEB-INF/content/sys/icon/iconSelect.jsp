@@ -11,7 +11,7 @@
 		<c:forEach items="${icons }" var="icon" varStatus="sta">
 			<a href="javascript:;" title="${icon.description }" style=""
 				onclick="javascript:selIcon('${icon.mark }');"><i
-				class="${icon.mark } icon-white"></i>&nbsp&nbsp
+				class="${icon.mark }"></i>
 			</a>
 		</c:forEach>
 	</div>
