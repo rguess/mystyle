@@ -10,6 +10,7 @@ mystyle
 * mysql数据库
 * 前端使用基于bootstrap的metronic组件库
 * 使用泛型封装dao、service、controller基类，包含分页，查询条件封装，从而达到快速crud操作
+* 基于hibernate简单查询条件的封装
 * 权限管理——使用框架apache shiro进行系统认证、授权操作(完成)
 * 系统管理——包含用户、角色、权限、资源、菜单管理(完成)
 * 集成activiti工作流引擎并完成工作流通用基类、常用工具类(未完成)
