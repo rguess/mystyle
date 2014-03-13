@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<%@ include file="/WEB-INF/content/common/common.jsp"%>
 
 <!-- BEGIN HEADER -->
 <div class="header navbar navbar-inverse navbar-fixed-top">
@@ -170,11 +169,12 @@
 					</ul></li>
 				<!-- END TODO DROPDOWN -->
 				<!-- BEGIN USER LOGIN DROPDOWN -->
-				<li class="dropdown user"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"> <img alt=""
-						src="${ctx}/assets/img/avatar1_small.jpg" /> <span class="username">Bob
-							Nilson</span> <i class="icon-angle-down"></i>
-				</a>
+				<li class="dropdown user">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<img alt="" src="${ctx}/assets/img/avatar1_small.jpg" />
+							<span class="username"><shiro:principal/></span> 
+							<i class="icon-angle-down"></i>
+					</a>
 					<ul class="dropdown-menu">
 						<li><a href="extra_profile.html"><i class="icon-user"></i>
 								My Profile</a></li>

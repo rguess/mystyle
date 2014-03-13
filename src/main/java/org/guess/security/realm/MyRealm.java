@@ -18,6 +18,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
+import org.guess.core.Constants;
 import org.guess.sys.model.Resource;
 import org.guess.sys.model.Role;
 import org.guess.sys.model.User;
@@ -57,11 +58,13 @@ public class MyRealm extends AuthorizingRealm {
 			for (Role role : user.getRoles()) {
 				stringRoles.add(role.getName());
 				for (Resource rec : role.getResources()) {
-					stringPerms.add(rec.getName());
+					if(rec.getGrade() == Constants.MENU_GRADE){
+						stringPerms.add(rec.getPermsString());
+					}
 				}
 			}
 			simpleAuthorInfo.addRoles(stringRoles);
-			simpleAuthorInfo.addStringPermissions(stringRoles);
+			simpleAuthorInfo.addStringPermissions(stringPerms);
 			return simpleAuthorInfo;
 		}else{
 			 throw new AuthorizationException();

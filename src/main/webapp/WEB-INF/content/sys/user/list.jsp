@@ -68,23 +68,25 @@ function doQuery(){
 							</div>
 						</div>
 						<div class="portlet-body">
-							<div class="clearfix">
-								<div class="btn-group">
-									<a class="btn green" href="${ctx}/sys/user/create">
-										添加 <i class="icon-plus"></i>
-									</a>
+								<div class="clearfix">
+									<div class="btn-group">
+										<shiro:hasPermission name="sys:user:add">
+											<a class="btn green" href="${ctx}/sys/user/create">
+												添加 <i class="icon-plus"></i>
+											</a>
+										</shiro:hasPermission>
+									</div>
+									<!-- <div class="btn-group pull-right">
+										<button class="btn dropdown-toggle" data-toggle="dropdown">
+											Tools <i class="icon-angle-down"></i>
+										</button>
+										<ul class="dropdown-menu">
+											<li><a href="#">Print</a></li>
+											<li><a href="#">Save as PDF</a></li>
+											<li><a href="#">Export to Excel</a></li>
+										</ul>
+									</div> -->
 								</div>
-								<!-- <div class="btn-group pull-right">
-									<button class="btn dropdown-toggle" data-toggle="dropdown">
-										Tools <i class="icon-angle-down"></i>
-									</button>
-									<ul class="dropdown-menu">
-										<li><a href="#">Print</a></li>
-										<li><a href="#">Save as PDF</a></li>
-										<li><a href="#">Export to Excel</a></li>
-									</ul>
-								</div> -->
-							</div>
 							<form>
 								<div class="row-fluid">
 									<div class="span2 ">

@@ -63,6 +63,11 @@ public interface Constants {
     int SECOND_MENU = 2;
     
     /**
+     * 菜单等级标识
+     */
+    int MENU_GRADE = 3;
+    
+    /**
      * 最高级资源grade标识
      */
     int TOP_REC = 0;

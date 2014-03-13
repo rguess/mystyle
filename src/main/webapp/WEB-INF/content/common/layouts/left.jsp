@@ -25,7 +25,7 @@
 						</a>
 						<ul class="sub">
 							<c:forEach var="child" items="${menu.childRes }">
-								<li><a href="${ctx }${child.resString}">${child.name }</a></li>
+								<li><a href="${ctx }${child.resString}"><i class="${child.icon }"></i>${child.name }</a></li>
 							</c:forEach>
 						</ul>
 					</li>

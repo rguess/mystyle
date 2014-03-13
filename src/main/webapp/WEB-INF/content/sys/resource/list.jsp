@@ -62,8 +62,7 @@
 			name : "操作",
 			group : [{clickFn : "edit("+id+")",name : "修改",icon : "icon-pencil"},
 					 {clickFn : "del("+id+")",name : "删除",icon : "icon-trash"},
-				 	 {clickFn : "show("+id+")",name : "查看",icon : "icon-search"},
-					 {clickFn : "addChlid("+id+")",name : "新增下级",icon : "icon-plus"}
+				 	 {clickFn : "show("+id+")",name : "查看",icon : "icon-search"}
 			         ]
 		});
 	}
