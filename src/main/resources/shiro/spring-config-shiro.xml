@@ -29,6 +29,12 @@
 		<!-- 用户访问未对其授权的资源时,所显示的连接 -->
 		<!-- 若想更明显的测试此属性可以修改它的值,如unauthor.jsp,然后用[玄玉]登录后访问/admin/listUser.jsp就看见浏览器会显示unauthor.jsp -->
 		<property name="unauthorizedUrl" value="/login?error=unauthor" />
+		<!-- 自定义filter -->
+		<property name="filters">
+            <util:map>
+                <entry key="userSetting" value-ref="userSettingFilter"/>
+            </util:map>
+        </property>
 		<!-- Shiro连接约束配置,即过滤链的定义 -->
 		<!-- 此处可配合我的这篇文章来理解各个过滤连的作用http://blog.csdn.net/jadyer/article/details/12172839 -->
 		<!-- 下面value值的第一个'/'代表的路径是相对于HttpServletRequest.getContextPath()的值来的 -->
@@ -38,10 +44,13 @@
 			<value>
 				/assets/**=anon
 				/login=anon
-				/**=user,roles[superAdmin]
+				/**=user,userSetting
 			</value>
 		</property>
 	</bean>
+	
+	<!-- 自定义加入filter，起在remember me session失效情况下刷新session作用 -->
+	<bean id="userSettingFilter" class="org.guess.security.filter.UserSetting" />
 	
 	<!-- 用户授权信息Cache, 采用EhCache -->
 	<bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">

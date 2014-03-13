@@ -2,6 +2,7 @@ package org.guess.sys.controller;
 
 import java.util.List;
 
+import org.guess.core.Constants;
 import org.guess.core.web.BaseController;
 import org.guess.sys.model.Resource;
 import org.guess.sys.service.IconService;
@@ -34,14 +35,14 @@ public class ResourceController extends BaseController<Resource, ResourceService
 	@RequestMapping(method=RequestMethod.GET,value="/tree")
 	@ResponseBody
 	public List<Resource> tree() throws Exception{
-		List<Resource> res = rService.findBy("grade", 1);
+		List<Resource> res = rService.findBy("grade", Constants.FIRST_MENU);
 		return res;
 	}
 	
 	@RequestMapping(method=RequestMethod.GET,value="/showTree")
 	@ResponseBody
 	public List<Resource> showTree() throws Exception{
-		List<Resource> res = rService.findBy("grade", 0);
+		List<Resource> res = rService.findBy("grade", Constants.TOP_REC);
 		return res;
 	}
 	

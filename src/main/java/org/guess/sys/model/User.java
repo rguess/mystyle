@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.guess.core.Constants;
 import org.guess.core.IdEntity;
 import org.guess.core.utils.DateUtil;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class User extends IdEntity {
 
 	/** 登录ID */
-	@Column(unique=true)
+	@Column(unique = true)
 	private String loginId;
 	/** 密码 */
 	private String passwd;
@@ -41,11 +43,11 @@ public class User extends IdEntity {
 	private String status;
 	/** 备注 */
 	private String remark;
-	
+
 	/** 创建时间 */
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createDate = DateUtil.parseFormat("yyyy-MM-dd");
-	
+
 	public Date getCreateDate() {
 		return createDate;
 	}
@@ -55,7 +57,7 @@ public class User extends IdEntity {
 	}
 
 	/** 拥有角色 */
-	@ManyToMany( cascade = { CascadeType.PERSIST,CascadeType.MERGE })
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "SYS_USER_ROLE", joinColumns = { @JoinColumn(name = "USER_ID") }, inverseJoinColumns = { @JoinColumn(name = "ROLE_ID") })
 	@JsonIgnore
 	private Set<Role> roles = new HashSet<Role>();
@@ -132,8 +134,8 @@ public class User extends IdEntity {
 		this.roles = roles;
 	}
 
-	public User(String loginId, String passwd, String name, String email,
-			String mobilePhone, String address, String status, String remark) {
+	public User(String loginId, String passwd, String name, String email, String mobilePhone, String address,
+			String status, String remark) {
 		super();
 		this.loginId = loginId;
 		this.passwd = passwd;
@@ -148,24 +150,30 @@ public class User extends IdEntity {
 	public User() {
 		super();
 	}
-	
+
 	@JsonIgnore
-	public List<String> getStringRoles(){
-		List<String> roles = new ArrayList<String>();
- 		for (Role role : this.getRoles()) {
-			roles.add(role.getName());
-		}
- 		return roles;
-	}
-	
-	@JsonIgnore
-	public List<String> getStringPerms(){
-		List<String> perms = new ArrayList<String>();
+	public List<Resource> getMenus() {
+		List<Resource> recs = new ArrayList<Resource>();
+		List<Resource> allRecs = new ArrayList<Resource>();
 		for (Role role : this.getRoles()) {
 			for (Resource rec : role.getResources()) {
-				perms.add(rec.getPermsString());
+				if (rec.getGrade() == Constants.FIRST_MENU) {
+					recs.add(rec);
+				}
+				allRecs.add(rec);
 			}
 		}
-		return perms;
+		for (Resource r1 : recs) {
+			Set<Resource> userRecs = new HashSet<Resource>();
+			for (Resource r2 : allRecs) {
+				if (r2.getParent() != null && r2.getGrade() == Constants.SECOND_MENU
+						&& r2.getParent().getId() == r1.getId()) {
+						userRecs.add(r2);
+				}
+			}
+			
+			r1.setChildRes(userRecs);
+		}
+		return recs;
 	}
 }

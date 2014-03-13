@@ -1,6 +1,7 @@
 package org.guess.security.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -10,7 +11,9 @@ import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.guess.core.Constants;
 import org.guess.core.utils.security.Coder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +23,9 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Controller
 @RequestMapping("/")
 public class LoginController {
+	
+	@Autowired
+	private HttpSession session;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String index() {
@@ -78,6 +84,8 @@ public class LoginController {
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest request) {
 		SecurityUtils.getSubject().logout();
+		session.removeAttribute(Constants.CURRENT_USER);
+		session.removeAttribute(Constants.USER_MENUS);
 		return InternalResourceViewResolver.REDIRECT_URL_PREFIX + "/login";
 	}
 }

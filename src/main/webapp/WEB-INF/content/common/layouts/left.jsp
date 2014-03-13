@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
+<%@ include file="/WEB-INF/content/common/common.jsp"%>
 <!-- BEGIN SIDEBAR -->
 <div class="page-sidebar nav-collapse collapse">
 	<!-- BEGIN SIDEBAR MENU -->
@@ -13,7 +14,26 @@
 				class="selected"></span>
 		</a></li>
 		
-		<li class="has-sub">
+		<c:forEach var="menu" items="${sessionScope.menus }">
+			<c:choose>
+				<c:when test="${not empty menu.childRes }">
+					<li class="has-sub">
+						<a href="javascript:;">
+							<i class="${menu.icon }"></i>
+							<span class="title">${menu.name }</span>
+							<span class="arrow"></span>
+						</a>
+						<ul class="sub">
+							<c:forEach var="child" items="${menu.childRes }">
+								<li><a href="${ctx }${child.resString}">${child.name }</a></li>
+							</c:forEach>
+						</ul>
+					</li>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		
+<%-- 		<li class="has-sub">
 			<a href="javascript:;">
 				<i class="icon-bookmark-empty"></i>
 				<span class="title">系统管理</span>
@@ -25,7 +45,7 @@
 				<li><a href="${ctx }/sys/resource/list">资源管理</a></li>
 				<li><a href="${ctx }/sys/icon/list">图标管理</a></li>
 			</ul>
-		</li>
+		</li> --%>
 		
 		<li class="has-sub"><a href="javascript:;"> <i
 				class="icon-table"></i> <span class="title">Form Stuff</span> <span
