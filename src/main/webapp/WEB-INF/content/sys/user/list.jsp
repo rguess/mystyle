@@ -25,12 +25,7 @@ $(document).ready(function() {
 		 {cName:"loginId",cValue:"登录名"},
 		 {cName:"mobilePhone",cValue:"手机",noSort:true},
 		 {cName:"address",cValue:"地址"},
-		 {cName:"createDate",cValue:"创建时间",format:function(i,value,item){
-			 if(App.isNundef(value)){
-				 return new Date(value).format("yyyy-MM-dd");
-			 }
-			 return value;
-		 }}
+		 {cName:"createDate",cValue:"创建时间"}
 		 ]
 	);
 });
