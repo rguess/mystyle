@@ -95,5 +95,5 @@
 		</tx:attributes>
 	</tx:advice>
 	
-	<import resource="spring-config-shiro.xml"/>
+	<import resource="shiro/spring-config-shiro.xml"/>
 </beans>

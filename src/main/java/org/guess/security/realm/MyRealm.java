@@ -1,5 +1,8 @@
 package org.guess.security.realm;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.shiro.SecurityUtils;
@@ -15,6 +18,8 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
+import org.guess.sys.model.Resource;
+import org.guess.sys.model.Role;
 import org.guess.sys.model.User;
 import org.guess.sys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,12 +49,19 @@ public class MyRealm extends AuthorizingRealm {
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		// 获取当前登录的用户名,等价于(String)principals.fromRealm(this.getName()).iterator().next()
 		String currentUsername = (String) super.getAvailablePrincipal(principals);
-		System.out.println(123+"-------------------------");
 		User user = userService.findByLoginId(currentUsername);
 		SimpleAuthorizationInfo simpleAuthorInfo = new SimpleAuthorizationInfo();
+		List<String> stringRoles = new ArrayList<String>();
+		List<String> stringPerms = new ArrayList<String>();
 		if(null != user){
-			simpleAuthorInfo.addRoles(user.getStringRoles());
-			simpleAuthorInfo.addStringPermissions(user.getStringPerms());
+			for (Role role : user.getRoles()) {
+				stringRoles.add(role.getName());
+				for (Resource rec : role.getResources()) {
+					stringPerms.add(rec.getName());
+				}
+			}
+			simpleAuthorInfo.addRoles(stringRoles);
+			simpleAuthorInfo.addStringPermissions(stringRoles);
 			return simpleAuthorInfo;
 		}else{
 			 throw new AuthorizationException();
