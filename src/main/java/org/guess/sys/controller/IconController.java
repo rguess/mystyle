@@ -28,4 +28,21 @@ public class IconController extends BaseController<Icon, IconService>{
 		return mav.addObject("icons", iService.getAll());
 	}
 	
+	@RequestMapping("addMany")
+	public ModelAndView addMany(ModelAndView mav) throws Exception{
+		/*for (int i = 1; i <= 50; i++) {
+			Icon icon = new Icon();
+			String x = "";
+			if(i<10){
+				x = "0";
+			}
+			icon.setMark("diy_icon_04_"+x+i);
+			icon.setType("png");
+			iService.save(icon);
+			System.out.println(icon.getMark());
+		}*/
+		mav.setViewName(listView);
+		return mav;
+	}
+	
 }

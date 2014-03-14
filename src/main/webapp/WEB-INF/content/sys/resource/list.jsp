@@ -58,7 +58,7 @@
 	//生产下拉操作按钮
 	function operBtn(id){
 		return App.initDropDownBtn({
-			icon : "icon-user",
+			icon : "icon-cogs",
 			name : "操作",
 			group : [{clickFn : "edit("+id+")",name : "修改",icon : "icon-pencil"},
 					 {clickFn : "del("+id+")",name : "删除",icon : "icon-trash"},

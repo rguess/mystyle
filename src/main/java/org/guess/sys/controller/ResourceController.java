@@ -64,13 +64,8 @@ public class ResourceController extends BaseController<Resource, ResourceService
 	
 	@Override
 	public String create(Resource object) throws Exception {
-		if(object.getParent() == null || object.getParent().getId() == null){
-			object.setParent(null);
-			object.setGrade(1);
-		}else{
 			Resource parent = rService.get(object.getParent().getId());
 			object.setGrade(parent.getGrade()+1);
-		}
 		return super.create(object);
 	}
 	

@@ -49,7 +49,21 @@
 		if($('.date').length != 0){
 			$('.date').datepicker();
 		}
+		
+		//执行随机颜色方法
+		//proLetRomColor();
 	});
+	
+	//portlet随机颜色
+	function proLetRomColor(){
+		var colors = ["blue","light blue","red","yellow","green","purple","grey","light grey"];
+		var prolet = $(".portlet");
+		$.each(colors,function(i,item){
+			prolet.removeClass(item);
+		});
+		var temp = parseInt(Math.random()*colors.length);
+		prolet.addClass(colors[temp]);
+	}
 </script>
 <sitemesh:head />
 </head>

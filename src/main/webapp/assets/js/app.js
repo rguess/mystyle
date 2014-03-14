@@ -907,7 +907,7 @@ var App = function () {
     var colseDIYWin = function(){
     	$(".remove1").click(function(){
     		$(this).closest(".diywindow").hide();
-    	})
+    	});
     }
     
     return {
@@ -932,7 +932,7 @@ var App = function () {
             handleFancyBox(); // handles fancy box image previews
             handleStyler(); // handles style customer tool
             handleMainMenu(); // handles main menu
-            handleSidebarToggler() // handles sidebar hide/show
+            handleSidebarToggler(); // handles sidebar hide/show
             handleFixInputPlaceholderForIE(); // fixes/enables html5 placeholder attribute for IE9, IE8
             handleGoTop(); //handles scroll to top functionality in the footer
             handleAccordions(); //handles accordions

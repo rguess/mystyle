@@ -14,7 +14,7 @@
 				<img src="${ctx}/assets/img/menu-toggler.png" alt="" />
 			</a> --%>
 			<!-- END RESPONSIVE MENU TOGGLER -->
-			<div class="nav-collapse collapse">
+<!-- 			<div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="/">首页</a></li>
               <li class="">
@@ -43,7 +43,7 @@
                 <a href="about.html">关于</a>
               </li>
             </ul>
-          </div>
+          </div> -->
 			<!-- BEGIN TOP NAVIGATION MENU -->
 			<ul class="nav pull-right">
 				<!-- BEGIN NOTIFICATION DROPDOWN -->
@@ -176,14 +176,26 @@
 							<i class="icon-angle-down"></i>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="extra_profile.html"><i class="icon-user"></i>
-								My Profile</a></li>
-						<li><a href="calendar.html"><i class="icon-calendar"></i>
-								My Calendar</a></li>
-						<li><a href="#"><i class="icon-tasks"></i> My Tasks</a></li>
+						<li><a href="javascript:void(0);">
+							<i class="icon-user"></i>&nbsp&nbsp&nbsp<span>个人信息</span>
+							</a>
+						</li>
+						<li><a href="javascript:void(0);" onclick="javascript:changePwd();">
+							<i class="icon-wrench"></i>&nbsp&nbsp&nbsp<span>修改密码</span>
+							</a>
+						</li>
+						<li><a href="javascript:void(0);">
+							<i class="icon-calendar"></i>&nbsp&nbsp&nbsp<span>我的任务</span>
+							</a>
+						</li>
+						<li><a href="javascript:void(0);" onclick="javascript:loadSysSetting();">
+							<i class="icon-cog"></i>&nbsp&nbsp&nbsp<span>系统设置</span>
+							</a>
+						</li>
 						<li class="divider"></li>
-						<li><a href="${ctx }/logout"><i class="icon-key"></i> Log Out</a></li>
-					</ul></li>
+						<li><a href="${ctx }/logout"><i class="icon-key"></i>退出</a></li>
+					</ul>
+				</li>
 				<!-- END USER LOGIN DROPDOWN -->
 			</ul>
 			<!-- END TOP NAVIGATION MENU -->
@@ -191,3 +203,24 @@
 	</div>
 	<!-- END TOP NAVIGATION BAR -->
 </div>
+
+<script>
+	function loadSysSetting(){
+		alert("还没做");
+	}
+	function changePwd(){
+		alert("还没做");
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

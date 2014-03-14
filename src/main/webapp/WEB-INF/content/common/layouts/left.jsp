@@ -10,7 +10,7 @@
 			<!-- END SIDEBAR TOGGLER BUTTON -->
 		</li>
 		<li class="start"><a href="index.html"> <i
-				class="icon-home"></i> <span class="title">Dashboard</span> <span
+				class="icon-home"></i> <span class="title">首页</span> <span
 				class="selected"></span>
 		</a></li>
 		

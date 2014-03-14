@@ -60,7 +60,7 @@ function doQuery(){
 					<div class="portlet box purple">
 						<div class="portlet-title">
 							<h4>
-								<i class="icon-globe"></i>列表
+								<i class="diy_icon_04_38"></i>列表
 							</h4>
 							<div class="tools">
 								<a href="javascript:;" class="collapse"></a><a

@@ -165,7 +165,7 @@ var Page = {
 	// 生成操作按钮
 	operBtn : function(id) {
 		return App.initDropDownBtn({
-			icon : "icon-user",
+			icon : "icon-cogs",
 			name : "操作",
 			group : [ {
 				clickFn : "Page.updateObj(" + id + ")",
