@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,6 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Update page   : GET /user/update/{id}
  * Update action : POST /user/edit
  * Delete action : GET /user/delete/{id}
+ * Delete action : POST /user/delete
  * show page     : GET /user/show/{id}
  * 
  * @author guess
@@ -36,6 +38,8 @@ import org.springframework.web.servlet.ModelAndView;
 public abstract class BaseController<T, M extends BaseService<T, Long>> {
 
 	protected final static String REDIRECT = "redirect:";
+	protected final static String SUCCESS = "success";
+	
 
 	protected String listView = null;
 	protected String editView = null;
@@ -103,6 +107,15 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	@RequestMapping(value = "delete/{id}")
 	public String delete(@PathVariable("id") Long id) throws Exception {
 		getBaseService().removeById(id);
+		return REDIRECT+listView;
+	}
+	
+	/**
+	 * 批量删除
+	 */
+	@RequestMapping(value = "delete",method=RequestMethod.POST)
+	public String delete(@RequestParam("ids") Long[] ids , HttpServletRequest request) throws Exception {
+		getBaseService().removeByIds(ids);
 		return REDIRECT+listView;
 	}
 	

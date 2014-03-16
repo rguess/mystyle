@@ -1,9 +1,7 @@
 package org.guess.sys.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -154,9 +152,9 @@ public class User extends IdEntity {
 	}
 
 	@JsonIgnore
-	public List<Resource> getMenus() {
-		List<Resource> recs = new ArrayList<Resource>();
-		List<Resource> allRecs = new ArrayList<Resource>();
+	public Set<Resource> getMenus() {
+		Set<Resource> recs = new HashSet<Resource>();
+		Set<Resource> allRecs = new HashSet<Resource>();
 		for (Role role : this.getRoles()) {
 			for (Resource rec : role.getResources()) {
 				if (rec.getGrade() == Constants.FIRST_MENU) {

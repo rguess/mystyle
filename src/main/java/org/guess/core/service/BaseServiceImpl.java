@@ -63,6 +63,11 @@ abstract public class BaseServiceImpl<T, ID extends Serializable, M extends Enti
 		getEntityDao().delete(id);
 
 	}
+	
+	@Override
+	public void removeByIds(ID[] ids) throws Exception {
+		getEntityDao().batchDelete((ID[]) ids);
+	}
 
 	@Override
 	public Page<T> findPage(PageRequest pageRequest, String hql, Map<String, ?> values) {

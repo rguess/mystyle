@@ -1047,7 +1047,17 @@ var App = function () {
                 }
             }
             return false;
+        },
+        
+        alert : function(str){
+        	bootbox.alert(str);
+        },
+        
+        confirm :function(callback){
+        	bootbox.confirm("确定？", callback)
         }
+        
+        
     };
 
 }();

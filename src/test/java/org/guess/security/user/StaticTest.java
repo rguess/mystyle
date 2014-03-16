@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.guess.core.utils.DateUtil;
+import org.guess.core.utils.mapper.JsonMapper;
+import org.guess.sys.model.User;
 
 public class StaticTest {
 
@@ -77,10 +79,14 @@ public class StaticTest {
 		String a2 = "2";
 		System.out.println(a1=a1+=a2);*/
 		
-		int i = 0;
+		/*int i = 0;
 		i = 7;
 		set(i);
-		System.out.println(i);
+		System.out.println(i);*/
+		
+		User user = new User();
+		user.setCreateDate(DateUtil.parse(DateUtil.format(new Date())));
+		System.out.println(JsonMapper.nonEmptyMapper().toJson(user));
 	
 	}
 }

@@ -69,6 +69,14 @@ public interface BaseService<T,ID extends Serializable> {
 	void removeById(ID id) throws Exception;
 	
 	/**
+	 * 批量删除
+	 * 
+	 * @param id
+	 * @throws DataAccessException
+	 */
+	void removeByIds(ID[] ids) throws Exception;
+	
+	/**
 	 * 分页查询
 	 * @param pageRequest
 	 * @param hql

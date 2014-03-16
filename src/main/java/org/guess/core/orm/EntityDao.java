@@ -15,9 +15,11 @@ public interface EntityDao<T,ID extends Serializable> {
 
 	void save(T o);
 
-	void delete(T o);
-
 	void delete(ID id);
+	
+	void delete(T o);
+	
+	void batchDelete(ID[] ids);
 
 	Page<T> findPage(final PageRequest pageRequest, String hql, final Object... values);
 

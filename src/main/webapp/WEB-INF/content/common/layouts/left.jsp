@@ -47,19 +47,15 @@
 			</ul>
 		</li> --%>
 		
-		<li class="has-sub"><a href="javascript:;"> <i
-				class="icon-table"></i> <span class="title">Form Stuff</span> <span
-				class="arrow"></span>
+		<%-- <li class="has-sub">
+			<a href="javascript:;"> 
+			<i class="icon-table"></i>
+			<span class="title">终端服务</span> 
+			<span class="arrow"></span>
 		</a>
 			<ul class="sub">
-				<li><a href="form_layout.html">Form Layouts</a></li>
-				<li><a href="form_samples.html">Advance Form Samples</a></li>
-				<li><a href="form_component.html">Form Components</a></li>
-				<li><a href="form_wizard.html">Form Wizard</a></li>
-				<li><a href="form_validation.html">Form Validation</a></li>
-				<li><a href="form_fileupload.html">Multiple File Upload</a></li>
-				<li><a href="form_dropzone.html">Dropzone File Upload</a></li>
-			</ul></li>
+				<li><a href="${ctx }/mobile/push">消息推送</a></li>
+			</ul></li> --%>
 		<li class="has-sub "><a href="javascript:;"> <i
 				class="icon-th-list"></i> <span class="title">Data Tables</span> <span
 				class="arrow "></span>

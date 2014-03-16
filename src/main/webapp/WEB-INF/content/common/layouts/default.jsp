@@ -20,6 +20,7 @@
 <link href="${ctx}/assets/comp/bootstrap/css/bootstrap-responsive.min.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/comp/font-awesome/css/font-awesome.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/style.css" type="text/css" rel="stylesheet" />
+<link href="${ctx}/assets/css/style2.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/style_responsive.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/style_light.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/comp/gritter/css/jquery.gritter.css" type="text/css" rel="stylesheet" />
@@ -33,8 +34,11 @@
 <script src="${ctx}/assets/js/excanvas.js"></script>
 <script src="${ctx}/assets/js/respond.js"></script>	
 <![endif]-->
+<script src="${ctx}/assets/js/jquery.form.js"></script>
 <script src="${ctx}/assets/js/jquery.cookie.js"></script>
 <script src="${ctx}/assets/js/jquery.blockui.js"></script>
+<script src="${ctx}/assets/js/bootbox.js"></script>
+<script src="${ctx}/assets/js/jquery.form.js"></script>
 <script src="${ctx}/assets/comp/breakpoints/breakpoints.js" type="text/javascript" ></script>
 <script src="${ctx}/assets/comp/chosen-bootstrap/chosen/chosen.jquery.min.js" type="text/javascript" ></script>
 <script src="${ctx}/assets/js/app.js"></script>
@@ -51,7 +55,7 @@
 		}
 		
 		//执行随机颜色方法
-		//proLetRomColor();
+		proLetRomColor();
 	});
 	
 	//portlet随机颜色

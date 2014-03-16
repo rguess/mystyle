@@ -97,4 +97,5 @@
 	</tx:advice>
 	
 	<import resource="shiro/spring-config-shiro.xml"/>
+	<import resource="push/spring-config-push.xml"/>
 </beans>

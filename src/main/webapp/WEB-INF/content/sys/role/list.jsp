@@ -8,6 +8,10 @@
 <link href="${ctx}/assets/comp/bootstrap-paginator/DT_bootstrap.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="${ctx}/assets/comp/bootstrap-paginator/bootstrap-paginator.js"></script>
 <script type="text/javascript" src="${ctx}/assets/js/page.js"></script>
+
+<!-- 通过这种方式生成权限数组 ,点击去看详细-->
+<tool:perms permStr="sys:role:update-sys:role:delete-sys:role:show"></tool:perms>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -53,11 +57,20 @@ function doQuery(){
 						</div>
 						<div class="portlet-body">
 							<div class="clearfix">
-								<div class="btn-group">
+								<p>
 									<a class="btn green" href="${ctx}/sys/role/create">
 										添加 <i class="icon-plus"></i>
 									</a>
-								</div>
+									<a class="btn blue" href="javascript:void(0);" onclick="Page.updateObj();">
+										修改<i class="icon-pencil"></i>
+									</a>
+									<a class="btn red" href="javascript:void(0);" onclick="Page.deleteObj();">
+										删除<i class="icon-trash"></i>
+									</a>
+									<a class="btn blue" href="javascript:void(0);" onclick="Page.viewObj();">
+										详细<i class="icon-search"></i>
+									</a>
+								</p>
 							</div>
 							<form>
 								<div class="row-fluid">

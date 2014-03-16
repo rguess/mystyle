@@ -37,6 +37,32 @@ String.prototype.replaceAll  = function(s1,s2){
 };
 
 /**
+ * js实现endWith
+ */
+String.prototype.endWith=function(str){
+	if(str==null||str==""||this.length==0||str.length>this.length)
+	  return false;
+	if(this.substring(this.length-str.length)==str)
+	  return true;
+	else
+	  return false;
+	return true;
+}
+
+/**
+ * js实现startWith
+ */
+String.prototype.startWith=function(str){
+	if(str==null||str==""||this.length==0||str.length>this.length)
+	  return false;
+	if(this.substr(0,str.length)==str)
+	  return true;
+	else
+	  return false;
+	return true;
+}
+
+/**
  * 数组扩展---根据下标删除某元素
  */
 Array.prototype.del=function(n) {

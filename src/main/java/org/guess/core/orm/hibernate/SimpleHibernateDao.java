@@ -111,6 +111,20 @@ public class SimpleHibernateDao<T, ID extends Serializable> {
 		delete(get(id));
 		logger.debug("delete entity {},id is {}", entityClass.getSimpleName(), id);
 	}
+	
+	/**
+	 * 批量删除
+	 */
+	public void batchDelete(final ID[] ids){
+		StringBuilder sb = new StringBuilder();
+		sb.append("(");
+		for (ID id : ids) {
+			sb.append(id + ",");
+		}
+		sb.deleteCharAt(sb.length()-1);
+		sb.append(")");
+		batchExecute("delete from "+entityClass.getSimpleName()+" where "+getIdName()+" in "+sb);
+	}
 
 	/**
 	 * 按id获取对象.

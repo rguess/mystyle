@@ -7,7 +7,6 @@
 <link href="${ctx}/assets/comp/jquery-treegrid/jquery.treegrid.css" type="text/css" rel="stylesheet" />
 <script src="${ctx}/assets/comp/jquery-treegrid/jquery.treegrid.js" type="text/javascript"></script>
 <script src="${ctx}/assets/comp/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-
 <%@ include file="/WEB-INF/content/common/jquery-validation.jsp"%>
 
 <script type="text/javascript">
