@@ -17,7 +17,6 @@ import org.guess.core.IdEntity;
 import org.guess.core.utils.DateUtil;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -46,7 +45,7 @@ public class User extends IdEntity {
 
 	/** 创建时间 */
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@JsonFormat(pattern = "yyyy-MM-dd")
+	/*@JsonFormat(pattern = "yyyy-MM-dd")*/
 	private Date createDate = DateUtil.parseFormat("yyyy-MM-dd");
 
 	public Date getCreateDate() {

@@ -4,7 +4,7 @@
 <head>
 <title>用户信息</title>
 <script type="text/javascript">
-	$(function(){
+	$(function() {
 		App.activeMenu("sys/user/list");
 	});
 </script>
@@ -13,38 +13,100 @@
 	<div class="page-content">
 		<div class="container-fluid">
 			<!-- 页面导航 -->
-			<tool:navBar pageTitle="用户信息" pageTitleContent="系统管理-用户管理-用户信息" titleIcon="icon-home"/>
+			<tool:navBar pageTitle="用户信息" pageTitleContent="系统管理-用户管理-用户信息"
+				titleIcon="icon-home" />
 			<!-- 主体内容 -->
-			<div class="row-fluid">
-				<div class="span12">
-					<div class="portlet box green">
-						<div class="portlet-title">
-							<h4>
-								<i class="icon-globe"></i>详细信息
-							</h4>
-							<div class="tools">
-								<a href="javascript:;" class="collapse"></a><a
-									href="javascript:;" class="remove"></a>
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<h4>
+						<i class="icon-reorder"></i>用户信息
+					</h4>
+					<div class="tools">
+						<a href="javascript:;" class="collapse"></a> <a
+							href="javascript:;" class="remove"></a>
+					</div>
+				</div>
+				<div class="portlet-body form">
+					<!-- BEGIN FORM-->
+					<div class="form-horizontal form-view">
+						<h3>系统用户- ${obj.name }</h3>
+						<h3 class="form-section">信息</h3>
+						<div class="row-fluid">
+							<div class="span6 ">
+								<div class="control-group">
+									<label class="control-label" for="firstName">邮箱:</label>
+									<div class="controls">
+										<span class="text">${obj.email }</span>
+									</div>
+								</div>
 							</div>
+							<!--/span-->
+							<div class="span6 ">
+								<div class="control-group">
+									<label class="control-label" for="lastName">用户名:</label>
+									<div class="controls">
+										<span class="text">${obj.loginId }</span>
+									</div>
+								</div>
+							</div>
+							<!--/span-->
 						</div>
-						<div class="portlet-body">
-							<div class="row-fluid">
-								<div class="profile-classic">
-									<ul class="unstyled">
-										<li><span>姓名:</span> ${obj.name }</li>
-										<li><span>邮箱:</span><a href="#"> ${obj.email }</a></li>
-										<li><span>用户名:</span> ${obj.loginId }</li>
-										<li><span>创建时间:</span><fmt:formatDate value="${obj.createDate }"/></li>
-										<li><span>手机号:</span> ${obj.mobilePhone }</li>
-										<li><span>地址:</span> ${obj.address }</li>
-										<li><span>状态:</span> ${obj.status }</li>
-										<li><span>备注:</span> ${obj.remark }</li>
-									</ul>
+						<!--/row-->
+						<div class="row-fluid">
+							<div class="span6 ">
+								<div class="control-group">
+									<label class="control-label">创建时间:</label>
+									<div class="controls">
+										<span class="text"><fmt:formatDate
+												value="${obj.createDate }" /></span>
+									</div>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="span6 ">
+								<div class="control-group">
+									<label class="control-label">手机号:</label>
+									<div class="controls">
+										<span class="text">${obj.mobilePhone }</span>
+									</div>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row-fluid">
+							<div class="span6 ">
+								<div class="control-group">
+									<label class="control-label">地址:</label>
+									<div class="controls">
+										<span class="text bold">${obj.address }</span>
+									</div>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="span6 ">
+								<div class="control-group">
+									<label class="control-label">状态:</label>
+									<div class="controls">
+										<span class="text bold">${obj.status }</span>
+									</div>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<div class="row-fluid">
+							<div class="span12 ">
+								<div class="control-group">
+									<label class="control-label">备注:</label>
+									<div class="controls">
+										<span class="text bold">${obj.remark }</span>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				<!-- END FORM-->
 			</div>
 		</div>
 	</div>

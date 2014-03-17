@@ -70,9 +70,9 @@ var Page = {
 					item.cName).html(item.cValue));
 		});
 		//判断菜单数组长度如果不为空才添加操作列
-		if(typeof(perms) != "undefined" && perms.length >0 ){
+		/*if(typeof(perms) != "undefined" && perms.length >0 ){
 			theadTr.append($("<th class='span2'></th>").html("操作"));
-		}
+		}*/
 		thead.append(theadTr);
 		tBody = $("<tbody></tbody>");
 		$(obj.tableId).empty().append(thead).append(tBody);
@@ -104,9 +104,9 @@ var Page = {
 					tr.append($("<td></td>").html(item[col.cName]));
 				}
 			});
-			if(typeof(perms) != "undefined" && perms.length >0 ){
+			/*if(typeof(perms) != "undefined" && perms.length >0 ){
 				tr.append($("<td></td>").html(Page.operBtn(item.id)));
-			}
+			}*/
 			tbody.append(tr);
 		});
 		
@@ -175,35 +175,35 @@ var Page = {
 		unBlockUI();
 	},
 	// 生成操作按钮
-	operBtn : function(id) {
+	/*operBtn : function(id) {
 		var group = [];
 		if(App.in_array("update",perms)){
 			group.push({
 				clickFn : "Page.updateObj(" + id + ")",
 				name : "修改",
 				icon : "icon-pencil"
-			})
+			});
 		}
 		if(App.in_array("delete",perms)){
 			group.push({
 				clickFn : "Page.deleteObj(" + id + ")",
 				name : "删除",
 				icon : "icon-trash"
-			})
+			});
 		}
 		if(App.in_array("show",perms)){
 			group.push({
 				clickFn : "Page.viewObj(" + id + ")",
 				name : "查看",
 				icon : "icon-search"
-			})
+			});
 		}
 		return App.initDropDownBtn({
 			icon : "icon-cogs",
 			name : "操作",
 			group: group
 		});
-	},
+	},*/
 	/*updateObj : function(id) {
 		window.location.href = Page.subUrl() + "/update/" + id;
 	},
@@ -261,7 +261,7 @@ var Page = {
 			f.action = Page.subUrl() + "/delete";
 			f.method = "POST";
 			f.submit();
-		}
+		};
 		App.confirm(delFun);
 	},
 	/**
@@ -333,7 +333,7 @@ var Page = {
 			}else{
 				box.attr("checked","checked");
 			}
-		})
+		});
 	}
 };
 

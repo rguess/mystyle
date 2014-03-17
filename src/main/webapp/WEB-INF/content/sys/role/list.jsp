@@ -56,8 +56,32 @@ function doQuery(){
 							</div>
 						</div>
 						<div class="portlet-body">
-							<div class="clearfix">
-								<p>
+							<div class="row-fluid">
+								<form class="queryForm span8">
+									<div class="row-fluid">
+	                                	<div class="span2 ">
+		                                    <div class="control-group">
+		                                       <div class="controls">
+		                                          <input type="text" id="name" class="m-wrap span12" placeholder="角色名">
+		                                       </div>
+		                                    </div>
+		                                </div>
+		                                	
+		                                <div class="span3 ">
+		                                    <div class="control-group">
+		                                       <div class="controls">
+		                                         <a class="btn blue" href="javascript:void(0)" onclick="javascript:doQuery();">
+		                                         	<i class="icon-search"></i>
+		                                         	查询</a>
+		                                         <button type="reset" class="btn">
+		                                         	<i class="icon-trash"></i>清空
+		                                         </button>
+		                                       </div>
+		                                    </div>
+	                                	</div>
+									</div>
+								</form>
+								<p class="span4 pull-right">
 									<a class="btn green" href="${ctx}/sys/role/create">
 										添加 <i class="icon-plus"></i>
 									</a>
@@ -72,34 +96,9 @@ function doQuery(){
 									</a>
 								</p>
 							</div>
-							<form>
-								<div class="row-fluid">
-                                 	
-                                 	<div class="span2 ">
-	                                    <div class="control-group">
-	                                       <div class="controls">
-	                                          <input type="text" id="name" class="m-wrap span12" placeholder="角色名">
-	                                       </div>
-	                                    </div>
-                                 	</div>
-                                 	
-                                 	<div class="span3 ">
-	                                    <div class="control-group">
-	                                       <div class="controls">
-	                                         <a class="btn blue" href="javascript:void(0)" onclick="javascript:doQuery();">
-	                                         	<i class="icon-search"></i>
-	                                         	查询</a>
-	                                         <button type="reset" class="btn">
-	                                         	<i class="icon-trash"></i>清空
-	                                         </button>
-	                                       </div>
-	                                    </div>
-                                 	</div>
-								</div>
-							</form>
-							<table class="table table-striped table-bordered table-hover" id="sample_1">
-								
-							</table>
+						<table class="table table-striped table-bordered table-hover" id="sample_1">
+							
+						</table>
 						</div>
 					</div>
 				</div>

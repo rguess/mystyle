@@ -75,86 +75,76 @@ function doQuery(){
 							</div>
 						</div>
 						<div class="portlet-body">
-								<div class="clearfix">
-									<p>
-										<shiro:hasPermission name="sys:user:add">
-											<a class="btn green" href="${ctx}/sys/user/create">
-												添加 <i class="icon-plus"></i>
-											</a>
-										</shiro:hasPermission>
-										<a class="btn blue" href="javascript:void(0);" onclick="Page.updateObj();">
-												修改<i class="icon-pencil"></i>
+							<div class="row-fluid">
+								<form class="queryForm span8">
+									<div class="row-fluid">
+										<div class="span2">
+		                                    <div class="control-group">
+		                                       <div class="controls">
+		                                          <input type="text" id="email" class="m-wrap span12" placeholder="邮箱">
+		                                       </div>
+		                                    </div>
+	                                 	</div>
+	                                 	
+	                                 	<div class="span2">
+		                                    <div class="control-group">
+		                                       <div class="controls">
+		                                          <input type="text" id="addr" class="m-wrap span12" placeholder="地址">
+		                                       </div>
+		                                    </div>
+	                                 	</div>
+	                                 	
+	                                 	<div class="span2">
+		                                    <div class="control-group">
+		                                       <div class="controls">
+		                                          <input type="text" id="name" class="m-wrap span12" placeholder="姓名">
+		                                       </div>
+		                                    </div>
+	                                 	</div>
+	                                 	
+	                                 	<div class="span3">
+		                                    <div class="control-group">
+		                                       <div class="controls">
+		                                         <div class="input-append date" data-date-format="yyyy-mm-dd">
+													<input class="span6 m-wrap" id="time" type="text"
+														readonly="readonly" placeholder="时间"> <span class="add-on"><i
+														class="icon-th"></i></span>
+												</div>
+		                                       </div>
+		                                    </div>
+	                                 	</div>
+	                                 	
+	                                 	<div class="span3">
+		                                    <div class="control-group">
+		                                       <div class="controls">
+		                                         <a class="btn blue" href="javascript:void(0)" onclick="javascript:doQuery();">
+		                                         	<i class="icon-search"></i>
+		                                         	查询</a>
+		                                         <button type="reset" class="btn">
+		                                         	<i class="icon-trash"></i>清空
+		                                         </button>
+		                                       </div>
+		                                    </div>
+	                                 	</div>
+									</div>
+								</form>
+								<p class="span4 pull-right">
+									<shiro:hasPermission name="sys:user:add">
+										<a class="btn green" href="${ctx}/sys/user/create">
+											添加 <i class="icon-plus"></i>
 										</a>
-										<a class="btn red" href="javascript:void(0);" onclick="Page.deleteObj();">
-												删除<i class="icon-trash"></i>
-										</a>
-										<a class="btn blue" href="javascript:void(0);" onclick="Page.viewObj();">
-												详细<i class="icon-search"></i>
-										</a>
-									</p>
-									<!-- <div class="btn-group pull-right">
-										<button class="btn dropdown-toggle" data-toggle="dropdown">
-											Tools <i class="icon-angle-down"></i>
-										</button>
-										<ul class="dropdown-menu">
-											<li><a href="#">Print</a></li>
-											<li><a href="#">Save as PDF</a></li>
-											<li><a href="#">Export to Excel</a></li>
-										</ul>
-									</div> -->
-								</div>
-							<form>
-								<div class="row-fluid">
-									<div class="span2 ">
-	                                    <div class="control-group">
-	                                       <div class="controls">
-	                                          <input type="text" id="email" class="m-wrap span12" placeholder="邮箱">
-	                                       </div>
-	                                    </div>
-                                 	</div>
-                                 	
-                                 	<div class="span2 ">
-	                                    <div class="control-group">
-	                                       <div class="controls">
-	                                          <input type="text" id="addr" class="m-wrap span12" placeholder="地址">
-	                                       </div>
-	                                    </div>
-                                 	</div>
-                                 	
-                                 	<div class="span2 ">
-	                                    <div class="control-group">
-	                                       <div class="controls">
-	                                          <input type="text" id="name" class="m-wrap span12" placeholder="姓名">
-	                                       </div>
-	                                    </div>
-                                 	</div>
-                                 	
-                                 	<div class="span3 ">
-	                                    <div class="control-group">
-	                                       <div class="controls">
-	                                         <div class="input-append date" data-date-format="yyyy-mm-dd">
-												<input class="span6 m-wrap" id="time" type="text"
-													readonly="readonly" placeholder="时间"> <span class="add-on"><i
-													class="icon-th"></i></span>
-											</div>
-	                                       </div>
-	                                    </div>
-                                 	</div>
-                                 	
-                                 	<div class="span3 ">
-	                                    <div class="control-group">
-	                                       <div class="controls">
-	                                         <a class="btn blue" href="javascript:void(0)" onclick="javascript:doQuery();">
-	                                         	<i class="icon-search"></i>
-	                                         	查询</a>
-	                                         <button type="reset" class="btn">
-	                                         	<i class="icon-trash"></i>清空
-	                                         </button>
-	                                       </div>
-	                                    </div>
-                                 	</div>
-								</div>
-							</form>
+									</shiro:hasPermission>
+									<a class="btn blue" href="javascript:void(0);" onclick="Page.updateObj();">
+											修改<i class="icon-pencil"></i>
+									</a>
+									<a class="btn red" href="javascript:void(0);" onclick="Page.deleteObj();">
+											删除<i class="icon-trash"></i>
+									</a>
+									<a class="btn blue" href="javascript:void(0);" onclick="Page.viewObj();">
+											详细<i class="icon-search"></i>
+									</a>
+								</p>
+							</div>
 							<table class="table table-striped table-bordered table-hover" id="sample_1">
 								
 							</table>

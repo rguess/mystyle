@@ -394,7 +394,7 @@ var bootbox = window.bootbox || (function($) {
                 _class = handlers[i]['class'];
             } else if (i == handlers.length -1 && handlers.length <= 2) {
                 // always add a primary to the main option in a two-button dialog
-                _class = 'btn-primary';
+                _class = 'btn-primary blue';
             }
 
             if (handlers[i]['label']) {

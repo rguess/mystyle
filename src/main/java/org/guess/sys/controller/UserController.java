@@ -66,13 +66,15 @@ public class UserController extends BaseController<User, UserService> {
 		
 		//插入角色
 		String[] roleIds = request.getParameterValues("roleIds");
-		Set<Role> roles = new HashSet<Role>();
-		for (String roleId : roleIds) {
-			Role role = new Role();
-			role.setId(Long.valueOf(roleId));
-			roles.add(role);
+		if(roleIds != null){
+			Set<Role> roles = new HashSet<Role>();
+			for (String roleId : roleIds) {
+				Role role = new Role();
+				role.setId(Long.valueOf(roleId));
+				roles.add(role);
+			}
+			user.setRoles(roles);
 		}
-		user.setRoles(roles);
 		userService.save(user);
 		return REDIRECT + listView;
 	}
