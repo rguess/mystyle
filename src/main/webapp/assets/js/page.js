@@ -214,6 +214,10 @@ var Page = {
 		window.location.href = Page.subUrl() + "/show/" + id;
 	},*/
 	
+	addObj : function() {
+		window.location.href = Page.subUrl() + "/create";
+	},
+	
 	updateObj : function() {
 		var boxes = $(Page.defaultVal.tableId).find("td :checkbox:checked");
 		if(boxes.length == 0){

@@ -128,22 +128,7 @@ function doQuery(){
 	                                 	</div>
 									</div>
 								</form>
-								<p class="span4 pull-right">
-									<shiro:hasPermission name="sys:user:add">
-										<a class="btn green" href="${ctx}/sys/user/create">
-											添加 <i class="icon-plus"></i>
-										</a>
-									</shiro:hasPermission>
-									<a class="btn blue" href="javascript:void(0);" onclick="Page.updateObj();">
-											修改<i class="icon-pencil"></i>
-									</a>
-									<a class="btn red" href="javascript:void(0);" onclick="Page.deleteObj();">
-											删除<i class="icon-trash"></i>
-									</a>
-									<a class="btn blue" href="javascript:void(0);" onclick="Page.viewObj();">
-											详细<i class="icon-search"></i>
-									</a>
-								</p>
+								<tool:operBtns modelKey="user"></tool:operBtns>
 							</div>
 							<table class="table table-striped table-bordered table-hover" id="sample_1">
 								

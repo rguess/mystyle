@@ -86,20 +86,7 @@ function doQuery(){
 	                                 	</div>
 									</div>
 								</form>
-								<p class="span4 pull-right">
-									<a class="btn green" href="${ctx}/sys/icon/create">
-										添加 <i class="icon-plus"></i>
-									</a>
-									<a class="btn blue" href="javascript:void(0);" onclick="Page.updateObj();">
-										修改<i class="icon-pencil"></i>
-									</a>
-									<a class="btn red" href="javascript:void(0);" onclick="Page.deleteObj();">
-										删除<i class="icon-trash"></i>
-									</a>
-									<a class="btn blue" href="javascript:void(0);" onclick="Page.viewObj();">
-										详细<i class="icon-search"></i>
-									</a>
-								</p>
+								<tool:operBtns modelKey="role"></tool:operBtns>
 							</div>
 							<table class="table table-striped table-bordered table-hover" id="sample_1">
 								

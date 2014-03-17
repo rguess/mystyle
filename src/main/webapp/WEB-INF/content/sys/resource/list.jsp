@@ -7,9 +7,25 @@
 <script src="${ctx}/assets/comp/jquery-treegrid/jquery.treegrid.js" type="text/javascript"></script>
 
 <script type="text/javascript">
+
+	//根据权限添加按钮
+	var btns = [];
+	<shiro:hasPermission name="sys:resource:update">
+		btns.push({clickFn : "edit(this)",name : "修改",icon : "icon-pencil"});
+	</shiro:hasPermission>
+	<shiro:hasPermission name="sys:resource:delete">
+		btns.push({clickFn : "del(this)",name : "删除",icon : "icon-trash"});
+	</shiro:hasPermission>
+	<shiro:hasPermission name="sys:resource:show">
+		btns.push({clickFn : "show(this)",name : "查看",icon : "icon-search"});
+	</shiro:hasPermission>
+
 	$(document).ready(function() {
 		App.activeMenu("sys/resource/list");
 		initTree();
+		if(btns.length > 0){
+			$("#dataTr").append($("<td></td>").text("操作"));
+		}
 	});
 
 	/* 初始化树 */
@@ -29,8 +45,9 @@
 						});
 					});
 				});
-				$('#treeTable').treegrid();
+				$('#treeTable').treegrid({initialState:"collapsed"});
 				unBlockUI();
+				registerTdOnclickEvent();
 			}
 		});
 	}
@@ -47,7 +64,9 @@
 		tr.append($("<td></td>").html(item.permsString));
 		tr.append($("<td></td>").html(item.orderNo));
 		tr.append($("<td></td>").html(item.remark));
-		tr.append($("<td></td>").html(operBtn(item.id)));
+		if(btns.length > 0){
+			tr.append($("<td></td>").html(operBtn(item.id)));
+		}
 		return tr;
 	}
 	
@@ -56,21 +75,32 @@
 		return App.initDropDownBtn({
 			icon : "icon-cogs",
 			name : "操作",
-			group : [{clickFn : "edit("+id+")",name : "修改",icon : "icon-pencil"},
-					 {clickFn : "del("+id+")",name : "删除",icon : "icon-trash"},
-				 	 {clickFn : "show("+id+")",name : "查看",icon : "icon-search"}
-			         ]
+			group : btns
 		});
 	}
 	
 	//编辑
-	function edit(id){
+	function edit(obj){
+		var id = $(obj).closest("tr").attr("id");
 		window.location.href = ctx+"/sys/resource/update/"+id;
 	}
 	
 	//删除
-	function del(id){
+	function del(){
+		var id = $(obj).closest("tr").attr("id");
 		window.location.href = ctx+"/sys/resource/delete/"+id;
+	}
+	
+	//详细
+	function del(){
+		var id = $(obj).closest("tr");
+		window.location.href = ctx+"/sys/resource/show/"+id;
+	}
+	
+	function registerTdOnclickEvent(){
+		$("td").click(function(){
+			$(this).parent().addClass("selectedTr").siblings().removeClass("selectedTr");
+		});
 	}
 </script>
 </head>
@@ -94,24 +124,25 @@
 							</div>
 						</div>
 						<div class="portlet-body">
-							<div class="clearfix">
+							<div>
 								<div class="btn-group">
-									<a class="btn green" href="${ctx}/sys/resource/create">
-										添加 <i class="icon-plus"></i>
-									</a>
+									<shiro:hasPermission name="sys:resource:add">
+										<a class="btn green" href="${ctx}/sys/resource/create">
+											添加 <i class="icon-plus"></i>
+										</a>
+									</shiro:hasPermission>
 								</div>
 							</div>
 							<div>
 								<table id="treeTable" class="table table-striped table-bordered table-hover tree">
 									<thead>
-										<tr>
+										<tr id="dataTr">
 											<th>名称</th>
 											<th>资源串</th>
 											<th>图标</th>
 											<th>权限标识</th>
 											<th>排序编号</th>
 											<th>备注</th>
-											<th>操作</th>
 										</tr>
 									</thead>
 									<tbody id="treeBody">

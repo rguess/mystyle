@@ -21,3 +21,8 @@
 .queryForm{
 	margin: 0 0;
 }
+
+.selectedTr td{
+	background-color: #35aa47 !important;
+	color: white;
+}
