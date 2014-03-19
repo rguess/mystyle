@@ -39,7 +39,7 @@ public class User extends IdEntity {
 	/** 地址 */
 	private String address;
 	/** 状态 0 无效 1 有效 */
-	private String status;
+	private int status = Constants.USER_STATUS_UNLOCK;
 	/** 备注 */
 	private String remark;
 
@@ -109,11 +109,11 @@ public class User extends IdEntity {
 		this.address = address;
 	}
 
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 
@@ -131,19 +131,6 @@ public class User extends IdEntity {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
-	}
-
-	public User(String loginId, String passwd, String name, String email, String mobilePhone, String address,
-			String status, String remark) {
-		super();
-		this.loginId = loginId;
-		this.passwd = passwd;
-		this.name = name;
-		this.email = email;
-		this.mobilePhone = mobilePhone;
-		this.address = address;
-		this.status = status;
-		this.remark = remark;
 	}
 
 	public User() {

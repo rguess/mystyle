@@ -6,4 +6,6 @@ import org.guess.sys.model.User;
 public interface UserService extends BaseService<User, Long>{
 
 	User findByLoginId(String loginId);
+
+	int changeUserStatus(Long id);
 }

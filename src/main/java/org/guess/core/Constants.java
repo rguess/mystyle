@@ -73,5 +73,16 @@ public interface Constants {
     int TOP_REC = 0;
 
     String ENCODING = "UTF-8";
+    
+    
+    /**
+     * 系统用户状态--启用
+     */
+    int USER_STATUS_UNLOCK = 1;
+    
+    /**
+     * 系统用户状态--禁用
+     */
+    int USER_STATUS_LOCK = 0;
 
 }

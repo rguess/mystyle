@@ -9,9 +9,6 @@
 <script type="text/javascript" src="${ctx}/assets/comp/bootstrap-paginator/bootstrap-paginator.js"></script>
 <script type="text/javascript" src="${ctx}/assets/js/page.js"></script>
 
-<!-- 通过这种方式生成权限数组 ,点击去看详细-->
-<tool:perms permStr="sys:user:update-sys:user:delete-sys:user:show"></tool:perms>
-
 <script type="text/javascript">
 $(document).ready(function() {
 	//高亮左侧菜单
@@ -33,10 +30,43 @@ $(document).ready(function() {
 				 return new Date(value).format("yyyy-MM-dd")
 			 }
 			 return value;
-		 }}
+		 }},
+		 {cName:"status",cValue:"状态",format:function(i,value,item){
+			 var $a = $('<a href="javascript:void(0)" data-id="'+item.id+'" data-placement="right" class="btn mini tooltips" onclick="javascript:changeUserStatus(this)"></a>');
+			 if(value === 1){
+				 return $a.clone().attr("data-original-title","点击禁用").addClass("green").html('<i class="icon-unlock"></i>启用');
+			 }
+			 return $a.attr("data-original-title","点击启用").addClass("grey").html('<i class="icon-lock"></i>禁用');
+		 }},
 		 ]
 	);
 });
+
+//更改用户状态
+function changeUserStatus(obj){
+	var callback = function(result){
+		if(!result){
+			return;
+		}
+		blockUI();
+		$.ajax({
+			type : "POST",
+			dataType : "json",
+			url : Page.subUrl()+"/changeUserStatus",
+			data : {"id":$(obj).attr("data-id")},
+			success : function(data){
+				if(data == 1){
+					$(obj).removeAttr("data-original-title").attr("data-original-title","点击禁用").removeClass("grey").addClass("green").html('<i class="icon-unlock"></i>启用');
+				}else{
+					$(obj).removeAttr("data-original-title").attr("data-original-title","点击启用").removeClass("green").addClass("grey").html('<i class="icon-lock"></i>禁用');
+				}
+				unBlockUI();
+			}
+		});
+	};
+	App.confirm(callback);
+}
+
 function doQuery(){
 	var queryObj = {
 		search_LIKES_email : null,

@@ -1,11 +1,14 @@
 package org.guess.sys.controller;
 
+import java.util.List;
+
 import org.guess.core.web.BaseController;
 import org.guess.sys.model.Icon;
 import org.guess.sys.service.IconService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -28,21 +31,10 @@ public class IconController extends BaseController<Icon, IconService>{
 		return mav.addObject("icons", iService.getAll());
 	}
 	
-	@RequestMapping("addMany")
-	public ModelAndView addMany(ModelAndView mav) throws Exception{
-		/*for (int i = 1; i <= 50; i++) {
-			Icon icon = new Icon();
-			String x = "";
-			if(i<10){
-				x = "0";
-			}
-			icon.setMark("diy_icon_04_"+x+i);
-			icon.setType("png");
-			iService.save(icon);
-			System.out.println(icon.getMark());
-		}*/
-		mav.setViewName(listView);
-		return mav;
+	@RequestMapping("listAll")
+	@ResponseBody
+	public List<Icon> listAll() throws Exception{
+		return iService.getAll();
 	}
 	
 }
