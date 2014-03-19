@@ -15,7 +15,7 @@
 				$.each(data,function(i,icon){
 					$("#iconsBody").append('<a href="javascript:void(0);" class="iconLink" title="'
 						+icon.description+'" onclick="javascript:selIcon(\''+icon.mark+'\')"><i class="'
-						+icon.mark+'"></i></a>').css("margin-left","10px");
+						+icon.mark+'"></i></a>');
 				});
 			}
 		});
