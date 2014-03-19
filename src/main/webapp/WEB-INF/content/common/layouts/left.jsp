@@ -30,6 +30,14 @@
 						</ul>
 					</li>
 				</c:when>
+				<c:otherwise>
+					<li class="">
+						<a href="${ctx }${menu.resString}">
+						<i class="${menu.icon }"></i>
+							<span class="title">${menu.name }</span>
+						</a>
+					</li>
+				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 		
