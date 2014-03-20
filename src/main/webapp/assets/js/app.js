@@ -1054,10 +1054,7 @@ var App = function () {
         },
         
         confirm :function(callback){
-        	bootbox.confirm("确定？", callback)
+        	bootbox.confirm("确定？", callback);
         }
-        
-        
     };
-
 }();

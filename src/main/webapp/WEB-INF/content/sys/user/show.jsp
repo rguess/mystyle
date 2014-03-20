@@ -30,7 +30,7 @@
 					<!-- BEGIN FORM-->
 					<div class="form-horizontal form-view">
 						<h3>系统用户- ${obj.name }</h3>
-						<h3 class="form-section">信息</h3>
+						<h3 class="form-section">个人信息</h3>
 						<div class="row-fluid">
 							<div class="span6 ">
 								<div class="control-group">
@@ -93,6 +93,20 @@
 								</div>
 							</div>
 							<!--/span-->
+						</div>
+						<div class="row-fluid">
+							<div class="span12 ">
+								<div class="control-group">
+									<label class="control-label">角色:</label>
+									<div class="controls">
+										<c:forEach var="role" items="${obj.roles }">
+											<span class="text bold">
+												<a href="${ctx }/sys/role/show/${role.id}" class="yellow" title="点击查看">${role.name }</a>
+											</span>
+										</c:forEach>
+									</div>
+								</div>
+							</div>
 						</div>
 						<div class="row-fluid">
 							<div class="span12 ">
