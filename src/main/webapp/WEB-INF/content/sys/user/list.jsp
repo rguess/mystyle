@@ -43,7 +43,7 @@ $(document).ready(function() {
 				 	return "<span class='label label-success'>启用</span>";
 				 }
 			 	return "<span class='label label-danger'>禁用</span>";
-		 }},
+		 }}
 		 ]
 	);
 });

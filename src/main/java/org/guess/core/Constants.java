@@ -63,7 +63,7 @@ public interface Constants {
     int SECOND_MENU = 2;
     
     /**
-     * 菜单等级标识
+     * 操作按钮等级标识
      */
     int MENU_GRADE = 3;
     
@@ -84,5 +84,10 @@ public interface Constants {
      * 系统用户状态--禁用
      */
     int USER_STATUS_LOCK = 0;
+    
+    /**
+     * 登录页面
+     */
+    String LOGIN_URL = "/login";
 
 }

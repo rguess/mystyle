@@ -29,6 +29,11 @@ public class UserSetting extends AccessControlFilter {
         if(current_user == null || recs == null){
         	String username = (String) subject.getPrincipal();
         	User user = userService.findByLoginId(username);
+        	if(user == null || user.getStatus() == Constants.USER_STATUS_LOCK){
+        		setLoginUrl(Constants.LOGIN_URL);
+        		redirectToLogin(request, response);
+        		return false;
+        	}
         	session.setAttribute(Constants.CURRENT_USER, user);
         	session.setAttribute(Constants.USER_MENUS, user.getMenus());
         }
