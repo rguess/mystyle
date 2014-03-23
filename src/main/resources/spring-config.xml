@@ -48,6 +48,7 @@
 		<property name="packagesToScan">
 			<list>
 				<value>org.guess.sys.model</value>
+				<value>org.guess.showcase.workflow.model</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -94,6 +95,7 @@
 			<tx:method name="save*" propagation="REQUIRED" />
 			<tx:method name="clear*" propagation="REQUIRED" />
 			<tx:method name="change*" propagation="REQUIRED" />
+			<tx:method name="start*" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>
 	

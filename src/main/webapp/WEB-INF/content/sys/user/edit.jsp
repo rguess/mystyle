@@ -35,10 +35,10 @@
 								method="post" id="form1">
 								<!-- 用户ID -->
 								<input type="hidden" value="${obj.id }" name="id">
-								<!-- 用户状态 -->
-								<input type="hidden" value="${obj.status }" name="status">
 								<!-- 用户创建日期 -->
 								<c:if test="${not empty obj }">
+									<!-- 用户状态 -->
+									<input type="hidden" value="${obj.status }" name="status">
 									<input type="hidden" id="time" value="<fmt:formatDate value='${obj.createDate }'/>" name="createDate">
 								</c:if>
 								<div class="control-group">

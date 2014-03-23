@@ -47,6 +47,11 @@ abstract public class BaseServiceImpl<T, ID extends Serializable, M extends Enti
 	public void save(T o) throws Exception {
 		getEntityDao().save(o);
 	}
+	
+	@Override
+	public ID saveAndReturnId(T o) throws Exception {
+		return getEntityDao().saveAndReturnId(o);
+	}
 
 	@Override
 	public void update(T o) throws Exception {

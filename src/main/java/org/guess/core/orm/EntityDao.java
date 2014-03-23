@@ -14,6 +14,8 @@ public interface EntityDao<T,ID extends Serializable> {
 	List<T> get(final Collection<ID> ids);
 
 	void save(T o);
+	
+	ID saveAndReturnId(T o);
 
 	void delete(ID id);
 	

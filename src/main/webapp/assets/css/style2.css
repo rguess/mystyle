@@ -11,12 +11,12 @@
   background-image:url(../img/portlet-remove-icon-white.png);
 }
 
-.table-hover tbody tr:hover > td,
+/* .table-hover tbody tr:hover > td,
 .table-hover tbody tr:hover > th {
   background-color: #35aa47;
   color: white;
   cursor: pointer;
-}
+} */
 
 .queryForm{
 	margin: 0 0;

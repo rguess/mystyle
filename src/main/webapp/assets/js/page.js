@@ -34,7 +34,7 @@ var Page = {
 			data : Page.cqData,
 			success : callBack,
 			error : function(error) {
-				// $.unblockUI();
+				unBlockUI();
 			}
 		});
 	},
@@ -78,6 +78,11 @@ var Page = {
 		$(obj.tableId).empty().append(thead).append(tBody);
 		// 初始化数据回调
 		var callBack = function(page) {
+			if(page.totalSize == 0){
+				$(obj.tableId).empty().html("没有数据！");
+				unBlockUI();
+				return;
+			}
 			Page.defaultVal.totalPages = page.totalPages;
 			Page.insertData(page);
 			Page.initPagination(page);
@@ -162,6 +167,11 @@ var Page = {
 	 * @returns
 	 */
 	pageChangedCallBack : function(pageData) {
+		if(page.totalSize == 0){
+			$(obj.tableId).empty().html("没有数据！");
+			unBlockUI();
+			return;
+		}
 		Page.insertData(pageData);
 		options = {
 			totalPages : pageData.totalPages

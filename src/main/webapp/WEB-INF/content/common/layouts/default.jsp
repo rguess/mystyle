@@ -25,6 +25,7 @@
 <link href="${ctx}/assets/css/style_light.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/comp/gritter/css/jquery.gritter.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/comp/chosen-bootstrap/chosen/chosen.css" type="text/css" rel="stylesheet" />
+<link href="${ctx}/assets/comp/uniform/css/uniform.default.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/css/icon.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/assets/favicon.ico" rel="shortcut icon"/>
 
@@ -41,6 +42,7 @@
 <script src="${ctx}/assets/js/jquery.form.js"></script>
 <script src="${ctx}/assets/comp/breakpoints/breakpoints.js" type="text/javascript" ></script>
 <script src="${ctx}/assets/comp/chosen-bootstrap/chosen/chosen.jquery.min.js" type="text/javascript" ></script>
+<script src="${ctx}/assets/comp/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
 <script src="${ctx}/assets/js/app.js"></script>
 <script src="${ctx}/assets/js/util.js"></script>
 <script>

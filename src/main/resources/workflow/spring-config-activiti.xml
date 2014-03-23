@@ -12,7 +12,9 @@
 		<property name="history" value="full"/>
         <property name="processDefinitionCacheLimit" value="10"/>
 		<!-- 使用spring的自动资源加载部署方式部署 -->
-		<property name="deploymentResources" value="classpath:workflow/*.*" />
+		<property name="deploymentResources" value="classpath*:/workflow/deployments/*" />
+		<!-- 自定义用户组数据 -->
+		<property name="dbIdentityUsed" value="false"/>
 	</bean>
 
 	<bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">

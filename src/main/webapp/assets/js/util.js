@@ -30,6 +30,23 @@ Date.prototype.format = function(format) {
 };
 
 /**
+ * 日期相减
+ * @param sDate1
+ * @param sDate2
+ * @returns
+ */
+function DateDiff(sDate1,sDate2)
+{ 
+    var arrDate,objDate1,objDate2,intDays;
+    arrDate=sDate1.split("-");
+    objDate1=new Date(arrDate[1]+'-'+arrDate[2]+'-'+arrDate[0]);
+    arrDate=sDate2.split("-");
+    objDate2=new Date(arrDate[1] + '-'+arrDate[2]+'-'+arrDate[0]);
+    intDays=parseInt(Math.abs(objDate1-objDate2)/1000/60/60/24);
+    return intDays;
+}
+
+/**
  * js原型链实现replaceAll
  */
 String.prototype.replaceAll  = function(s1,s2){

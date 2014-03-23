@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/content/common/common.jsp"%>
-<c:set var="ctx" value="${pageContext.request.contextPath}" scope="page" />
 <html>
 <head>
 <title>角色列表</title>

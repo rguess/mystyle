@@ -91,6 +91,13 @@ public class SimpleHibernateDao<T, ID extends Serializable> {
 		getSession().saveOrUpdate(entity);
 		logger.debug("save entity: {}", entity);
 	}
+	
+	/**
+	 * 保存并返回ID
+	 */
+	public ID saveAndReturnId(final T entity){
+		return (ID) getSession().save(entity);
+	}
 
 	/**
 	 * 删除对象.

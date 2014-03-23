@@ -11,7 +11,6 @@ import java.security.MessageDigest;
  * @version 1.0
  * @since 1.0
  */
-@SuppressWarnings("restriction")
 public abstract class Coder {
     public static final String KEY_SHA = "SHA";
 
