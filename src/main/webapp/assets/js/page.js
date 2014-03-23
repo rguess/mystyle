@@ -167,7 +167,7 @@ var Page = {
 	 * @returns
 	 */
 	pageChangedCallBack : function(pageData) {
-		if(page.totalSize == 0){
+		if(pageData.totalSize == 0){
 			$(obj.tableId).empty().html("没有数据！");
 			unBlockUI();
 			return;

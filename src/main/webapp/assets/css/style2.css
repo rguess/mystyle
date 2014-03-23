@@ -26,3 +26,8 @@
 	background-color: #35aa47 !important;
 	color: white;
 }
+
+.input-append .add-on > .halflings-icon
+ .input-append .add-on > i, .input-append .add-on > [class^="icon-"]{
+ 	margin-top: 10px
+ }

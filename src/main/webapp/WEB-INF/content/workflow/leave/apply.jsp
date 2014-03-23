@@ -3,8 +3,7 @@
 <html>
 <head>
 <title>发起请假流程</title>
-<link href="${ctx}/assets/comp/datepicker/datepicker.css" type="text/css" rel="stylesheet" />
-<script src="${ctx}/assets/comp/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<%@ include file="/WEB-INF/content/common/datepicker.jsp"%>
 <%@ include file="/WEB-INF/content/common/jquery-validation.jsp"%>
 <script type="text/javascript">
 	$(function(){

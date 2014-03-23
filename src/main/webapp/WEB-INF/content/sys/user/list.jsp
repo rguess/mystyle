@@ -3,8 +3,7 @@
 <html>
 <head>
 <title>用户列表</title>
-<link href="${ctx}/assets/comp/datepicker/datepicker.css" type="text/css" rel="stylesheet" />
-<script src="${ctx}/assets/comp/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<%@ include file="/WEB-INF/content/common/datepicker.jsp"%>
 <link href="${ctx}/assets/comp/bootstrap-paginator/DT_bootstrap.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="${ctx}/assets/comp/bootstrap-paginator/bootstrap-paginator.js"></script>
 <script type="text/javascript" src="${ctx}/assets/js/page.js"></script>
@@ -114,20 +113,20 @@ function doQuery(){
 							<div class="row-fluid">
 								<form class="queryForm span8">
 									<div class="row-fluid">
-										<div class="span2">
+										<div class="span3">
 		                                    <div class="control-group">
 		                                       <div class="controls">
 		                                          <input type="text" id="email" class="m-wrap span12" placeholder="邮箱">
 		                                       </div>
 		                                    </div>
-	                                 	</div>
-	                                 	
-	                                 	<div class="span2">
+		                                    
 		                                    <div class="control-group">
-		                                       <div class="controls">
-		                                          <input type="text" id="addr" class="m-wrap span12" placeholder="地址">
-		                                       </div>
-		                                    </div>
+												<div class="controls">
+													<div class="input-prepend">
+														<span class="add-on"><i class="icon-envelope"></i></span><input class="m-wrap" id="inputIcon" type="text" placeholder="Email address">
+													</div>
+												</div>
+											</div>
 	                                 	</div>
 	                                 	
 	                                 	<div class="span2">
@@ -138,7 +137,7 @@ function doQuery(){
 		                                    </div>
 	                                 	</div>
 	                                 	
-	                                 	<div class="span3">
+	                                 	<div class="span4">
 		                                    <div class="control-group">
 		                                       <div class="controls">
 		                                         <div class="input-append date" data-date-format="yyyy-mm-dd">

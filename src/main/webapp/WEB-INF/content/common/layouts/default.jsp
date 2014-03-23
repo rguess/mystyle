@@ -53,7 +53,16 @@
 		App.init();
 		//日历控件初始化
 		if($('.date').length != 0){
-			$('.date').datepicker();
+			$('.date').datetimepicker({
+				language:  'zh-CN',
+		        weekStart: 1,
+		        todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				minView: 2,
+				forceParse: 0
+			});
 		}
 		
 		//执行随机颜色方法
