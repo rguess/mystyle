@@ -69,7 +69,7 @@ public class WorkFlowController extends BaseWorkFlowController {
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/todoTasks")
 	public ModelAndView toTasks(ModelAndView mav) {
-		mav.setViewName("/workflow/toTasks");
+		mav.setViewName("/workflow/todoTasks");
 		return mav;
 	}
 
@@ -83,6 +83,32 @@ public class WorkFlowController extends BaseWorkFlowController {
 	public Map<String, Object> toTasks() {
 		current_user = (User) session.getAttribute(Constants.CURRENT_USER);
 		Page<Map<String, String>> page = workflowService.getTodoTasks(current_user.getLoginId(),
+				new Page<Map<String, String>>(new PageRequest(1, 100)));
+		return page.returnMap();
+	}
+	
+	/**
+	 * 跳转到已办任务页面
+	 * 
+	 * @param mav
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET, value = "/hasTodo")
+	public ModelAndView hasTodo(ModelAndView mav) {
+		mav.setViewName("/workflow/hasTodo");
+		return mav;
+	}
+	
+	/**
+	 * 获取已办任务数据
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/hasTodo/page")
+	@ResponseBody
+	public Map<String, Object> hasTodo() {
+		current_user = (User) session.getAttribute(Constants.CURRENT_USER);
+		Page<Map<String, String>> page = workflowService.getHasTodoTasks(current_user.getLoginId(),
 				new Page<Map<String, String>>(new PageRequest(1, 100)));
 		return page.returnMap();
 	}

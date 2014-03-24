@@ -72,7 +72,22 @@ public class LeaveController extends BaseWorkFlowController {
 	}
 	
 	
-	
+	@RequestMapping(method = RequestMethod.POST, value = "/hrAudit")
+	public ModelAndView hrAudit(ModelAndView mav,
+			@RequestParam("leaveId") String leaveId,
+			@RequestParam("taskId") String taskId,
+			@RequestParam("hrAuditOpinion") String hrAuditOpinion,
+			@RequestParam("hrPass") Boolean hrPass) throws Exception{
+		
+		mav.setViewName("redirect:/workflow/todoTasks");
+		Leave leave = leaveService.get(Long.valueOf(leaveId));
+		leave.setHrAuditOpinion(hrAuditOpinion);
+		leaveService.save(leave);
+		Map<String, Object> variables = new HashMap<String, Object>();
+		variables.put("hrPass", hrPass);
+		taskService.complete(taskId, variables);
+		return mav;
+	}
 	
 	
 	

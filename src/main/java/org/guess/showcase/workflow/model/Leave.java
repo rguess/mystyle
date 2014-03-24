@@ -58,6 +58,11 @@ public class Leave extends IdEntity{
      * 部门经理审批意见
      */
     private String depAuditOpinion;
+    
+    /**
+     * 人力审批意见
+     */
+    private String hrAuditOpinion;
 
 	public String getProcessInstanceId() {
 		return processInstanceId;
@@ -122,4 +127,13 @@ public class Leave extends IdEntity{
 	public void setDepAuditOpinion(String depAuditOpinion) {
 		this.depAuditOpinion = depAuditOpinion;
 	}
+
+	public String getHrAuditOpinion() {
+		return hrAuditOpinion;
+	}
+
+	public void setHrAuditOpinion(String hrAuditOpinion) {
+		this.hrAuditOpinion = hrAuditOpinion;
+	}
+	
 }

@@ -1,6 +1,7 @@
 package org.guess.showcase.workflow.service.activiti;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import org.activiti.engine.ManagementService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.history.HistoricTaskInstance;
 import org.activiti.engine.impl.persistence.entity.IdentityLinkEntity;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.NativeProcessInstanceQuery;
@@ -108,6 +110,70 @@ public class WorkFlowService {
 				.list();
 		tasks.addAll(list1);
 		tasks.addAll(list2);
+		return initTodoData(tasks,page);
+	}
+	
+	/**
+	 * 已办
+	 * 
+	 * @param string
+	 * @param page
+	 * @return
+	 */
+	public Page<Map<String, String>> getHasTodoTasks(String loginId,
+			Page<Map<String, String>> page) {
+		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+		List<HistoricTaskInstance> tasks = historyService.createHistoricTaskInstanceQuery().taskCompletedBefore(new Date()).taskAssignee(loginId).list();
+		for (HistoricTaskInstance task : tasks) {
+
+			Map<String, String> map = new HashMap<String, String>();
+			// 读取流程定义对象
+			ProcessDefinition definition = this.getDefinitionById(task.getProcessDefinitionId());
+			// 获取流程变量保存的发起人中文名字,加入到输出数据中
+			String userName = runtimeService.getVariable(task.getProcessInstanceId(), WorkflowConstants.SPONSOR)
+					.toString();
+			// 流程发起人
+			map.put("sponsor", userName);
+			// 任务ID
+			map.put("id", task.getId());
+			// 任务key
+			map.put("taskKey", task.getTaskDefinitionKey());
+			// 流程定义名称
+			map.put("definitionName", definition.getName());
+			// 流程定义key
+			map.put("definitionKey", definition.getKey());
+			// 任务名称
+			map.put("taskName", task.getName());
+			// 流程定义ID
+			map.put("processDefinitionId", task.getProcessDefinitionId());
+			// 流程实例ID
+			map.put("processInstanceId", task.getProcessInstanceId());
+			// 优先级
+			map.put("priority", task.getPriority() + "");
+			// 任务开始时间
+			map.put("startTime", DateUtil.format(task.getStartTime(), "yyyy-MM-dd HH:mm:ss"));
+			// 任务结束时间
+			map.put("endTime", DateUtil.format(task.getEndTime(), "yyyy-MM-dd HH:mm:ss"));
+			// 任务描述
+			map.put("description", task.getDescription());
+			// owner
+			map.put("owner", task.getOwner());
+			// 代理人
+			map.put("assignee", task.getAssignee());
+			list.add(map);
+		}
+		page.setTotalItems(tasks.size());
+		page.setResult(list);
+		return page;
+	}
+	
+	/**
+	 * 组装待办数据
+	 * @param tasks
+	 * @param page
+	 * @return
+	 */
+	private Page<Map<String, String>> initTodoData(List<Task> tasks,Page<Map<String, String>> page){
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		for (Task task : tasks) {
 
@@ -175,5 +241,4 @@ public class WorkFlowService {
 		ProcessInstance instance = runtimeService.createProcessInstanceQuery().processInstanceId(id).singleResult();
 		return instance;
 	}
-
 }

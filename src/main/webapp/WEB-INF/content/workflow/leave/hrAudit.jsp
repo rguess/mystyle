@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/content/common/common.jsp"%>
 <html>
 <head>
-<title>部门经理审批</title>
+<title>人力审批</title>
 <%@ include file="/WEB-INF/content/common/jquery-validation.jsp"%>
 <script src="${ctx}/assets/js/workflow/leave.js"></script>
 <script type="text/javascript">
@@ -11,20 +11,21 @@
 	
 	$(function(){
 		App.activeMenu("workflow/todoTasks");
-		Leave.init({taskId:taskId});
+		Leave.init({taskId:taskId,otherCallback:callback});
 	});
 	
 	var callback = function(data){
-		alert(123);
+		$("#depAuditOpinion").html(data.leave.depAuditOpinion);
 	}
+	
 </script>
 </head>
 <body>
 	<div class="page-content">
 		<div class="container-fluid">
 			<!-- 页面导航 -->
-			<tool:navBar pageTitle="部门经理审批"
-				pageTitleContent="工作流程-请假-部门经理审批" titleIcon="icon-home" />
+			<tool:navBar pageTitle="人力审批"
+				pageTitleContent="工作流程-请假-人力审批" titleIcon="icon-home" />
 			<!-- 主体内容 -->
 			<div class="row-fluid">
 				<div class="span12">
@@ -41,8 +42,16 @@
 						<div class="portlet-body form">
 							<div class="form-horizontal form-view">
 								<%@ include file="/WEB-INF/content/workflow/leave/formDetail.jsp"%>
+								<div class="span12">
+									<div class="control-group">
+										<label class="control-label">部门经理意见：</label>
+										<div class="controls">
+											<span class="text" id="depAuditOpinion"></span>
+										</div>
+									</div>
+								</div>
 							</div>
-							<form action="${ctx }/workflow/leave/deptLeaderAudit" class="form-horizontal" method="post" id="form1">
+							<form action="${ctx }/workflow/leave/hrAudit" class="form-horizontal" method="post" id="form1">
 								<input type="hidden" value="" name="leaveId" id="leaveId">
 								<input type="hidden" value="${taskId }" name="taskId">
 								<div class="control-group">
@@ -50,12 +59,12 @@
 									<div class="controls">
 										<textarea rows="3" cols="6" class="span6 m-wrap" 
 											validate="{required:true}"
-											name="depAuditOpinion"></textarea>
+											name="hrAuditOpinion"></textarea>
 									</div>
 								</div>
 								<div class="form-actions">
-									<button type="submit" class="btn blue" name="deptLeaderPass" value="true">同意申请</button>
-									<button type="submit" class="btn red" name="deptLeaderPass" value="false">驳回请求</button>
+									<button type="submit" class="btn blue" name="hrPass" value="true">同意申请</button>
+									<button type="submit" class="btn red" name="hrPass" value="false">驳回请求</button>
 									<a class='btn purple' href="${header.Referer }">返回</a>
 								</div>
 							</form>

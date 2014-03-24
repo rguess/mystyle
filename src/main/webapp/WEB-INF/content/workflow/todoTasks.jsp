@@ -33,7 +33,7 @@ $(document).ready(function() {
 		 {cName:"dueDate",cValue:"任务逾期日",noSort:true},
 		 //{cName:"description",cValue:"任务描述",noSort:true},
 		 {cName:"owner",cValue:"任务所属人",noSort:true},
-		 {cName:"owner",cValue:"操作",noSort:true,format:function(i,value,item){
+		 {cName:"oper",cValue:"操作",noSort:true,format:function(i,value,item){
 			 if(null == item.assignee){
 				 return operBtn(0,{taskId : item.id,definitionKey : item.definitionKey , taskKey : item.taskKey});
 			 }
