@@ -75,16 +75,13 @@ function changeUserStatus(obj){
 function doQuery(){
 	var queryObj = {
 		search_LIKES_email : null,
-		search_LIKES_address : null,
 		search_LIKES_name : null,
 		search_EQD_createDate : null
 	};
 	var email = $("#email").val();
-	var addr = $("#addr").val();
 	var name = $("#name").val();
 	var time = $("#time").val();
 	App.isNundef(email)?queryObj.search_LIKES_email = email:null;
-	App.isNundef(addr)?queryObj.search_LIKES_address = addr:null;
 	App.isNundef(name)?queryObj.search_LIKES_name = name:null;
 	App.isNundef(time)?queryObj.search_EQD_createDate = time:null;
 	Page.doQuery(queryObj);
@@ -119,14 +116,6 @@ function doQuery(){
 		                                          <input type="text" id="email" class="m-wrap span12" placeholder="邮箱">
 		                                       </div>
 		                                    </div>
-		                                    
-		                                    <div class="control-group">
-												<div class="controls">
-													<div class="input-prepend">
-														<span class="add-on"><i class="icon-envelope"></i></span><input class="m-wrap" id="inputIcon" type="text" placeholder="Email address">
-													</div>
-												</div>
-											</div>
 	                                 	</div>
 	                                 	
 	                                 	<div class="span2">
@@ -141,7 +130,7 @@ function doQuery(){
 		                                    <div class="control-group">
 		                                       <div class="controls">
 		                                         <div class="input-append date" data-date-format="yyyy-mm-dd">
-													<input class="span6 m-wrap" id="time" type="text"
+													<input class="span10 m-wrap" id="time" type="text"
 														readonly="readonly" placeholder="时间"> <span class="add-on"><i
 														class="icon-th"></i></span>
 												</div>

@@ -3,6 +3,8 @@ package org.guess.showcase.workflow.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.activiti.engine.RepositoryService;
+import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.guess.showcase.workflow.service.activiti.WorkFlowService;
 import org.guess.sys.model.User;
@@ -16,6 +18,12 @@ public class BaseWorkFlowController {
 	
 	@Autowired
 	protected TaskService taskService;
+	
+	@Autowired
+	protected RuntimeService runtimeService;
+	
+	@Autowired
+	private RepositoryService repositoryService;
 
 	@Autowired
 	protected HttpServletRequest request;
@@ -23,6 +31,9 @@ public class BaseWorkFlowController {
 	@Autowired
 	protected HttpSession session;
 	
-	protected static User current_user;
+	/**
+	 * 当前登录用户key
+	 */
+	protected User current_user;
 	
 }

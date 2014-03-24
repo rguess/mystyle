@@ -22,9 +22,10 @@ $(document).ready(function() {
 		null,
 		[
 		 //{cName:"id",cValue:"任务ID ",noSort:true},
-		 {cName:"taskDefinitionName",cValue:"流程名称",noSort:true},
-		 //{cName:"taskDefinitionKey",cValue:"任务Key",noSort:true},
-		 {cName:"name",cValue:"任务名称",noSort:true},
+		 {cName:"definitionName",cValue:"流程名称",noSort:true},
+		 {cName:"sponsor",cValue:"发起人",noSort:true},
+		 //{cName:"taskKey",cValue:"任务Key",noSort:true},
+		 {cName:"taskName",cValue:"任务名称",noSort:true},
 		 //{cName:"processDefinitionId",cValue:"流程定义ID",noSort:true},
 		 //{cName:"processInstanceId",cValue:"流程实例ID",noSort:true},
 		 //{cName:"priority",cValue:"优先级",noSort:true},
@@ -34,31 +35,54 @@ $(document).ready(function() {
 		 {cName:"owner",cValue:"任务所属人",noSort:true},
 		 {cName:"owner",cValue:"操作",noSort:true,format:function(i,value,item){
 			 if(null == item.assignee){
-				 return $("<a href='javascript:void(0)' onclick='javascript:claim("+item.id+")'>签收</a>");
+				 return operBtn(0,{taskId : item.id,definitionKey : item.definitionKey , taskKey : item.taskKey});
 			 }
-			 return $("<a href='javascript:void(0)' onclick='alert(\"办理\")'>办理</a>");
+			 return operBtn(1,{taskId : item.id,definitionKey : item.definitionKey , taskKey : item.taskKey});
 		 }}
 		 ]
 	);
 });
 
-function claim(taskId){
+//生成签收或办理操作按钮type:0:签收,1:办理
+function operBtn(type,params){
+	if(type == 0){
+		return $("<a href='javascript:void(0)' "
+					+"data-definition-key="+params.definitionKey+" "
+					+"data-task-key="+params.taskKey+" "
+					+"data-task-id="+params.taskId+" "
+					+"onclick='javascript:claim(this)'>签收</a>");
+	}
+	return $("<a href='javascript:void(0)' "
+				+"data-definition-key="+params.definitionKey+" "
+				+"data-task-key="+params.taskKey+" "
+				+"data-task-id="+params.taskId+" "
+				+"onclick='javascript:handle(this)'>办理</a>");
+}
+
+//办理
+function handle(obj){
+	window.location.href = "${ctx}/workflow/task/handle/"+$(obj).attr("data-definition-key")+"/"+$(obj).attr("data-task-key")+"/"+$(obj).attr("data-task-id");
+}
+
+//签收任务
+function claim(obj){
+	blockUI();
 	$.ajax({
 		type : "POST",
-		url : "${ctx}/workflow/task/claim/"+taskId,
+		url : "${ctx}/workflow/task/claim/"+$(obj).attr("data-task-id"),
 		success : function(data){
+			unBlockUI();
 			if(data == "success"){
-				window.reload();
+				App.alert("签收成功！");
+				$(obj).replaceWith(operBtn(1,{taskId : $(obj).attr("data-task-id"),
+											  definitionKey : $(obj).attr("data-definition-key"),
+											  taskKey : $(obj).attr("data-task-key")}));
 			}
 		},
 		error : function(error) {
 			unBlockUI();
 		}
 	});
-}
-
-function doQuery(){
-	
 }
 </script>
 </head>

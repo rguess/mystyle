@@ -3,20 +3,23 @@ package org.guess.showcase.workflow.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.task.Task;
 import org.guess.core.Constants;
 import org.guess.showcase.workflow.model.Leave;
 import org.guess.showcase.workflow.service.LeaveService;
+import org.guess.showcase.workflow.util.WorkflowConstants;
 import org.guess.sys.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/workflow/leave")
-public class LeaveController extends BaseWorkFlowController{
+public class LeaveController extends BaseWorkFlowController {
 
 	@Autowired
 	private LeaveService leaveService;
@@ -30,13 +33,56 @@ public class LeaveController extends BaseWorkFlowController{
 	@RequestMapping(method = RequestMethod.POST, value = "/start")
 	public ModelAndView start(Leave leave, ModelAndView mav) throws Exception {
 		User u = (User) session.getAttribute(Constants.CURRENT_USER);
-		leave.setSponsor(u);
+		leave.setSponsorLoginId(u.getLoginId());
 		Map<String, Object> variables = new HashMap<String, Object>();
-		ProcessInstance processInstance = leaveService.startWorkflow(leave,
-				variables);
-		System.out.println(processInstance.getId());
+		// 设置流程发起人
+		variables.put(WorkflowConstants.SPONSOR, u.getName());
+		leaveService.startWorkflow(leave, variables);
 		mav.setViewName("redirect:/workflow/process");
 		return mav;
 	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/showByTaskId")
+	@ResponseBody
+	public Map<String,Object> getByTaskId(@RequestParam("taskId") String taskId) {
+		Map<String,Object> data = new HashMap<String, Object>();
+		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+		String userName = runtimeService.getVariable(task.getProcessInstanceId(), WorkflowConstants.SPONSOR).toString();
+		Leave leave = leaveService.getByProcessInstanceId(task.getProcessInstanceId());
+		data.put("userName", userName);
+		data.put("leave", leave);
+		return data;
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value = "/deptLeaderAudit")
+	public ModelAndView deptLeaderAudit(ModelAndView mav,
+			@RequestParam("leaveId") String leaveId,
+			@RequestParam("taskId") String taskId,
+			@RequestParam("depAuditOpinion") String depAuditOpinion,
+			@RequestParam("deptLeaderPass") Boolean deptLeaderPass) throws Exception{
+		
+		mav.setViewName("redirect:/workflow/todoTasks");
+		Leave leave = leaveService.get(Long.valueOf(leaveId));
+		leave.setDepAuditOpinion(depAuditOpinion);
+		leaveService.save(leave);
+		Map<String, Object> variables = new HashMap<String, Object>();
+		variables.put("deptLeaderPass", deptLeaderPass);
+		taskService.complete(taskId, variables);
+		return mav;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

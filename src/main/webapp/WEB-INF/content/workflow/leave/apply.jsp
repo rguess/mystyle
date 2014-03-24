@@ -96,7 +96,7 @@
                                 <div class="control-group">
 									<label class="control-label">请假天数：</label>
                                    	<div class="controls">
-                                       <input type="text" id="name" class="m-wrap span6">
+                                       <input type="text" id="name" class="m-wrap span6" name="leaveDays">
                                     </div>
                                 </div>
 								

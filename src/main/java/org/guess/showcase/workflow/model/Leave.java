@@ -3,12 +3,9 @@ package org.guess.showcase.workflow.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.guess.core.IdEntity;
-import org.guess.sys.model.User;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -28,9 +25,7 @@ public class Leave extends IdEntity{
 	/**
 	 * 流程发起人
 	 */
-	@OneToOne  
-    @JoinColumn(name="user_id",insertable=true)
-	private User sponsor;
+	private String sponsorLoginId;
 
 	/**
 	 * 开始日期
@@ -58,6 +53,11 @@ public class Leave extends IdEntity{
      * 请假原因
      */
     private String reason;
+    
+    /**
+     * 部门经理审批意见
+     */
+    private String depAuditOpinion;
 
 	public String getProcessInstanceId() {
 		return processInstanceId;
@@ -67,12 +67,12 @@ public class Leave extends IdEntity{
 		this.processInstanceId = processInstanceId;
 	}
 
-	public User getSponsor() {
-		return sponsor;
+	public String getSponsorLoginId() {
+		return sponsorLoginId;
 	}
 
-	public void setSponsor(User sponsor) {
-		this.sponsor = sponsor;
+	public void setSponsorLoginId(String sponsorLoginId) {
+		this.sponsorLoginId = sponsorLoginId;
 	}
 
 	public Date getStartTime() {
@@ -113,5 +113,13 @@ public class Leave extends IdEntity{
 
 	public void setReason(String reason) {
 		this.reason = reason;
+	}
+
+	public String getDepAuditOpinion() {
+		return depAuditOpinion;
+	}
+
+	public void setDepAuditOpinion(String depAuditOpinion) {
+		this.depAuditOpinion = depAuditOpinion;
 	}
 }

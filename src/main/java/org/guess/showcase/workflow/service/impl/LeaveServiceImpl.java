@@ -40,19 +40,21 @@ public class LeaveServiceImpl extends BaseServiceImpl<Leave, Long, LeaveDao>
 	private IdentityService identityService;
 
 	@Override
-	public ProcessInstance startWorkflow(Leave leave,
+	public void startWorkflow(Leave leave,
 			Map<String, Object> variables) {
 		leaveDao.save(leave);
 		String businessKey = leave.getId().toString();
 		ProcessInstance processInstance = null;
 		// 用来设置启动流程的人员ID，引擎会自动把用户ID保存到activiti:initiator中
-		identityService.setAuthenticatedUserId(leave.getSponsor().getId().toString());
-
-		processInstance = runtimeService.startProcessInstanceByKey(PROCESS_KEY,
-				businessKey, variables);
+		identityService.setAuthenticatedUserId(leave.getSponsorLoginId());
+		processInstance = runtimeService.startProcessInstanceByKey(PROCESS_KEY,businessKey, variables);
 		String processInstanceId = processInstance.getId();
 		leave.setProcessInstanceId(processInstanceId);
-		return processInstance;
+	}
+
+	@Override
+	public Leave getByProcessInstanceId(String processInstanceId) {
+		return leaveDao.findUniqueBy("processInstanceId", processInstanceId);
 	}
 
 }
