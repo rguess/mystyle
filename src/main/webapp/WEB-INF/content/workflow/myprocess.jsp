@@ -38,7 +38,7 @@ function doQuery(){
 	<div class="page-content">
 		<div class="container-fluid">
 			<!-- 页面导航 -->
-			<tool:navBar pageTitle="图标列表" pageTitleContent="工作流程-我的待办" titleIcon="icon-home"/>
+			<tool:navBar pageTitle="图标列表" pageTitleContent="工作流程-我的流程" titleIcon="icon-home"/>
 			<!-- 主体内容 -->
 			<div class="row-fluid">
 				<div class="span12">

@@ -12,8 +12,16 @@ mystyle
 * 使用泛型封装dao、service、controller基类，包含分页，查询条件封装，从而达到快速crud操作
 * 基于hibernate简单查询条件的封装
 * 权限管理——使用框架apache shiro进行系统认证、授权操作(完成)
+	* 系统认证、授权操作
+	* 按钮粒度的权限控制
 * 系统管理——包含用户、角色、权限、资源、菜单管理(完成)
-* 集成activiti工作流引擎并完成工作流通用基类、常用工具类(未完成)
+* 集成activiti(工作流引擎)
+	* 整合spring
+  	* 工作流引擎并完成工作流通用基类、常用工具类
+  	* 通用待办,已办,我的流程等常用查询
+  	* 定义业务开发需实现的借口
+  	* 流程部署
+  	* 请假流程作为例子
 * 集成jsper report动态报表工具(未完成)
 * jpush消息推送
 * 开发中常用工具类整理
@@ -21,15 +29,22 @@ mystyle
 	* 各种类型相互转化工具类
 	* Http与Servlet工具类
 	* 常用日期处理工具类
+	* 各种编码,解码,加密等工作类
+	* 反射操作封装
 * 整理了丰富多样的js、jquery插件
-	* jquery validation、修改验证后显示以适应bootstrap，显得更加美观、添加常用验证
-	* 自定义的js分页插件
 	* bootstrap
-	* ztree
-	* chosen-bootstrap
-	* datepicker(中文日历)
+	* jquery validation、修改验证后显示以适应bootstrap，显得更加美观、添加常用验证
+	* 自定义的js分页插件(配合bootstrap-paginator)
+	* ztree(jquery 树插件)
+	* datetimepicker(日历控件)
+	* gritter(提示框)
+	* jquery-slimscroll(定义局部滚动)
+	* jquery-treegrid(树插件能更好的与bootstrap table融合以展示数据)
+	* bootstrap-tree(简易的树插件)
+	* chosen-bootstrap(下拉框选择控件)
 	* font-awesome(字体)
+	* uniform(表单美化)
+	* jquery blockUI(遮罩层)
 	* ueditor(富文本编辑器)(未完成)
-	* jquery blockUI(未完成)
 	* bootstrap-fileupload(未完成)
 	* jquery-file-upload(未完成)
