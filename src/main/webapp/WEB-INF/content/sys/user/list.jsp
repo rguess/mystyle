@@ -12,6 +12,7 @@
 $(document).ready(function() {
 	//高亮左侧菜单
 	App.activeMenu("sys/user/list");
+	App.datePicker($("#time"));
 	Page.initData(
 		{
 			url:"${ctx}/sys/user/page",
@@ -80,7 +81,7 @@ function doQuery(){
 	};
 	var email = $("#email").val();
 	var name = $("#name").val();
-	var time = $("#time").val();
+	var time = $("#createDate").val();
 	App.isNundef(email)?queryObj.search_LIKES_email = email:null;
 	App.isNundef(name)?queryObj.search_LIKES_name = name:null;
 	App.isNundef(time)?queryObj.search_EQD_createDate = time:null;
@@ -128,12 +129,11 @@ function doQuery(){
 	                                 	
 	                                 	<div class="span4">
 		                                    <div class="control-group">
-		                                       <div class="controls">
-		                                         <div class="input-append date" data-date-format="yyyy-mm-dd">
-													<input class="span10 m-wrap" id="time" type="text"
-														readonly="readonly" placeholder="时间"> <span class="add-on"><i
-														class="icon-th"></i></span>
-												</div>
+		                                       <div class="controls input-append date" 
+		                                       		data-date-format="yyyy-mm-dd"
+		                                       		id="time">
+													<input id="createDate" class="span10 m-wrap" type="text" readonly="readonly" placeholder="时间">
+													<span class="add-on"><i class="icon-th"></i></span>
 		                                       </div>
 		                                    </div>
 	                                 	</div>

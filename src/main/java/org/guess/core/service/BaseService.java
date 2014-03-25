@@ -43,14 +43,6 @@ public interface BaseService<T,ID extends Serializable> {
 	 * @throws DataAccessException
 	 */
 	void save(T o) throws Exception;
-	
-	/**
-	 * 保存对象并返回ID
-	 * 
-	 * @param o
-	 * @throws DataAccessException
-	 */
-	ID saveAndReturnId(T o) throws Exception;
 
 	/**
 	 * 更新对象

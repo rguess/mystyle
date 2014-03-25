@@ -1049,12 +1049,42 @@ var App = function () {
             return false;
         },
         
+        //弹出框
         alert : function(str){
         	bootbox.alert(str);
         },
         
+        //选择框
         confirm :function(callback){
         	bootbox.confirm("确定？", callback);
-        }
+        },
+        
+        //dateTimepicker日历控件,有时间
+        dateTimePicker : function($obj){
+        	$obj.datetimepicker({
+    	        language:  'zh-CN',
+    	        weekStart: 1,
+    	        todayBtn:  1,
+    			autoclose: 1,
+    			todayHighlight: 1,
+    			startView: 2,
+    			forceParse: 0,
+    	        showMeridian: 1
+    	    });
+        },
+        //dateTimepicker日历控件,没时间
+	    datePicker : function($obj){
+	    	$obj.datetimepicker({
+		        language:  'zh-CN',
+		        weekStart: 1,
+		        todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				minView: 2,
+				forceParse: 0
+		    });
+	    }
+        
     };
 }();

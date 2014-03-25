@@ -2,7 +2,7 @@ mystyle
 =======
 
 ##介绍
-* 工作中的积累，搭建的j2ee应用快速开发手架
+* 工作中的积累，搭建的j2ee应用快速开发手架，重点在代码重构，一些常用功能的演示，工具，插件等的整理
 
 ##功能要点简介
 
@@ -15,6 +15,7 @@ mystyle
 	* 系统认证、授权操作
 	* 按钮粒度的权限控制
 * 系统管理——包含用户、角色、权限、资源、菜单管理(完成)
+* 系统登录,操作日志记录,查询,分析(未完成)
 * 集成activiti(工作流引擎)
 	* 整合spring
   	* 工作流引擎并完成工作流通用基类、常用工具类
@@ -38,7 +39,7 @@ mystyle
 	* ztree(jquery 树插件)
 	* datetimepicker(日历控件)
 	* gritter(提示框)
-	* jquery-slimscroll(定义局部滚动)
+	* jquery-slimscroll(定义局部元素滚动)
 	* jquery-treegrid(树插件能更好的与bootstrap table融合以展示数据)
 	* bootstrap-tree(简易的树插件)
 	* chosen-bootstrap(下拉框选择控件)

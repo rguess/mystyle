@@ -44,8 +44,8 @@ public class LeaveController extends BaseWorkFlowController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/showByTaskId")
 	@ResponseBody
-	public Map<String,Object> getByTaskId(@RequestParam("taskId") String taskId) {
-		Map<String,Object> data = new HashMap<String, Object>();
+	public Map<String, Object> getByTaskId(@RequestParam("taskId") String taskId) {
+		Map<String, Object> data = new HashMap<String, Object>();
 		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
 		String userName = runtimeService.getVariable(task.getProcessInstanceId(), WorkflowConstants.SPONSOR).toString();
 		Leave leave = leaveService.getByProcessInstanceId(task.getProcessInstanceId());
@@ -53,14 +53,12 @@ public class LeaveController extends BaseWorkFlowController {
 		data.put("leave", leave);
 		return data;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "/deptLeaderAudit")
-	public ModelAndView deptLeaderAudit(ModelAndView mav,
-			@RequestParam("leaveId") String leaveId,
-			@RequestParam("taskId") String taskId,
-			@RequestParam("depAuditOpinion") String depAuditOpinion,
-			@RequestParam("deptLeaderPass") Boolean deptLeaderPass) throws Exception{
-		
+	public ModelAndView deptLeaderAudit(ModelAndView mav, @RequestParam("leaveId") String leaveId,
+			@RequestParam("taskId") String taskId, @RequestParam("depAuditOpinion") String depAuditOpinion,
+			@RequestParam("deptLeaderPass") Boolean deptLeaderPass) throws Exception {
+
 		mav.setViewName("redirect:/workflow/todoTasks");
 		Leave leave = leaveService.get(Long.valueOf(leaveId));
 		leave.setDepAuditOpinion(depAuditOpinion);
@@ -70,15 +68,12 @@ public class LeaveController extends BaseWorkFlowController {
 		taskService.complete(taskId, variables);
 		return mav;
 	}
-	
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "/hrAudit")
-	public ModelAndView hrAudit(ModelAndView mav,
-			@RequestParam("leaveId") String leaveId,
-			@RequestParam("taskId") String taskId,
-			@RequestParam("hrAuditOpinion") String hrAuditOpinion,
-			@RequestParam("hrPass") Boolean hrPass) throws Exception{
-		
+	public ModelAndView hrAudit(ModelAndView mav, @RequestParam("leaveId") String leaveId,
+			@RequestParam("taskId") String taskId, @RequestParam("hrAuditOpinion") String hrAuditOpinion,
+			@RequestParam("hrPass") Boolean hrPass) throws Exception {
+
 		mav.setViewName("redirect:/workflow/todoTasks");
 		Leave leave = leaveService.get(Long.valueOf(leaveId));
 		leave.setHrAuditOpinion(hrAuditOpinion);
@@ -88,16 +83,17 @@ public class LeaveController extends BaseWorkFlowController {
 		taskService.complete(taskId, variables);
 		return mav;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	@RequestMapping(method = RequestMethod.POST, value = "/modifyApply")
+	public ModelAndView modifyApply(Leave leave,ModelAndView mav, @RequestParam("reApply") Boolean reApply,
+			@RequestParam("taskId") String taskId) throws Exception {
+
+		mav.setViewName("redirect:/workflow/todoTasks");
+		leaveService.save(leave);
+		Map<String, Object> variables = new HashMap<String, Object>();
+		variables.put("reApply", reApply);
+		taskService.complete(taskId, variables);
+		return mav;
+	}
 
 }

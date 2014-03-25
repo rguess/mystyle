@@ -79,7 +79,7 @@ var Page = {
 		// 初始化数据回调
 		var callBack = function(page) {
 			if(page.totalSize == 0){
-				$(obj.tableId).empty().html("没有数据！");
+				$(Page.defaultVal.tableId + " tbody:first").empty().html("没有数据！");
 				unBlockUI();
 				return;
 			}
@@ -168,7 +168,8 @@ var Page = {
 	 */
 	pageChangedCallBack : function(pageData) {
 		if(pageData.totalSize == 0){
-			$(obj.tableId).empty().html("没有数据！");
+			$(Page.defaultVal.tableId + " tbody:first").empty().html("没有数据！");
+			$("#Pagination").parent().empty();
 			unBlockUI();
 			return;
 		}
