@@ -122,7 +122,7 @@ var Page = {
 			}*/
 			tbody.append(tr);
 		});
-		
+		$('.tooltips').tooltip();
 		Page.registerTdOnclickEvent();
 	},
 
