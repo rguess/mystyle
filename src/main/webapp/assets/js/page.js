@@ -21,6 +21,18 @@ var Page = {
 	 * 保存当前状态下数据
 	 */
 	curData : {},
+	
+	/**
+	 * 清除数据
+	 */
+	clear : function(){
+		Page.defaultCols = [];
+		Page.cqData = {};
+		Page.curData = {};
+		$(Page.defaultVal.tableId).empty();
+		$("#Pagination").parent().remove();
+	},
+	
 	/**
 	 * ajax访问数据服务器获得数据
 	 */
@@ -78,11 +90,7 @@ var Page = {
 		$(obj.tableId).empty().append(thead).append(tBody);
 		// 初始化数据回调
 		var callBack = function(page) {
-			if(page.totalSize == 0){
-				$(Page.defaultVal.tableId + " tbody:first").empty().html("没有数据！");
-				unBlockUI();
-				return;
-			}
+			if(Page.isEmptyData(page)) return;
 			Page.defaultVal.totalPages = page.totalPages;
 			Page.insertData(page);
 			Page.initPagination(page);
@@ -167,12 +175,7 @@ var Page = {
 	 * @returns
 	 */
 	pageChangedCallBack : function(pageData) {
-		if(pageData.totalSize == 0){
-			$(Page.defaultVal.tableId + " tbody:first").empty().html("没有数据！");
-			$("#Pagination").parent().empty();
-			unBlockUI();
-			return;
-		}
+		if(Page.isEmptyData(pageData)) return;
 		Page.insertData(pageData);
 		options = {
 			totalPages : pageData.totalPages
@@ -315,6 +318,24 @@ var Page = {
 		Page.accToSer(Page.pageChangedCallBack);
 		$('#Pagination').bootstrapPaginator("showFirst");
 	},
+	
+	/**
+	 * 判断是否有数据并作出处理
+	 */
+	isEmptyData : function(page){
+		if(page.totalSize == 0){
+			$(Page.defaultVal.tableId).hide();
+			$("#Pagination").parent().hide();
+			$(Page.defaultVal.tableId).parent().append("<span id='noneData'>没有数据！</span>");
+			unBlockUI();
+			return true;
+		}else{
+			$("#noneData").remove();
+			$(Page.defaultVal.tableId).parent().children().show();
+			return false;
+		}
+	},
+	
 	/**
 	 * 执行查询函数
 	 */

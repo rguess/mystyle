@@ -12,7 +12,9 @@ import org.activiti.engine.ManagementService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.history.HistoricTaskInstance;
+import org.activiti.engine.impl.persistence.entity.HistoricIdentityLinkEntity;
 import org.activiti.engine.impl.persistence.entity.IdentityLinkEntity;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.NativeProcessInstanceQuery;
@@ -55,11 +57,11 @@ public class WorkFlowService {
 	private ManagementService managementService;
 
 	/**
-	 * 根据用户ID获取流程实例和流程定义
+	 * 根据用户ID获取流程实例和流程定义---------运行中
 	 * 
 	 * @param userId
 	 */
-	public Page<Map<String, String>> pageProcessceByUserId(String sponsor,
+	public Page<Map<String, String>> pageRuningProcessceByUserId(String sponsor,
 			Page<Map<String, String>> page) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		// 读取流程实例
@@ -80,12 +82,9 @@ public class WorkFlowService {
 				+ sponsor + "'";
 		String queryStr = "select * " + str;
 		String countStr = "select count(*) " + str;
-		NativeProcessInstanceQuery dataQuery = runtimeService
-				.createNativeProcessInstanceQuery().sql(queryStr);
-		long count = runtimeService.createNativeProcessInstanceQuery()
-				.sql(countStr).count();
-		List<ProcessInstance> instances = dataQuery.listPage(
-				page.getPageNo() - 1, page.getPageSize());
+		NativeProcessInstanceQuery dataQuery = runtimeService.createNativeProcessInstanceQuery().sql(queryStr);
+		long count = runtimeService.createNativeProcessInstanceQuery().sql(countStr).count();
+		List<ProcessInstance> instances = dataQuery.listPage(page.getPageNo() - 1, page.getPageSize());
 		for (ProcessInstance instance : instances) {
 			Map<String, String> map = new HashMap<String, String>();
 			// 读取流程定义对象
@@ -96,6 +95,42 @@ public class WorkFlowService {
 					.processInstanceId(instance.getId()).singleResult();
 
 			map.put("taskname", task.getName());
+			map.put("instanceId", instance.getId());
+			map.put("definitionName", definition.getName());
+			map.put("definitionKey", definition.getKey());
+			map.put("definitionVersion", definition.getVersion() + "");
+			list.add(map);
+		}
+		page.setTotalItems(count);
+		page.setResult(list);
+		return page;
+	}
+	
+	/**
+	 * 根据用户ID获取流程实例和流程定义---------已结束
+	 * 
+	 * @param userId
+	 */
+	public Page<Map<String, String>> pageHisProcessceByUserId(String sponsor, Page<Map<String, String>> page) {
+		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+		String str = "from "
+				+ managementService.getTableName(HistoricProcessInstance.class)
+				+ " as P "
+				+ " left join "
+				+ managementService.getTableName(HistoricIdentityLinkEntity.class)
+				+ " as I on P.PROC_INST_ID_ = I.PROC_INST_ID_ where I.TYPE_ = 'starter' and I.USER_ID_ = '"
+				+ sponsor + "' and P.END_ACT_ID_ is not null";
+		String queryStr = "select * " + str;
+		String countStr = "select count(*) " + str;
+		
+		List<HistoricProcessInstance> instances = historyService.createNativeHistoricProcessInstanceQuery()
+				.sql(queryStr).listPage(page.getPageNo() - 1, page.getPageSize());
+		long count = historyService.createNativeHistoricProcessInstanceQuery().sql(countStr).count();
+		for (HistoricProcessInstance instance : instances) {
+			Map<String, String> map = new HashMap<String, String>();
+			// 读取流程定义对象
+			ProcessDefinition definition = this.getDefinitionById(instance
+					.getProcessDefinitionId());
 			map.put("instanceId", instance.getId());
 			map.put("definitionName", definition.getName());
 			map.put("definitionKey", definition.getKey());
@@ -272,4 +307,5 @@ public class WorkFlowService {
 				.processInstanceId(id).singleResult();
 		return instance;
 	}
+	
 }

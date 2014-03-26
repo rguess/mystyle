@@ -6,35 +6,22 @@
 <link href="${ctx}/assets/comp/bootstrap-paginator/DT_bootstrap.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="${ctx}/assets/comp/bootstrap-paginator/bootstrap-paginator.js"></script>
 <script type="text/javascript" src="${ctx}/assets/js/page.js"></script>
+<script type="text/javascript" src="${ctx}/assets/js/workflow/workflow.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {
-	
 	App.activeMenu("workflow/myprocess");
-	
-	Page.initData(
-		{
-			url:"${ctx}/workflow/myprocess/page",
-			pageNo : 1,
-			pageSize : 10,
-			tableId : "#sample_1"
-		},
-		null,
-		[{cName:"definitionName",cValue:"流程名称 ",noSort:true},
-		 {cName:"taskname",cValue:"当前节点 ",noSort:true},
-		 {cName:"definitionKey",cValue:"key",noSort:true},
-		 {cName:"instanceId",cValue:"实例ID",noSort:true},
-		 {cName:"definitionVersion",cValue:"版本号",noSort:true}
-		 ]
-	);
+	MyProcess.init();
 });
 
-function doQuery(){
-	
+function show(pid){
+	$("#rcs").show().center().move();
+	$("#rcs").initFlowChart(pid);
 }
 </script>
 </head>
 <body>
+	<%@ include file="/WEB-INF/content/workflow/flowChart.jsp" %>
 	<div class="page-content">
 		<div class="container-fluid">
 			<!-- 页面导航 -->
@@ -53,9 +40,19 @@ function doQuery(){
 							</div>
 						</div>
 						<div class="portlet-body">
-							<table class="table table-striped table-bordered table-hover" id="sample_1">
-								
-							</table>
+							<div class="tabbable tabbable-custom">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#tab_1_1" data-toggle="tab" id="runingTab">运行中</a></li>
+									<li><a href="#tab_1_1" data-toggle="tab" id="hisTab">已结束</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="tab_1_1">
+										<table class="table table-striped table-bordered table-hover" id="sample_1">
+									
+										</table>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

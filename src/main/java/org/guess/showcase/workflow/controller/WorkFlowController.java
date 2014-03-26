@@ -1,7 +1,16 @@
 package org.guess.showcase.workflow.controller;
 
+import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.activiti.bpmn.model.BpmnModel;
+import org.activiti.engine.impl.bpmn.diagram.ProcessDiagramGenerator;
+import org.activiti.engine.impl.context.Context;
+import org.activiti.engine.repository.ProcessDefinition;
+import org.activiti.engine.runtime.ProcessInstance;
 import org.guess.core.Constants;
 import org.guess.core.orm.Page;
 import org.guess.core.orm.PageRequest;
@@ -10,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -52,12 +62,15 @@ public class WorkFlowController extends BaseWorkFlowController {
 	 * 
 	 * @return json
 	 */
-	@RequestMapping(value = "/myprocess/page")
+	@RequestMapping(value = "/myprocess/page/{status}")
 	@ResponseBody
-	public Map<String, Object> myprocess() {
+	public Map<String, Object> myprocess(@PathVariable("status") String status,Page<Map<String, String>> page) {
 		current_user = (User) session.getAttribute(Constants.CURRENT_USER);
-		Page<Map<String, String>> page = workflowService.pageProcessceByUserId(current_user.getLoginId(),
-				new Page<Map<String, String>>(new PageRequest()));
+		if(status.equals("running")){
+			page = workflowService.pageRuningProcessceByUserId(current_user.getLoginId(),page);
+		}else if(status.equals("his")){
+			page = workflowService.pageHisProcessceByUserId(current_user.getLoginId(),page);
+		}
 		return page.returnMap();
 	}
 
@@ -146,6 +159,54 @@ public class WorkFlowController extends BaseWorkFlowController {
 		return mav;
 
 	}
+	
+	/**
+     * 读取资源，通过流程ID
+     *
+     * @param resourceType      资源类型(xml|image)
+     * @param processInstanceId 流程实例ID
+     * @param response
+     * @throws Exception
+     */
+    @RequestMapping(value = "/resource/process-instance")
+    public void loadByProcessInstance(@RequestParam("type") String resourceType, @RequestParam("pid") String processInstanceId, HttpServletResponse response)
+            throws Exception {
+        InputStream resourceAsStream = null;
+        ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
+        ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery().processDefinitionId(processInstance.getProcessDefinitionId())
+                .singleResult();
+
+        String resourceName = "";
+        if (resourceType.equals("image")) {
+            resourceName = processDefinition.getDiagramResourceName();
+        } else if (resourceType.equals("xml")) {
+            resourceName = processDefinition.getResourceName();
+        }
+        resourceAsStream = repositoryService.getResourceAsStream(processDefinition.getDeploymentId(), resourceName);
+        byte[] b = new byte[1024];
+        int len = -1;
+        while ((len = resourceAsStream.read(b, 0, 1024)) != -1) {
+            response.getOutputStream().write(b, 0, len);
+        }
+    }
+    
+    /**
+     * 读取带跟踪的图片
+     */
+    @RequestMapping(value = "/process/trace/auto/{executionId}")
+    public void readResource(@PathVariable("executionId") String executionId, HttpServletResponse response)
+            throws Exception {
+        ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(executionId).singleResult();
+        BpmnModel bpmnModel = repositoryService.getBpmnModel(processInstance.getProcessDefinitionId());
+        List<String> activeActivityIds = runtimeService.getActiveActivityIds(executionId);
+        Context.setProcessEngineConfiguration(processEngine.getProcessEngineConfiguration());
+        InputStream imageStream = ProcessDiagramGenerator.generateDiagram(bpmnModel, "png", activeActivityIds);
+        byte[] b = new byte[1024];
+        int len;
+        while ((len = imageStream.read(b, 0, 1024)) != -1) {
+            response.getOutputStream().write(b, 0, len);
+        }
+    }
 	
 	
 	
