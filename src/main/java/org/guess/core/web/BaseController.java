@@ -66,7 +66,7 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(method = RequestMethod.GET, value = "create")
+	@RequestMapping(method = RequestMethod.GET, value = "/create")
 	public ModelAndView create() throws Exception{
 		ModelAndView mav = new ModelAndView(editView);
 		return mav;
@@ -78,7 +78,7 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(method = RequestMethod.POST, value = "edit")
+	@RequestMapping(method = RequestMethod.POST, value = "/edit")
 	public String create(T object) throws Exception {
 		getBaseService().save(object);
 		return REDIRECT + listView;
@@ -90,7 +90,7 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(method = RequestMethod.GET, value = "update/{id}")
+	@RequestMapping(method = RequestMethod.GET, value = "/update/{id}")
 	public ModelAndView update(@PathVariable("id") Long id) throws Exception {
 		T obj = getBaseService().get(id);
 		ModelAndView mav = new ModelAndView(editView);
@@ -104,7 +104,7 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "delete/{id}")
+	@RequestMapping(value = "/delete/{id}")
 	public String delete(@PathVariable("id") Long id) throws Exception {
 		getBaseService().removeById(id);
 		return REDIRECT+listView;
@@ -113,7 +113,7 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	/**
 	 * 批量删除
 	 */
-	@RequestMapping(value = "delete",method=RequestMethod.POST)
+	@RequestMapping(value = "/delete",method=RequestMethod.POST)
 	public String delete(@RequestParam("ids") Long[] ids , HttpServletRequest request) throws Exception {
 		getBaseService().removeByIds(ids);
 		return REDIRECT+listView;
@@ -125,7 +125,7 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "show/{id}")
+	@RequestMapping(value = "/show/{id}")
 	public ModelAndView show(@PathVariable("id") Long id) throws Exception{
 		T object = getBaseService().get(id);
 		ModelAndView mav = new ModelAndView(showView);
@@ -139,7 +139,7 @@ public abstract class BaseController<T, M extends BaseService<T, Long>> {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping("page")
+	@RequestMapping("/page")
 	public @ResponseBody Map<String,Object> page(Page<T> page,HttpServletRequest request){
 		Page<T> pageData = getBaseService().findPage(page, PropertyFilter.buildFromHttpRequest(request, "search"));
 		return pageData.returnMap();

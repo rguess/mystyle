@@ -1,10 +1,7 @@
 package org.guess.sys.controller;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import org.guess.core.utils.security.Coder;
 import org.guess.core.web.BaseController;
 import org.guess.sys.model.Role;
 import org.guess.sys.model.User;
@@ -20,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/sys/user/")
+@RequestMapping("/sys/user")
 public class UserController extends BaseController<User, UserService> {
 
 	{
@@ -54,29 +51,9 @@ public class UserController extends BaseController<User, UserService> {
 
 	@Override
 	public String create(User user) throws Exception {
-		
-		//修改密码时，判断
-		if (user.getId() != null) {
-			User oldUser = userService.get(user.getId());
-			if (!oldUser.getPasswd().equals(user.getPasswd())) {
-				user.setPasswd(Coder.encryptMD5(user.getLoginId() + user.getPasswd()));
-			}
-		} else {
-			user.setPasswd(Coder.encryptMD5(user.getLoginId() + user.getPasswd()));
-		}
-		
-		//插入角色
+		String oldpwd = request.getParameter("oldpwd");
 		String[] roleIds = request.getParameterValues("roleIds");
-		if(roleIds != null){
-			Set<Role> roles = new HashSet<Role>();
-			for (String roleId : roleIds) {
-				Role role = new Role();
-				role.setId(Long.valueOf(roleId));
-				roles.add(role);
-			}
-			user.setRoles(roles);
-		}
-		userService.save(user);
+		userService.save(user,roleIds,oldpwd);
 		return REDIRECT + listView;
 	}
 	

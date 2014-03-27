@@ -87,7 +87,6 @@ public class SimpleHibernateDao<T, ID extends Serializable> {
 	 */
 	public void save(final T entity) {
 		AssertUtils.notNull(entity, "entity不能为空");
-		getSession().clear();
 		getSession().saveOrUpdate(entity);
 		logger.debug("save entity: {}", entity);
 	}

@@ -66,6 +66,7 @@
 								<div class="control-group">
 									<label class="control-label">密码:</label>
 									<div class="controls">
+										<input type="hidden" value="${obj.passwd }" name="oldpwd">
 										<input type="password" id="passwd" class="span6 m-wrap"
 											validate="{required:true,isPasswd:true}" name="passwd"
 											value="${obj.passwd }" />

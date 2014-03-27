@@ -10,12 +10,12 @@
 </div>
 
 <div class="control-group">
-	<label class="control-label">开始如期：</label>
+	<label class="control-label">开始日期：</label>
 	<div class="controls">
-		<div class="input-append date form_datetime" data-date-format="yyyy-mm-dd hh:mm:ss">
+		<div class="input-append date form_datetime" data-date-format="yyyy-mm-dd hh:ii">
 			<input class="m-wrap" id="startTime" name="startTime"
 				type="text" validate="{required:true}" readonly="readonly">
-			<span class="add-on"> 
+			<span class="add-on">
 				<i class="icon-th"></i>
 			</span>
 		</div>
@@ -25,7 +25,7 @@
 <div class="control-group">
 	<label class="control-label">结束日期：</label>
 	<div class="controls">
-		<div class="input-append date form_datetime" data-date-format="yyyy-mm-dd hh:mm:ss">
+		<div class="input-append date form_datetime" data-date-format="yyyy-mm-dd hh:ii">
 			<input class="m-wrap" id="endTime" name="endTime" type="text"
 				validate="{required:true}" readonly="readonly"> 
 			<span class="add-on"> <i class="icon-th"></i> </span>

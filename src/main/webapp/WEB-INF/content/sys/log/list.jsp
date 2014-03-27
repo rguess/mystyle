@@ -10,22 +10,36 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
-	App.activeMenu("sys/icon/list");
+	App.activeMenu("sys/log/list");
 	
 	Page.initData(
 		{
-			url:"${ctx}/sys/icon/page",
+			url:"${ctx}/sys/log/page",
 			pageNo : 1,
 			pageSize : 10,
 			tableId : "#sample_1"
 		},
 		null,
-		[{cName:"mark",cValue:"标识符 "},
-		 {cName:"mark",cValue:"生成的图标",noSort:true,format:function(i,value,item){
-			 return "<i class='"+value+"'></i>";
+		[{cName:"operName",cValue:"操作名称"},
+		 {cName:"operTime",cValue:"操作时间",format:function(i,value,item){
+			 if(App.isNundef(value)){
+				 return new Date(value).format("yyyy-MM-dd");
+			 }
+			 return value;
 		 }},
-		 {cName:"type",cValue:"类型"},
-		 {cName:"description",cValue:"描述"}
+		 {cName:"result",cValue:"类型",format:function(i,value,item){
+			 if(value == 1){
+				 return "成功";
+			 }else if(value == 2){
+				 return "失败";
+			 }
+		 }},
+		 {cName:"operUser",cValue:"操作人",format:function(i,value,item){
+			 if(App.isNundef(value)){
+				 return value.name;
+			 }
+		 }},
+		 {cName:"content",cValue:"描述"}
 		 ]
 	);
 });
@@ -44,7 +58,7 @@ function doQuery(){
 	<div class="page-content">
 		<div class="container-fluid">
 			<!-- 页面导航 -->
-			<tool:navBar pageTitle="图标列表" pageTitleContent="系统管理-图标管理-图标列表" titleIcon="icon-home"/>
+			<tool:navBar pageTitle="日志列表" pageTitleContent="系统管理-系统日志-日志列表" titleIcon="icon-home"/>
 			<!-- 主体内容 -->
 			<div class="row-fluid">
 				<div class="span12">

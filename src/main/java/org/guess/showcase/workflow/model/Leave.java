@@ -30,13 +30,13 @@ public class Leave extends IdEntity{
 	/**
 	 * 开始日期
 	 */
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date startTime;
 
 	/**
 	 * 截止日期
 	 */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date endTime;
     
     /**

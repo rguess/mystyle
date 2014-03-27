@@ -908,7 +908,7 @@ var App = function () {
     	$(".remove1").click(function(){
     		$(this).closest(".diywindow").hide();
     	});
-    }
+    };
     
     return {
         //main function to initiate template pages
