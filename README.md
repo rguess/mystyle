@@ -24,6 +24,7 @@ mystyle
   	* 请假流程作为例子
 * 集成jsper report动态报表工具(未完成)
 * jpush消息推送
+* jquery fileupload多文件上传带进度条
 * 开发中常用工具类整理
 	* 基于apache poi的通用导出excel工具类
 	* 各种类型相互转化工具类

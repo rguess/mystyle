@@ -6,64 +6,33 @@
 	<ul>
 		<li>
 			<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-			<div class="sidebar-toggler hidden-phone"></div> 
-			<!-- END SIDEBAR TOGGLER BUTTON -->
+			<div class="sidebar-toggler hidden-phone"></div> <!-- END SIDEBAR TOGGLER BUTTON -->
 		</li>
-		<li class="start"><a href="index.html"> <i
-				class="icon-home"></i> <span class="title">首页</span> <span
-				class="selected"></span>
+		<li class="start"><a href="index.html"> <i class="icon-home"></i>
+				<span class="title">首页</span> <span class="selected"></span>
 		</a></li>
-		
+
 		<c:forEach var="menu" items="${sessionScope.menus }">
 			<c:choose>
 				<c:when test="${not empty menu.childRes }">
-					<li class="has-sub">
-						<a href="javascript:;">
-							<i class="${menu.icon }"></i>
-							<span class="title">${menu.name }</span>
+					<li class="has-sub"><a href="javascript:;"> <i
+							class="${menu.icon }"></i> <span class="title">${menu.name }</span>
 							<span class="arrow"></span>
-						</a>
+					</a>
 						<ul class="sub">
 							<c:forEach var="child" items="${menu.childRes }">
-								<li><a href="${ctx }${child.resString}"><i class="${child.icon }"></i>${child.name }</a></li>
+								<li><a href="${ctx }${child.resString}"><i
+										class="${child.icon }"></i>${child.name }</a></li>
 							</c:forEach>
-						</ul>
-					</li>
+						</ul></li>
 				</c:when>
 				<c:otherwise>
-					<li class="">
-						<a href="${ctx }${menu.resString}">
-						<i class="${menu.icon }"></i>
-							<span class="title">${menu.name }</span>
-						</a>
-					</li>
+					<li class=""><a href="${ctx }${menu.resString}"> <i
+							class="${menu.icon }"></i> <span class="title">${menu.name }</span>
+					</a></li>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		
-<%-- 		<li class="has-sub">
-			<a href="javascript:;">
-				<i class="icon-bookmark-empty"></i>
-				<span class="title">系统管理</span>
-				<span class="arrow"></span>
-			</a>
-			<ul class="sub">
-				<li><a href="${ctx }/sys/user/list">用户管理</a></li>
-				<li><a href="${ctx }/sys/role/list">角色管理</a></li>
-				<li><a href="${ctx }/sys/resource/list">资源管理</a></li>
-				<li><a href="${ctx }/sys/icon/list">图标管理</a></li>
-			</ul>
-		</li> --%>
-		
-		<%-- <li class="has-sub">
-			<a href="javascript:;"> 
-			<i class="icon-table"></i>
-			<span class="title">终端服务</span> 
-			<span class="arrow"></span>
-		</a>
-			<ul class="sub">
-				<li><a href="${ctx }/mobile/push">消息推送</a></li>
-			</ul></li> --%>
 		<li class="has-sub "><a href="javascript:;"> <i
 				class="icon-th-list"></i> <span class="title">Data Tables</span> <span
 				class="arrow "></span>
