@@ -5,34 +5,34 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({"bytes"}) 
 public class FileMeta {
 
-	private String fileName;
-    private String fileSize;
-    private String fileType;
+	private String name;
+    private String size;
+    private String type;
  
     private byte[] bytes;
 
-	public String getFileName() {
-		return fileName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getFileSize() {
-		return fileSize;
+	public String getSize() {
+		return size;
 	}
 
-	public void setFileSize(String fileSize) {
-		this.fileSize = fileSize;
+	public void setSize(String size) {
+		this.size = size;
 	}
 
-	public String getFileType() {
-		return fileType;
+	public String getType() {
+		return type;
 	}
 
-	public void setFileType(String fileType) {
-		this.fileType = fileType;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public byte[] getBytes() {
@@ -42,5 +42,5 @@ public class FileMeta {
 	public void setBytes(byte[] bytes) {
 		this.bytes = bytes;
 	}
-    
+
 }

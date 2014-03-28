@@ -51,9 +51,9 @@ public class FileController {
 
 			// 2.3 create new fileMeta
 			fileMeta = new FileMeta();
-			fileMeta.setFileName(mpf.getOriginalFilename());
-			fileMeta.setFileSize(mpf.getSize() / 1024 + " Kb");
-			fileMeta.setFileType(mpf.getContentType());
+			fileMeta.setName(mpf.getOriginalFilename());
+			fileMeta.setSize(mpf.getSize() / 1024 + " Kb");
+			fileMeta.setType(mpf.getContentType());
 
 			try {
 				fileMeta.setBytes(mpf.getBytes());
