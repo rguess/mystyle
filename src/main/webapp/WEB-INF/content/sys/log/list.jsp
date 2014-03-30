@@ -83,7 +83,7 @@ function doQuery(){
 		                                       </div>
 		                                    </div>
 	                                 	</div>
-	                                 	<div class="span3 ">
+	                                 	<div class="span5">
 		                                    <div class="control-group">
 		                                       <div class="controls">
 		                                         <a class="btn blue" href="javascript:void(0)" onclick="javascript:doQuery();">
@@ -97,7 +97,7 @@ function doQuery(){
 	                                 	</div>
 									</div>
 								</form>
-								<tool:operBtns modelKey="role"></tool:operBtns>
+								<tool:operBtns modelKey="log"></tool:operBtns>
 							</div>
 							<table class="table table-striped table-bordered table-hover" id="sample_1">
 								

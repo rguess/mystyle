@@ -48,18 +48,22 @@
 			<ul class="nav pull-right">
 				<!-- BEGIN NOTIFICATION DROPDOWN -->
 				<li class="dropdown" id="header_notification_bar">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-					<i class="icon-warning-sign"></i> <span class="badge">6</span>
-				</a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+						<i class="icon-warning-sign"></i> 
+						<span class="badge">6</span>
+					</a>
 					<ul class="dropdown-menu extended notification">
 						<li>
 							<p>You have 14 new notifications</p>
 						</li>
-						<li><a href="javascript:;"
-							onclick="App.onNotificationClick(1)"> <span
-								class="label label-success"><i class="icon-plus"></i></span> New
-								user registered. <span class="time">Just now</span>
-						</a></li>
+						<li>
+							<a href="javascript:;" onclick="App.onNotificationClick(1)"> 
+								<span class="label label-success">
+								<i class="icon-plus"></i>
+								</span> New user registered. 
+								<span class="time">Just now</span>
+							</a>
+						</li>
 						<li><a href="#"> <span class="label label-important"><i
 									class="icon-bolt"></i></span> Server #12 overloaded. <span
 								class="time">15 mins</span>
@@ -180,7 +184,7 @@
 							<i class="icon-user"></i>&nbsp&nbsp&nbsp<span>个人信息</span>
 							</a>
 						</li>
-						<li><a href="javascript:void(0);" onclick="javascript:changePwd();">
+						<li><a href="javascript:void(0);" onclick="javascript:Header.changePwd();">
 							<i class="icon-wrench"></i>&nbsp&nbsp&nbsp<span>修改密码</span>
 							</a>
 						</li>
@@ -188,7 +192,7 @@
 							<i class="icon-calendar"></i>&nbsp&nbsp&nbsp<span>我的任务</span>
 							</a>
 						</li>
-						<li><a href="javascript:void(0);" onclick="javascript:loadSysSetting();">
+						<li><a href="javascript:void(0);" onclick="javascript:Header.loadSysSetting();">
 							<i class="icon-cog"></i>&nbsp&nbsp&nbsp<span>系统设置</span>
 							</a>
 						</li>
@@ -203,15 +207,6 @@
 	</div>
 	<!-- END TOP NAVIGATION BAR -->
 </div>
-
-<script>
-	function loadSysSetting(){
-		alert("还没做");
-	}
-	function changePwd(){
-		alert("还没做");
-	}
-</script>
 
 
 

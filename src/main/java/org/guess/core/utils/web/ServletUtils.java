@@ -177,4 +177,18 @@ public abstract class ServletUtils {
 		String encode = userName + ":" + password;
 		return "Basic " + EncodeUtils.base64Encode(encode.getBytes());
 	}
+	
+	/**
+	 * 获取项目名称路径
+	 */
+	public static String getContentpath(HttpServletRequest request){
+		return request.getContextPath();
+	}
+	
+	/**
+	 * 获取项目绝对路径
+	 */
+	public static String getRealPath(HttpServletRequest request){
+		return request.getSession().getServletContext().getRealPath("/");
+	}
 }

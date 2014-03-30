@@ -80,20 +80,20 @@
 	}
 	
 	//编辑
-	function edit(obj){
+	function edit(){
 		var id = $(obj).closest("tr").attr("id");
 		window.location.href = ctx+"/sys/resource/update/"+id;
 	}
 	
 	//删除
-	function del(){
+	function del(obj){
 		var id = $(obj).closest("tr").attr("id");
 		window.location.href = ctx+"/sys/resource/delete/"+id;
 	}
 	
 	//详细
-	function del(){
-		var id = $(obj).closest("tr");
+	function show(obj){
+		var id = $(obj).closest("tr").attr("id");
 		window.location.href = ctx+"/sys/resource/show/"+id;
 	}
 	

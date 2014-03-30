@@ -1,7 +1,11 @@
 package org.guess.sys.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -141,12 +145,12 @@ public class User extends IdEntity {
 	}
 
 	@JsonIgnore
-	public Set<Resource> getMenus() {
-		Set<Resource> recs = new HashSet<Resource>();
+	public List<Resource> getMenus() {
+		List<Resource> recs = new ArrayList<Resource>();
 		Set<Resource> allRecs = new HashSet<Resource>();
 		for (Role role : this.getRoles()) {
 			for (Resource rec : role.getResources()) {
-				if (rec.getGrade() == Constants.FIRST_MENU) {
+				if (rec.getGrade() == Constants.FIRST_MENU && !recs.contains(rec)) {
 					recs.add(rec);
 				}
 				allRecs.add(rec);
@@ -160,9 +164,31 @@ public class User extends IdEntity {
 						userRecs.add(r2);
 				}
 			}
-			
 			r1.setChildRes(userRecs);
 		}
+		//父菜单排序
+		Collections.sort(recs, new Comparator<Resource>(){
+			@Override
+			public int compare(Resource o1, Resource o2) {
+				return o1.getOrderNo()>o2.getOrderNo()?1:-1;
+			}
+		});
+		for (Resource r1 : recs) {
+			List<Resource> children = new ArrayList<Resource>();
+			children.addAll(r1.getChildRes());
+			Collections.sort(children, new Comparator<Resource>(){
+				@Override
+				public int compare(Resource o1, Resource o2) {
+					return o1.getOrderNo()>o2.getOrderNo()?1:-1;
+				}
+			});
+			Set<Resource> cset = new HashSet<Resource>();
+			cset.addAll(children);
+			r1.setChildRes(cset);
+//			cset.clear();
+			children.clear();
+		}
+		
 		return recs;
 	}
 }
