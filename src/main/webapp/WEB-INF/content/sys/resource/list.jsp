@@ -80,7 +80,7 @@
 	}
 	
 	//编辑
-	function edit(){
+	function edit(obj){
 		var id = $(obj).closest("tr").attr("id");
 		window.location.href = ctx+"/sys/resource/update/"+id;
 	}

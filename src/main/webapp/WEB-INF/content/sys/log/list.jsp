@@ -23,7 +23,7 @@ $(document).ready(function() {
 		[{cName:"operName",cValue:"操作名称"},
 		 {cName:"operTime",cValue:"操作时间",format:function(i,value,item){
 			 if(App.isNundef(value)){
-				 return new Date(value).format("yyyy-MM-dd");
+				 return new Date(value).format("yyyy-MM-dd hh:mm:ss");
 			 }
 			 return value;
 		 }},
