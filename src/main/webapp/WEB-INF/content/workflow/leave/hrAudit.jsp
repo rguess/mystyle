@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>人力审批</title>
-<%@ include file="/WEB-INF/content/common/jquery-validation.jsp"%>
+<%@ include file="/WEB-INF/content/common/plugins/jquery-validation.jsp"%>
 <script src="${ctx}/assets/js/workflow/leave.js"></script>
 <script type="text/javascript">
 

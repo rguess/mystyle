@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>${pageTitle }</title>
-<%@ include file="/WEB-INF/content/common/jquery-validation.jsp"%>
+<%@ include file="/WEB-INF/content/common/plugins/jquery-validation.jsp"%>
 <link href="${ctx}/assets/comp/jquery-ztree/zTreeStyle.css" type="text/css" rel="stylesheet" />
 <script src="${ctx}/assets/comp/jquery-ztree/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
 <script type="text/javascript">

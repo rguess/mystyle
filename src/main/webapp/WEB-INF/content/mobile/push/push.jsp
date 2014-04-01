@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>消息推送</title>
-<%@ include file="/WEB-INF/content/common/jquery-validation.jsp"%>
+<%@ include file="/WEB-INF/content/common/plugins/jquery-validation.jsp"%>
 <script type="text/javascript">
 	$(function(){
 		App.activeMenu("/mobile/push");

@@ -3,8 +3,8 @@
 <html>
 <head>
 <title>发起请假流程</title>
-<%@ include file="/WEB-INF/content/common/datepicker.jsp"%>
-<%@ include file="/WEB-INF/content/common/jquery-validation.jsp"%>
+<%@ include file="/WEB-INF/content/common/plugins/datepicker.jsp"%>
+<%@ include file="/WEB-INF/content/common/plugins/jquery-validation.jsp"%>
 <script src="${ctx}/assets/js/workflow/leave.js"></script>
 <script type="text/javascript">
 	$(function(){

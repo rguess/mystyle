@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>${pageTitle }</title>
-<%@ include file="/WEB-INF/content/common/jquery-validation.jsp"%>
+<%@ include file="/WEB-INF/content/common/plugins/jquery-validation.jsp"%>
 <script src="${ctx}/assets/comp/bootstrap-tree/js/bootstrap-tree.js" type="text/javascript"></script>
 <link href="${ctx}/assets/comp/bootstrap-tree/css/bootstrap-tree.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript">
