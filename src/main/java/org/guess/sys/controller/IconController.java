@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping("/sys/icon/")
+@RequestMapping("/sys/icon")
 public class IconController extends BaseController<Icon, IconService>{
 
 	{
@@ -25,13 +25,13 @@ public class IconController extends BaseController<Icon, IconService>{
 	@Autowired
 	private IconService iService;
 	
-	@RequestMapping("iconSelect")
+	@RequestMapping("/iconSelect")
 	public ModelAndView selects(ModelAndView mav) throws Exception{
 		mav.setViewName("/sys/icon/iconSelect");
 		return mav.addObject("icons", iService.getAll());
 	}
 	
-	@RequestMapping("listAll")
+	@RequestMapping("/listAll")
 	@ResponseBody
 	public List<Icon> listAll() throws Exception{
 		return iService.getAll();
