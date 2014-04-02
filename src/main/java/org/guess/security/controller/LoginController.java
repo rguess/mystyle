@@ -45,6 +45,8 @@ public class LoginController {
 
 	@RequestMapping(method = RequestMethod.GET,value="/login")
 	public String login() {
+		/*Object object = session.getAttribute(Constants.CURRENT_USER);
+		System.out.println(object);*/
 		return "login";
 	}
 
@@ -97,8 +99,6 @@ public class LoginController {
 	public String logout(HttpServletRequest request) {
 		User curUser = (User) session.getAttribute(Constants.CURRENT_USER);
 		SecurityUtils.getSubject().logout();
-		session.removeAttribute(Constants.CURRENT_USER);
-		session.removeAttribute(Constants.USER_MENUS);
 		try {
 			logService.save(new Log("系统登出", 1, "退出系统", curUser));
 		} catch (Exception e) {
