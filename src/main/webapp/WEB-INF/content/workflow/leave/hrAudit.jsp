@@ -59,7 +59,7 @@
 									<div class="controls">
 										<textarea rows="3" cols="6" class="span6 m-wrap" 
 											validate="{required:true}"
-											name="hrAuditOpinion"></textarea>
+											name="hrAuditOpinion" id="hrAuditOpinion"></textarea>
 									</div>
 								</div>
 								<div class="form-actions">

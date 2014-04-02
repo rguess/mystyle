@@ -14,6 +14,7 @@ import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.history.HistoricTaskInstance;
+import org.activiti.engine.history.HistoricTaskInstanceQuery;
 import org.activiti.engine.impl.persistence.entity.HistoricIdentityLinkEntity;
 import org.activiti.engine.impl.persistence.entity.IdentityLinkEntity;
 import org.activiti.engine.repository.ProcessDefinition;
@@ -124,7 +125,7 @@ public class WorkFlowService {
 		String countStr = "select count(*) " + str;
 		
 		List<HistoricProcessInstance> instances = historyService.createNativeHistoricProcessInstanceQuery()
-				.sql(queryStr).listPage(page.getPageNo() - 1, page.getPageSize());
+				.sql(queryStr).listPage((page.getPageNo()-1)*page.getPageSize(), page.getPageSize());
 		long count = historyService.createNativeHistoricProcessInstanceQuery().sql(countStr).count();
 		for (HistoricProcessInstance instance : instances) {
 			Map<String, String> map = new HashMap<String, String>();
@@ -174,9 +175,10 @@ public class WorkFlowService {
 	public Page<Map<String, String>> getHasTodoTasks(String loginId,
 			Page<Map<String, String>> page) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		List<HistoricTaskInstance> tasks = historyService
-				.createHistoricTaskInstanceQuery()
-				.taskCompletedBefore(new Date()).taskAssignee(loginId).list();
+		HistoricTaskInstanceQuery query = historyService.createHistoricTaskInstanceQuery()
+				.taskCompletedBefore(new Date()).taskAssignee(loginId);
+		List<HistoricTaskInstance> tasks =  query.listPage((page.getPageNo()-1)*page.getPageSize(), page.getPageSize());
+		long count = query.count();
 		for (HistoricTaskInstance task : tasks) {
 
 			Map<String, String> map = new HashMap<String, String>();
@@ -220,7 +222,7 @@ public class WorkFlowService {
 			map.put("assignee", task.getAssignee());
 			list.add(map);
 		}
-		page.setTotalItems(tasks.size());
+		page.setTotalItems(count);
 		page.setResult(list);
 		return page;
 	}

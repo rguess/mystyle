@@ -16,7 +16,7 @@ $(document).ready(function() {
 		{
 			url:"${ctx}/workflow/hasTodo/page",
 			pageNo : 1,
-			pageSize : 100,
+			pageSize : 10,
 			tableId : "#sample_1"
 		},
 		null,
@@ -32,7 +32,7 @@ $(document).ready(function() {
 		 {cName:"startTime",cValue:"开始日期",noSort:true},
 		 {cName:"endTime",cValue:"结束日期",noSort:true},
 		 //{cName:"description",cValue:"任务描述",noSort:true},
-		 {cName:"owner",cValue:"任务所属人",noSort:true},
+		 //{cName:"owner",cValue:"任务所属人",noSort:true},
 		 {cName:"oper",cValue:"操作",noSort:true,format:function(i,value,item){
 			 return $("<a href='javascript:void(0)' onclick='javascript:alert(this)'>详细</a>");
 		 }}
@@ -45,7 +45,7 @@ $(document).ready(function() {
 	<div class="page-content">
 		<div class="container-fluid">
 			<!-- 页面导航 -->
-			<tool:navBar pageTitle="图标列表" pageTitleContent="工作流程-待办" titleIcon="icon-home"/>
+			<tool:navBar pageTitle="图标列表" pageTitleContent="工作流程-已办" titleIcon="icon-home"/>
 			<!-- 主体内容 -->
 			<div class="row-fluid">
 				<div class="span12">

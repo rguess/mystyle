@@ -24,7 +24,7 @@
 		App.activeMenu("sys/resource/list");
 		initTree();
 		if(btns.length > 0){
-			$("#dataTr").append($("<td></td>").text("操作"));
+			$("#dataTr").append($("<th></th>").text("操作"));
 		}
 	});
 

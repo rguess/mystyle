@@ -119,10 +119,9 @@ public class WorkFlowController extends BaseWorkFlowController {
 	 */
 	@RequestMapping(value = "/hasTodo/page")
 	@ResponseBody
-	public Map<String, Object> hasTodo() {
+	public Map<String, Object> hasTodo(Page<Map<String, String>> page) {
 		current_user = (User) session.getAttribute(Constants.CURRENT_USER);
-		Page<Map<String, String>> page = workflowService.getHasTodoTasks(current_user.getLoginId(),
-				new Page<Map<String, String>>(new PageRequest(1, 100)));
+		page = workflowService.getHasTodoTasks(current_user.getLoginId(),page);
 		return page.returnMap();
 	}
 
