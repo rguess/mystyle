@@ -20,6 +20,29 @@
 <link href="${ctx}/assets/favicon.ico" rel="shortcut icon"/>
 <script src="${ctx}/assets/js/jquery-1.8.3.min.js" type="text/javascript"></script>
 <script src="${ctx}/assets/comp/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="${ctx}/assets/js/jquery.getparam.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+		var error = $.getParam("error");
+		var content = "";
+		switch(error)
+		{
+		case "kickout":
+		  content = "账号被其他人登录！"
+		  break;
+		case "unauthor":
+		  content = "拒绝访问！"
+		  break;
+		default:
+		}
+		
+		var remind = $("#remind").text();
+		if(remind == null || "" == remind){
+			$("#remind").text(content);
+		}
+		
+	});
+</script>
 </head>
 <body style="background-image: url('${ctx}/assets/img/sys/bg1.jpg');">
 	<div class="container">
@@ -28,7 +51,7 @@
 			</div>
 			<div class="span6" style="margin-top: 200px">
 				<form class="form-horizontal" action="${ctx }/login" method="post">
-					<span style="color: red">${message_login }</span>
+					<span style="color: red" id="remind">${message_login }</span>
 					<div class="control-group">
 						<label class="control-label" for="inputEmail">用户名:</label>
 						<div class="controls">
