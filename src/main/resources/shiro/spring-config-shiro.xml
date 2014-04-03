@@ -84,7 +84,7 @@
 	<bean id="kickoutSessionControlFilter" class="org.guess.security.filter.KickoutSessionControlFilter">
         <property name="cacheManager" ref="shiroEhcacheManager"/>
         <property name="sessionManager" ref="sessionManager"/>
-        <property name="kickoutAfter" value="true"/>
+        <property name="kickoutAfter" value="false"/>
         <property name="maxSession" value="1"/>
         <property name="kickoutUrl" value="/login?error=kickout"/>
     </bean>

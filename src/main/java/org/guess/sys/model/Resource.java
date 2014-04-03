@@ -16,8 +16,6 @@ import javax.persistence.Table;
 import org.guess.core.IdEntity;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
@@ -52,7 +50,6 @@ public class Resource extends IdEntity {
 	/** 子资源 */
 	@OneToMany(targetEntity=Resource.class,fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="PARENT_ID",updatable=false)
-	/*@Fetch(FetchMode.SUBSELECT)*/
 	@OrderBy("orderNo ASC")
 	/*@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)*/
 	private Set<Resource> childRes;

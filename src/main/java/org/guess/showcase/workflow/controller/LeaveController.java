@@ -32,11 +32,11 @@ public class LeaveController extends BaseWorkFlowController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/start")
 	public ModelAndView start(Leave leave, ModelAndView mav) throws Exception {
-		User u = (User) session.getAttribute(Constants.CURRENT_USER);
-		leave.setSponsorLoginId(u.getLoginId());
+		current_user = (User) session.getAttribute(Constants.CURRENT_USER);
+		leave.setSponsorLoginId(current_user.getLoginId());
 		Map<String, Object> variables = new HashMap<String, Object>();
 		// 设置流程发起人
-		variables.put(WorkflowConstants.SPONSOR, u.getName());
+		variables.put(WorkflowConstants.SPONSOR, current_user.getName());
 		leaveService.startWorkflow(leave, variables);
 		mav.setViewName("redirect:/workflow/process");
 		return mav;
