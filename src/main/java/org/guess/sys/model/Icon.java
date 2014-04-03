@@ -4,9 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import org.guess.core.IdEntity;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "SYS_ICON")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Icon extends IdEntity{
 
 	/** 标识符 */

@@ -21,6 +21,8 @@ import javax.persistence.TemporalType;
 import org.guess.core.Constants;
 import org.guess.core.IdEntity;
 import org.guess.core.utils.DateUtil;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "SYS_USER")
 @JsonIgnoreProperties(value = { "roles","passwd" })
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class User extends IdEntity {
 
 	/** 登录ID */
@@ -52,7 +55,6 @@ public class User extends IdEntity {
 	/** 创建时间 */
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
-	/*@JsonFormat(pattern = "yyyy-MM-dd")*/
 	private Date createDate = DateUtil.parseFormat("yyyy-MM-dd");
 
 	public Date getCreateDate() {
@@ -66,6 +68,7 @@ public class User extends IdEntity {
 	/** 拥有角色 */
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "SYS_USER_ROLE", joinColumns = { @JoinColumn(name = "USER_ID") }, inverseJoinColumns = { @JoinColumn(name = "ROLE_ID") })
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 	private Set<Role> roles = new HashSet<Role>();
 
 	public String getLoginId() {

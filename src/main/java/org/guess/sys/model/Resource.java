@@ -14,6 +14,8 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.guess.core.IdEntity;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
@@ -22,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "SYS_RES")
 @JsonIgnoreProperties(value = { "parent","roles" })
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Resource extends IdEntity {
 	
 	/** 名称 */
@@ -42,14 +45,17 @@ public class Resource extends IdEntity {
 	@ManyToOne(targetEntity = Resource.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "PARENT_ID")
     @NotFound(action=NotFoundAction.IGNORE)
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 	private Resource parent;
 	/** 子资源 */
 	@OneToMany(targetEntity=Resource.class,fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="PARENT_ID",updatable=false)
 	@OrderBy("orderNo ASC")
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 	private Set<Resource> childRes;
 	/** 角色 */
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, targetEntity = Role.class,mappedBy="resources")
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 	private Set<Role> roles = new HashSet<Role>(0);
 	/** 是否被授权权限 */
 	private String authorize;

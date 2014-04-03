@@ -3,15 +3,7 @@
 <html>
 <head>
 <title>角色列表</title>
-<link href="${ctx}/assets/comp/datepicker/datepicker.css" type="text/css" rel="stylesheet" />
-<script src="${ctx}/assets/comp/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
-<link href="${ctx}/assets/comp/bootstrap-paginator/DT_bootstrap.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="${ctx}/assets/comp/bootstrap-paginator/bootstrap-paginator.js"></script>
-<script type="text/javascript" src="${ctx}/assets/js/page.js"></script>
-
-<!-- 通过这种方式生成权限数组 ,点击去看详细-->
-<tool:perms permStr="sys:role:update-sys:role:delete-sys:role:show"></tool:perms>
-
+<%@ include file="/WEB-INF/content/common/plugins/page.jsp"%>
 <script type="text/javascript">
 $(document).ready(function() {
 	

@@ -11,9 +11,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.guess.core.IdEntity;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "SYS_ROLE")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Role extends IdEntity {
 
 	/** 名称 */
@@ -27,11 +30,13 @@ public class Role extends IdEntity {
 
 	/** 所属用户 */
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, targetEntity = User.class,mappedBy="roles")
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 	private Set<User> users = new HashSet<User>(0);
 	
 	/** 拥有权限 */
 	@ManyToMany( cascade = { CascadeType.PERSIST,CascadeType.MERGE })
 	@JoinTable(name = "SYS_ROLE_RES", joinColumns = { @JoinColumn(name = "ROLE_ID") }, inverseJoinColumns = { @JoinColumn(name = "RES_ID") })
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 	private Set<Resource> resources = new HashSet<Resource>();
 	/** 是否被授权权限 */
 	private String authorize;

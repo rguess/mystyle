@@ -10,11 +10,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.guess.core.IdEntity;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 @Table(name = "SYS_LOG")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Log extends IdEntity{
 
 	/**
@@ -40,6 +43,7 @@ public class Log extends IdEntity{
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE },targetEntity = User.class, fetch = FetchType.LAZY)
 	@NotFound(action=NotFoundAction.IGNORE)
 	@JoinColumn(name = "userId")
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 	private User operUser;
 	
 	public User getOperUser() {

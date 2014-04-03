@@ -3,9 +3,7 @@
 <html>
 <head>
 <title>已办任务</title>
-<link href="${ctx}/assets/comp/bootstrap-paginator/DT_bootstrap.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="${ctx}/assets/comp/bootstrap-paginator/bootstrap-paginator.js"></script>
-<script type="text/javascript" src="${ctx}/assets/js/page.js"></script>
+<%@ include file="/WEB-INF/content/common/plugins/page.jsp"%>
 
 <script type="text/javascript">
 $(document).ready(function() {
